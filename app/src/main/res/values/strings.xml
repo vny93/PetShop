@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">PetShop</string>
+    <!-- login -->
+    <string name="hint_edtusername">Enter your username</string>
+    <string name="hint_edtpassword">Enter your password</string>
+    <string name="tv_forgotpass">Forgot password?</string>
+    <string name="tv_username">Username</string>
+    <string name="tv_password">Password</string>
+    <string name="name_btnlogin">Log in</string>
+    <string name="tv_singup">Do not have an account?</string>
+    <string name="tv_singup2"><u>Singup</u></string>
+    <string name="login_empty">Username or password cannot be blank</string>
+    <string name="user_illegal">Incorrect username format</string>
+    <string name="login_success">Logged in successfully!</string>
+
+    <!-- home -->
+    <string name="action_home">Home</string>
+    <string name="action_search">Explore</string>
+    <string name="action_cart">Cart</string>
+    <string name="action_account">Account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- login -->
+    <!-- login -->
+    <!-- login -->
+</resources>

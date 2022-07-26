@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    tools:context=".screens.login.LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/scrollView_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo"
+            style="@style/style_imvlogin"
+            android:layout_marginTop="@dimen/_40sdp"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            style="@style/style_textview_login"
+            android:text="@string/tv_username" />
+
+        <EditText
+            android:id="@+id/edtUsername"
+            style="@style/style_edit_login"
+            android:text="vubaohan"
+            android:hint="@string/hint_edtusername" />
+
+        <TextView
+            android:layout_marginTop="@dimen/_30sdp"
+            style="@style/style_textview_login"
+            android:text="@string/tv_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPassword"
+                style="@style/style_edit_login"
+                android:text="888"
+                android:hint="@string/hint_edtpassword"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_185sdp"
+            style="@style/style_textview_forgotpw"
+            android:text="@string/tv_forgotpass" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/style_btnlogin"
+            android:layout_gravity="center"
+            android:textSize="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:text="@string/name_btnlogin"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/style_textview_login2"
+            android:text="@string/tv_singup" />
+
+        <TextView
+            android:id="@+id/singup"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/color1"
+            style="@style/style_textview_login2"
+            android:text="@string/tv_singup2" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
