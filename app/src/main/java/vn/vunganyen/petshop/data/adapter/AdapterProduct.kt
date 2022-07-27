@@ -3,6 +3,7 @@ package vn.vunganyen.petshop.data.adapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -39,6 +40,9 @@ class AdapterProduct : RecyclerView.Adapter<AdapterProduct.MainViewHolder>() {
             val formatter = DecimalFormat("###,###,###")
             val price = formatter.format(data.gia.toInt()).toString() + " đ"
             binding.tvPrice.setText(price)
+            if(data.soluong.toString().toInt() > 0){
+                binding.tvStatus.visibility = View.GONE
+            }
         }
     }
 
@@ -59,9 +63,6 @@ class AdapterProduct : RecyclerView.Adapter<AdapterProduct.MainViewHolder>() {
             var intent = Intent(holder.itemView.context, ProDetailActivity::class.java)
             intent.putExtra("id",data.masp)
             holder.itemView.context.startActivity(intent)
-        }
-        holder.binding.imvAddCart.setOnClickListener{
-            println("hihihi")
         }
 
     }

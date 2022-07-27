@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         style="@style/style_cardview_itemProductType"
         android:layout_marginStart="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_10sdp">
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_5sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,44 +22,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_90sdp"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:src="@drawable/panner1"/>
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/panner1" />
+
             <TextView
                 android:id="@+id/tv_prodcutname"
                 style="@style/style_textview_product"
                 android:layout_height="@dimen/_40sdp"
-                android:textSize="@dimen/_10sdp"
                 android:text="@string/action_home"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/style_textview_product"
+                android:layout_height="@dimen/_20sdp"
+                android:text="@string/price"
+                android:textColor="@color/red"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="3"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_price"
-                    android:layout_weight="1"
-                    style="@style/style_textview_product"
-                    android:layout_height="@dimen/_20sdp"
-                    android:textStyle="bold"
-                    android:text="@string/price"
-                    android:textColor="@color/black"/>
-
-                <ImageView
-                    android:id="@+id/imv_addCart"
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:layout_weight="2"
-                    android:src="@drawable/ic_baseline_add_box_24"
-                    app:itemIconTint="@color/custom_color_bottom_nav"/>
-
-            </LinearLayout>
-
-
+                android:layout_height="@dimen/_20sdp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:text="@string/out_of_stock"
+                android:textColor="@color/black"
+                android:textStyle="italic" />
 
         </LinearLayout>
 

@@ -21,9 +21,9 @@
         <entry key="app/src/main/res/drawable/ic_outline_manage_search_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_outline_shopping_cart_24.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.19429347826086957" />
-        <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.19429347826086957" />

@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.data.model.cartDetail
+package vn.vunganyen.petshop.data.model.cartDetail.getCartDetail
 
 import java.io.Serializable
 

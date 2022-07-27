@@ -28,6 +28,7 @@
     <string name="search_store">Search Store</string>
     <string name="find_productType">Find Product</string>
     <string name="price">Price</string>
+    <string name="out_of_stock">Hết hàng</string>
 
     <!-- product detail -->
     <string name="tv_proDetail">Product Detail</string>
@@ -38,9 +39,12 @@
     <string name="tv_body">Nội dung</string>
     <string name="tv_addToCard">Thêm vào giỏ hàng</string>
     <string name="tv_num">1</string>
+    <string name="tv_numPro">Sô lượng:</string>
 
     <!-- Cart -->
     <string name="cart">Giỏ hàng của tôi</string>
     <string name="tv_cartLogin">Vui lòng đăng nhập để xem giỏ hàng</string>
+    <string name="tv_numProDetail">Số lượng còn lại của sản phẩm là %1$s</string>
+    <string name="tv_numError">Vui lòng chọn số lượng lớn hơn 0</string>
 
 </resources>
