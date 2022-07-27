@@ -12,6 +12,9 @@
     <string name="login_empty">Username or password cannot be blank</string>
     <string name="user_illegal">Incorrect username format</string>
     <string name="login_success">Logged in successfully!</string>
+    <string name="login_error">Xảy ra lổi server</string>
+    <string name="wrong_account">Tài khoản hoặc mật khẩu không đúng</string>
+    <string name="tokendie">Phiên bản hết hạn. Vui lòng đăng nhập lại</string>
 
     <!-- home -->
     <string name="action_home">Home</string>
@@ -21,7 +24,23 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!-- login -->
-    <!-- login -->
-    <!-- login -->
+    <!-- explore -->
+    <string name="search_store">Search Store</string>
+    <string name="find_productType">Find Product</string>
+    <string name="price">Price</string>
+
+    <!-- product detail -->
+    <string name="tv_proDetail">Product Detail</string>
+    <string name="tv_brand">Thương hiệu:</string>
+    <string name="tv_brandname">ABC</string>
+    <string name="tv_describe">Mô tả</string>
+    <string name="tv_review">Đánh giá</string>
+    <string name="tv_body">Nội dung</string>
+    <string name="tv_addToCard">Thêm vào giỏ hàng</string>
+    <string name="tv_num">1</string>
+
+    <!-- Cart -->
+    <string name="cart">Giỏ hàng của tôi</string>
+    <string name="tv_cartLogin">Vui lòng đăng nhập để xem giỏ hàng</string>
+
 </resources>

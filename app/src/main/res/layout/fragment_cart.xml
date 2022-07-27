@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color3"
+    android:background="@color/white"
     tools:context=".screens.cart.FragmentCart">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/imv_cartError"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_500sdp"
+        android:src="@drawable/cart_error" />
+
     <TextView
+        android:id="@+id/tv_cartError"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_alignBottom="@id/imv_cartError"
+        android:gravity="center"
+        android:textSize="@dimen/_18sdp"
+        android:textColor="@color/black"
+        android:text="@string/tv_cartLogin"/>
+
+    <Button
+        android:id="@+id/btn_cartLogin"
+        style="@style/style_btnlogin"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_alignBottom="@id/tv_cartError"
+        android:layout_gravity="center"
+        android:text="@string/name_btnlogin"
+        android:textSize="@dimen/_13sdp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_above="@id/btn_checkOut"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            style="@style/style_textview_login2"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            android:text="@string/cart" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_myCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_25sdp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_checkOut"
+        style="@style/style_btnlogin"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@string/tv_addToCard"
+        android:textSize="@dimen/_13sdp" />
+
+</RelativeLayout>

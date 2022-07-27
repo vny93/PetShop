@@ -2,39 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/_180sdp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         style="@style/style_cardview_itemProductType"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp">
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color2"
+            android:layout_height="match_parent"
+            android:background="@drawable/boder_rectangle3"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imv_productType"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_90sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:src="@drawable/panner1"/>
             <TextView
                 android:id="@+id/tv_prodcutType"
                 style="@style/style_textview_login"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:gravity="center"
-                android:text="Phụ kiện cho mèo aaaaaaaaaaaaa"
+                android:textStyle="bold"
+                android:text="@string/action_home"
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:textColor="@color/black"/>
-
-
 
         </LinearLayout>
 

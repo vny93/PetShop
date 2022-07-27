@@ -5,8 +5,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiLoginService
+import vn.vunganyen.petshop.data.api.ApiProfileService
 import vn.vunganyen.petshop.data.model.login.LoginReq
 import vn.vunganyen.petshop.data.model.login.LoginRes
+import vn.vunganyen.petshop.data.model.user.MainUserRes
+import vn.vunganyen.petshop.data.model.user.UserReq
 
 class LoginPresenter {
     var loginInterface : LoginInterface
@@ -29,17 +32,14 @@ class LoginPresenter {
     }
 
     fun handle(req : LoginReq){
-        println("1:"+req.tendangnhap)
-        println("2:"+req.matkhau)
         ApiLoginService.Api.api.authLogin(req).enqueue(object :Callback<LoginRes>{
             override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
-                println("vô")
                 if(response.isSuccessful){
                     LoginActivity.token = response.body()!!.accessToken
-                    loginInterface.loginSuccess()
+                    getProfile(response.body()!!.accessToken, UserReq(req.tendangnhap))
                 }
                 else{
-                    println("Sai thông tin đăng nhập")
+                   loginInterface.wrongPass()
                 }
             }
 
@@ -47,6 +47,25 @@ class LoginPresenter {
                 Log.d("error" , ""+call)
                 println("error "+call)
                 t.printStackTrace()
+            }
+
+        })
+    }
+
+    fun getProfile(token : String, req: UserReq){
+        ApiProfileService.Api.api.authGetProfile(token, req).enqueue(object : Callback<MainUserRes>{
+            override fun onResponse(call: Call<MainUserRes>, response: Response<MainUserRes>) {
+                if(response.isSuccessful){
+                    LoginActivity.profile = response.body()!!
+                    loginInterface.loginSuccess()
+                }
+                else{
+                    loginInterface.tokendie()
+                }
+            }
+
+            override fun onFailure(call: Call<MainUserRes>, t: Throwable) {
+                loginInterface.loginError()
             }
 
         })

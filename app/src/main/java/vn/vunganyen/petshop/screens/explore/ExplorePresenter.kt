@@ -15,19 +15,16 @@ class ExplorePresenter {
     }
 
     fun getList(){
-        //nhớ truyền token nha, bh test trước chưa sd token
+        //cái này không cần token vẫn xem được
         ApiProductTypeService.Api.api.getList().enqueue(object : Callback<MainProTypeRes>{
             override fun onResponse(call: Call<MainProTypeRes>,response: Response<MainProTypeRes>) {
-                println("vô nè")
                 if(response.isSuccessful){
-                    println("thành công")
                     response.body()?.let { exploreInterface.getListSuccess(it.result) }
                 }
-                println("Thất bại")
             }
 
             override fun onFailure(call: Call<MainProTypeRes>, t: Throwable) {
-                TODO("Not yet implemented")
+                println("Explore: Không lấy được dữ liệu")
             }
 
         })
