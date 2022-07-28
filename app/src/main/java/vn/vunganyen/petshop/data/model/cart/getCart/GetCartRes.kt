@@ -1,8 +1,8 @@
-package vn.vunganyen.petshop.data.model.cartDetail.getCartDetail
+package vn.vunganyen.petshop.data.model.cart.getCart
 
 import java.io.Serializable
 
-data class CartDetailRes(
+data class GetCartRes(
     val magh : Int,
     val ngaydat : String,
     val hotennguoinhan : String,

@@ -8,8 +8,8 @@ import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
-import vn.vunganyen.petshop.data.model.cartDetail.getCartDetail.CartDetailReq
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.MainListCartDetailRes
+import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
 
 class CartPresenter {
     var cartInterface : CartInterface
@@ -19,13 +19,14 @@ class CartPresenter {
     }
 
     fun getCartByStatus(token : String, req : CartStatusReq){
+        println("makh: "+req.makh)
         ApiCartService.Api.api.getCartByStatus(token,req).enqueue(object :
             Callback<MainCartStatusRes> {
             override fun onResponse(call: Call<MainCartStatusRes>, response: Response<MainCartStatusRes>) {
                 if(response.isSuccessful){
                     if(response.body()!!.result.size > 0) {
                         println("magh: " + response.body()!!.result.get(0).magh)
-                        var req2 = CartDetailReq(response.body()!!.result.get(0).magh)
+                        var req2 = GetCartReq(response.body()!!.result.get(0).magh)
                         getListCartDetail(token, req2)
                     }else{
                         cartInterface.cartEmpty()
@@ -43,9 +44,9 @@ class CartPresenter {
         })
     }
 
-    fun getListCartDetail(token: String, req: CartDetailReq){
-        ApiCartDetailService.Api.api.getListCartDetail(token, req).enqueue(object : Callback<MainListCartDetailRes>{
-            override fun onResponse(call: Call<MainListCartDetailRes>,response: Response<MainListCartDetailRes>) {
+    fun getListCartDetail(token: String, req: GetCartReq){
+        ApiCartDetailService.Api.api.getListCartDetail(token, req).enqueue(object : Callback<GetMainCDRes>{
+            override fun onResponse(call: Call<GetMainCDRes>, response: Response<GetMainCDRes>) {
                 if(response.isSuccessful){
                     if(response.body()!!.result.size > 0) {
                         cartInterface.getListSuccess(response.body()!!.result)
@@ -56,7 +57,7 @@ class CartPresenter {
                 }
             }
 
-            override fun onFailure(call: Call<MainListCartDetailRes>, t: Throwable) {
+            override fun onFailure(call: Call<GetMainCDRes>, t: Throwable) {
                 TODO("Not yet implemented")
             }
 

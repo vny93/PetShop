@@ -1,10 +1,10 @@
 package vn.vunganyen.petshop.data.model.cartDetail.post
 
-data class CartDetailReq2(
+import java.io.Serializable
+
+data class PostCDRes(
     val magh : Int,
     val masp : String,
     val gia : Float,
-    val soluong : Int,
-    val mapt : String,
-    val soluongtra: Int
-)
+    val ctsoluong : Int
+) : Serializable

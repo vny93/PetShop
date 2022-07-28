@@ -42,13 +42,18 @@
     <string name="tv_numPro">Sô lượng:</string>
     <string name="proDeltologin">Đăng nhập để thêm vào giỏ hàng</string>
 
-    <!-- Cart -->
+    <!-- Cart Detail -->
     <string name="cart">Giỏ hàng của tôi</string>
     <string name="tv_cartLogin">Vui lòng đăng nhập để xem giỏ hàng</string>
     <string name="tv_numProDetail">Số lượng còn lại của sản phẩm là %1$s</string>
     <string name="tv_numError">Vui lòng chọn số lượng lớn hơn 0</string>
     <string name="tv_sum">Tổng tiền:</string>
     <string name="tv_checkOut">Đặt hàng</string>
+    <string name="add_CDsuccess">Đã thêm vào giỏ hàng</string>
+
+    <!-- Cart -->
+    <string name="dialog_remove">Bạn muốn xóa sản phẩm này?</string>
+    <string name="sum_price">0đ</string>
 
     <!-- Account -->
     <string name="mess_logOut">Bạn có thực sự muốn đăng xuất?</string>

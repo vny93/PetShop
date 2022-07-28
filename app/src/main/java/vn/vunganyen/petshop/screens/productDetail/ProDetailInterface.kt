@@ -4,4 +4,5 @@ import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
 
 interface ProDetailInterface {
     fun getDetailSuccess(res1 : ProDetailRes, re2 : BrandDetailRes)
+    fun addCDsuccess()
 }

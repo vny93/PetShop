@@ -1,7 +1,7 @@
 package vn.vunganyen.petshop.data.model.cart.getByStatus
 
-import vn.vunganyen.petshop.data.model.cart.add.CartRes
+import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 
 data class MainCartStatusRes(
-    val result : List<CartRes>
+    val result : List<AddCartRes>
 )

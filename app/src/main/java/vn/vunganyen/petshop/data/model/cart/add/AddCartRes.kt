@@ -1,6 +1,6 @@
 package vn.vunganyen.petshop.data.model.cart.add
 
-data class CartRes(
+data class AddCartRes(
     val magh : Int,
     val ngaydat : String,
     val hotennguoinhan : String,

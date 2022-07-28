@@ -38,7 +38,7 @@ class LoginPresenter {
         ApiLoginService.Api.api.authLogin(req).enqueue(object :Callback<LoginRes>{
             override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
                 if(response.isSuccessful){
-                  //  HomeActivity.token = response.body()!!.accessToken
+                   // HomeActivity.token = response.body()!!.accessToken
                     //lưu
                     HomeActivity .editor.putString("token",response.body()!!.accessToken)
 
@@ -62,7 +62,9 @@ class LoginPresenter {
         ApiProfileService.Api.api.authGetProfile(token, req).enqueue(object : Callback<MainUserRes>{
             override fun onResponse(call: Call<MainUserRes>, response: Response<MainUserRes>) {
                 if(response.isSuccessful){
-                //    HomeActivity.profile = response.body()!!
+                   // HomeActivity.profile = response.body()!!
+
+                    println("mã khách hàng login: "+response.body()!!.result.makh)
                     //Lưu
                     setProfile(response.body()!!)
 

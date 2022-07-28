@@ -5,15 +5,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
 import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.cartDetail.post.PostCDReq
+import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailReq
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
@@ -27,6 +27,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
     lateinit var proDetailPresenter: ProDetailPresenter
     var dialog: StartAlertDialog = StartAlertDialog()
     var soluong = 0
+    lateinit var reqAddCartDetail : PostCDReq
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
         proDetailPresenter = ProDetailPresenter(this)
         getData()
         setEvent()
+
     }
 
     fun getData() {
@@ -67,7 +69,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
             if (number == 0) {
                 dialog.showStartDialog3(getString(R.string.tv_numError), this)
             } else if (number > soluong) {
-                dialog.showStartDialog2(getString(R.string.tv_numProDetail, soluong), this)
+                dialog.showStartDialog3(getString(R.string.tv_numProDetail, soluong), this)
             } else {
                 //check token để đưa qua trang login
                 // lưu lại vị trí đứng để login vô lại trang đó
@@ -81,7 +83,8 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
                 } else {
                     println("gọi api status nè")
                     var req = CartStatusReq("", HomeActivity.profile.result.makh)
-                    proDetailPresenter.getCartByStatus(HomeActivity.token, req)
+                    reqAddCartDetail.ctsoluong = number
+                    proDetailPresenter.getCartByStatus(HomeActivity.token, req, reqAddCartDetail)
                 }
             }
         }
@@ -91,6 +94,13 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
             binding.layoutProdetail.hideKeyboard()
         }
     }
+
+    fun updateDataAdapter(data : PutCDReq){ //bên Adapter gọi
+        proDetailPresenter = ProDetailPresenter(this)
+        proDetailPresenter.updateCartDetail(HomeActivity.token,data)
+
+    }
+
 
     override fun getDetailSuccess(res: ProDetailRes, res2: BrandDetailRes) {
         if (res.hinhanh != null) {
@@ -113,7 +123,11 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
             binding.btnAddCart.isEnabled = false
 //            binding.btnUpdataProfile.isEnabled = false
         } else binding.tvNumberPro.setText(res.soluong.toString())
+        reqAddCartDetail = PostCDReq(0,res.masp,res.gia,0) // gán trước những thuộc tính cần thiết
+    }
 
+    override fun addCDsuccess() {
+        dialog.showStartDialog3(getString(R.string.add_CDsuccess), this)
     }
 
     fun View.hideKeyboard(): Boolean {

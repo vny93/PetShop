@@ -2,6 +2,6 @@ package vn.vunganyen.petshop.data.model.cart.add
 
 import java.io.Serializable
 
-data class CartReq(
+data class AddCartReq(
     val makh : String
 )

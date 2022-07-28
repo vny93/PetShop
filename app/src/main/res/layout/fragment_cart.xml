@@ -59,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:background="@color/gray"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
@@ -78,7 +79,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
             android:textColor="@color/red"
-            android:text="@string/price"
+            android:text="@string/sum_price"
             android:textSize="@dimen/_15sdp" />
 
         <Button

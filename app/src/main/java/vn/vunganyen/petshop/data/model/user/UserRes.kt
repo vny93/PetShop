@@ -3,13 +3,13 @@ package vn.vunganyen.petshop.data.model.user
 import java.io.Serializable
 
 data class UserRes(
-    val makh: String,
-    val hoten: String,
-    val gioitinh: String,
-    val diachi: String,
-    val ngaysinh: String,
-    val sdt: String,
-    val email: String,
-    val masothue: String,
-    val tendangnhap: String
+    var makh: String,
+    var hoten: String,
+    var gioitinh: String,
+    var diachi: String,
+    var ngaysinh: String,
+    var sdt: String,
+    var email: String,
+    var masothue: String,
+    var tendangnhap: String
 ) : Serializable

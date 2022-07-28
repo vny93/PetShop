@@ -71,9 +71,10 @@
                         android:layout_width="@dimen/_35sdp"
                         android:layout_height="@dimen/_35sdp"
                         android:gravity="center"
-                        android:inputType="number"
-                        android:maxLength="2"
                         android:text="@string/tv_num"
+                        android:textColor="@color/black"
+                        android:enabled="false"
+                        android:inputType="number"
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 

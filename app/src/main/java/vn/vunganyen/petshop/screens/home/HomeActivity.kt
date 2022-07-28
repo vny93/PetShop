@@ -12,7 +12,6 @@ import vn.vunganyen.petshop.databinding.ActivityHomeBinding
 import vn.vunganyen.petshop.screens.account.FragmentAccount
 import vn.vunganyen.petshop.screens.cart.FragmentCart
 import vn.vunganyen.petshop.screens.explore.FragmentExplore
-import vn.vunganyen.petshop.screens.login.LoginActivity
 import java.util.regex.Pattern
 
 
@@ -28,6 +27,7 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
         lateinit var sharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
         lateinit var profile: MainUserRes
+        var sumPrice : Float = 0.0f
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,6 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
         checkShaharedPre()
         setEventBottomNav()
         replaceFragment(FragmentShop())
-
     }
 
     private fun initPreferences() {
@@ -55,6 +54,7 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
             homePresenter.getProfileEditor()
         }
     }
+
 
     fun setEventBottomNav() {
         binding.bottomNav.setOnNavigationItemSelectedListener { item ->

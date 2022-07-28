@@ -2,29 +2,33 @@ package vn.vunganyen.petshop.screens.cart
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.data.adapter.AdapterCartDetail
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.CartDetailSpRes
-import vn.vunganyen.petshop.data.model.cartDetail.post.CartDetailRes2
+import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.databinding.FragmentCartBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
+import java.text.DecimalFormat
+
 
 class FragmentCart : Fragment(), CartInterface {
     lateinit var binding: FragmentCartBinding
     lateinit var cartPresenter: CartPresenter
     var adapter : AdapterCartDetail = AdapterCartDetail()
+    val formatter = DecimalFormat("###,###,###")
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = FragmentCartBinding.inflate(inflater,container,false)
         cartPresenter = CartPresenter(this)
         checkToken(HomeActivity.token)
         setEvent()
+        callInvoke()
         return binding.root
     }
 
@@ -44,8 +48,7 @@ class FragmentCart : Fragment(), CartInterface {
     }
 
     fun getData(){
-     //   var req = CartStatusReq("", HomeActivity.profile.result.makh)
-        var req = CartStatusReq("", "KH1")
+        var req = CartStatusReq("", HomeActivity.profile.result.makh)
         cartPresenter.getCartByStatus(HomeActivity.token,req)
     }
 
@@ -56,7 +59,22 @@ class FragmentCart : Fragment(), CartInterface {
         }
     }
 
-    override fun getListSuccess(list: List<CartDetailSpRes>) {
+    fun callInvoke(){
+        adapter.clickOk={
+            price ->
+            println("sum: "+HomeActivity.sumPrice)
+            println("thêm :"+price)
+            if(price != null){
+                HomeActivity.sumPrice = HomeActivity.sumPrice + price!!
+                val strSumPrice = formatter.format(HomeActivity.sumPrice).toString() + " đ"
+                println(strSumPrice)
+                binding.sumCartMoney.setText(strSumPrice)
+            }
+        }
+    }
+
+
+    override fun getListSuccess(list: List<GetCDSpRes>) {
         println("Có list rồi")
         adapter.setData(list)
         binding.rcvMyCard.adapter = adapter
@@ -65,7 +83,8 @@ class FragmentCart : Fragment(), CartInterface {
     }
 
     override fun cartEmpty() {
-        println("Giỏ hàng chưa có sản phẩm")
+        binding.tvCartError.visibility = View.VISIBLE
+        binding.tvCartError.setText("Giỏ hàng chưa có sản phẩm")
     }
 
 }
