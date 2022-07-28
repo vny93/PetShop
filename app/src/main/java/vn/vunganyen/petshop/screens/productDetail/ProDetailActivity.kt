@@ -2,6 +2,7 @@ package vn.vunganyen.petshop.screens.productDetail
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -17,6 +18,7 @@ import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailReq
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
 import vn.vunganyen.petshop.databinding.ActivityProductDetailBinding
+import vn.vunganyen.petshop.screens.home.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
 import java.text.DecimalFormat
 
@@ -70,9 +72,17 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
                 //check token để đưa qua trang login
                 // lưu lại vị trí đứng để login vô lại trang đó
                 // chú ý: chỉ có vài vị trí cần login : chi tiết sản phẩm khi thêm vào card , fragment card, account
-                println("gọi api status nè")
-//                var req = CartStatusReq("",LoginActivity.profile.result.makh)
-                //               proDetailPresenter.getCartByStatus(LoginActivity.token,req)
+                if (HomeActivity.token.equals("")) {
+                    dialog.showStartDialog4(getString(R.string.proDeltologin), this)
+                    dialog.clickOk = { ->
+                        var intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                    }
+                } else {
+                    println("gọi api status nè")
+                    var req = CartStatusReq("", HomeActivity.profile.result.makh)
+                    proDetailPresenter.getCartByStatus(HomeActivity.token, req)
+                }
             }
         }
 

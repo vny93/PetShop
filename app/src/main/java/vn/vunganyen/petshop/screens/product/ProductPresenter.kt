@@ -16,10 +16,8 @@ class ProductPresenter {
     }
 
     fun getListData(req : ProductReq){
-        println("maloaisp: "+req.maloaisp)
         ApiProductService.Api.api.getListFK(req).enqueue(object : Callback<MainProductRes>{
             override fun onResponse(call: Call<MainProductRes>,response: Response<MainProductRes>) {
-                println("vô")
                 if(response.isSuccessful){
                     response.body()?.let { productInterface.getListSuccess(it.result) }
                 }

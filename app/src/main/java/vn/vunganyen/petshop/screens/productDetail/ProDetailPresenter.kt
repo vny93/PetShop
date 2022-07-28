@@ -60,6 +60,7 @@ class ProDetailPresenter {
                     if(response.body()!!.result.size > 0) {
                         println("kh null" + response.body()!!.result.get(0).magh)
                         //update chi tiết giỏ hàng từ mã gh với mã sp nè má
+                        //nếu mã sp chưa có trong chi tiết giỏ hàng thì add mới, nếu có rồi thì update
                     }else{
                         println("rỗng nha") // add giỏ hàng nè
                     }
@@ -71,7 +72,6 @@ class ProDetailPresenter {
                 println("error "+call)
                 t.printStackTrace()
             }
-
         })
     }
 }

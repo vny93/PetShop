@@ -1,6 +1,7 @@
 package vn.vunganyen.petshop.screens.login
 
 import android.util.Log
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -10,9 +11,11 @@ import vn.vunganyen.petshop.data.model.login.LoginReq
 import vn.vunganyen.petshop.data.model.login.LoginRes
 import vn.vunganyen.petshop.data.model.user.MainUserRes
 import vn.vunganyen.petshop.data.model.user.UserReq
+import vn.vunganyen.petshop.screens.home.HomeActivity
 
 class LoginPresenter {
     var loginInterface : LoginInterface
+    var gson = Gson()
 
     constructor(loginInterface: LoginInterface) {
         this.loginInterface = loginInterface
@@ -35,7 +38,10 @@ class LoginPresenter {
         ApiLoginService.Api.api.authLogin(req).enqueue(object :Callback<LoginRes>{
             override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
                 if(response.isSuccessful){
-                    LoginActivity.token = response.body()!!.accessToken
+                  //  HomeActivity.token = response.body()!!.accessToken
+                    //lưu
+                    HomeActivity .editor.putString("token",response.body()!!.accessToken)
+
                     getProfile(response.body()!!.accessToken, UserReq(req.tendangnhap))
                 }
                 else{
@@ -56,18 +62,26 @@ class LoginPresenter {
         ApiProfileService.Api.api.authGetProfile(token, req).enqueue(object : Callback<MainUserRes>{
             override fun onResponse(call: Call<MainUserRes>, response: Response<MainUserRes>) {
                 if(response.isSuccessful){
-                    LoginActivity.profile = response.body()!!
+                //    HomeActivity.profile = response.body()!!
+                    //Lưu
+                    setProfile(response.body()!!)
+
                     loginInterface.loginSuccess()
                 }
                 else{
                     loginInterface.tokendie()
                 }
             }
-
             override fun onFailure(call: Call<MainUserRes>, t: Throwable) {
                 loginInterface.loginError()
             }
 
         })
     }
+
+    fun setProfile(response : MainUserRes){
+        var strResponse = gson.toJson(response).toString()
+        HomeActivity.editor.putString("profile",strResponse)
+    }
+
 }
