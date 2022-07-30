@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
@@ -84,7 +85,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
                     println("gọi api status nè")
                     var req = CartStatusReq("", HomeActivity.profile.result.makh)
                     reqAddCartDetail.ctsoluong = number
-                    proDetailPresenter.getCartByStatus(HomeActivity.token, req, reqAddCartDetail)
+                    proDetailPresenter.getCartByStatus(HomeActivity.token, req, reqAddCartDetail, soluong)
                 }
             }
         }
@@ -129,6 +130,11 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
     override fun addCDsuccess() {
         dialog.showStartDialog3(getString(R.string.add_CDsuccess), this)
     }
+
+    override fun inventNum() {
+        dialog.showStartDialog3(getString(R.string.inventNum), this)
+    }
+
 
     fun View.hideKeyboard(): Boolean {
         try {

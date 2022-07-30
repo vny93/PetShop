@@ -5,12 +5,12 @@ import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vn.vunganyen.petshop.data.api.ApiLoginService
-import vn.vunganyen.petshop.data.api.ApiProfileService
+import vn.vunganyen.petshop.data.api.ApiAuthService
+import vn.vunganyen.petshop.data.api.ApiUserService
 import vn.vunganyen.petshop.data.model.login.LoginReq
 import vn.vunganyen.petshop.data.model.login.LoginRes
-import vn.vunganyen.petshop.data.model.user.MainUserRes
-import vn.vunganyen.petshop.data.model.user.UserReq
+import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
+import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
 import vn.vunganyen.petshop.screens.home.HomeActivity
 
 class LoginPresenter {
@@ -35,12 +35,12 @@ class LoginPresenter {
     }
 
     fun handle(req : LoginReq){
-        ApiLoginService.Api.api.authLogin(req).enqueue(object :Callback<LoginRes>{
+        ApiAuthService.Api.api.authLogin(req).enqueue(object :Callback<LoginRes>{
             override fun onResponse(call: Call<LoginRes>, response: Response<LoginRes>) {
                 if(response.isSuccessful){
                    // HomeActivity.token = response.body()!!.accessToken
                     //lưu
-                    HomeActivity .editor.putString("token",response.body()!!.accessToken)
+                    HomeActivity.editor.putString("token",response.body()!!.accessToken)
 
                     getProfile(response.body()!!.accessToken, UserReq(req.tendangnhap))
                 }
@@ -59,7 +59,7 @@ class LoginPresenter {
     }
 
     fun getProfile(token : String, req: UserReq){
-        ApiProfileService.Api.api.authGetProfile(token, req).enqueue(object : Callback<MainUserRes>{
+        ApiUserService.Api.api.authGetProfile(token, req).enqueue(object : Callback<MainUserRes>{
             override fun onResponse(call: Call<MainUserRes>, response: Response<MainUserRes>) {
                 if(response.isSuccessful){
                    // HomeActivity.profile = response.body()!!

@@ -1,6 +1,5 @@
 package vn.vunganyen.petshop.screens.account
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.data.model.user.MainUserRes
-import vn.vunganyen.petshop.data.model.user.UserRes
 import vn.vunganyen.petshop.databinding.FragmentAccountBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
 

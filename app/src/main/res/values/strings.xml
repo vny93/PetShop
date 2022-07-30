@@ -1,20 +1,57 @@
 <resources>
     <string name="app_name">PetShop</string>
-    <!-- login -->
-    <string name="hint_edtusername">Enter your username</string>
-    <string name="hint_edtpassword">Enter your password</string>
+    <!-- login/register -->
+    <string name="hint_edtusername">Nhập tên đăng nhập</string>
+    <string name="hint_edtpassword">nhập mật khẩu</string>
     <string name="tv_forgotpass">Forgot password?</string>
-    <string name="tv_username">Username</string>
-    <string name="tv_password">Password</string>
+    <string name="tv_username">Tên đăng nhập</string>
+    <string name="tv_password">Mật khẩu</string>
     <string name="name_btnlogin">Log in</string>
+    <string name="tv_email">Email</string>
+    <string name="hint_email">Nhập Email</string>
     <string name="tv_singup">Do not have an account?</string>
     <string name="tv_singup2"><u>Singup</u></string>
+    <string name="tv_register"><u>Đăng ký</u></string>
     <string name="login_empty">Username or password cannot be blank</string>
     <string name="user_illegal">Incorrect username format</string>
     <string name="login_success">Logged in successfully!</string>
     <string name="login_error">Xảy ra lổi server</string>
     <string name="wrong_account">Tài khoản hoặc mật khẩu không đúng</string>
     <string name="tokendie">Phiên bản hết hạn. Vui lòng đăng nhập lại</string>
+
+    <!-- Register-->
+    <string name="RgtEmpty">Tên đăng nhập hoặc mật khẩu không được bỏ trống</string>
+    <string name="AccountExist">Tên đăng nhập đã tồn tại</string>
+    <string name="NotFindRoleId">Không tìm thấy mã quyền</string>
+    <string name="AddAuthSuccess">Đăng ký tài khoản thành công</string>
+    <string name="AddAuthError">Đăng ký tài khoản thất bại</string>
+    <string name="UserIllegal">Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số</string>
+    <string name="PassIllegal">Mât khẩu tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số</string>
+
+    <!-- Profile -->
+    <string name="pf_name">Họ và tên</string>
+    <string name="pf_title">Hoàn tất hồ sơ</string>
+    <string name="pf_hintName">Nhậo họ và tên</string>
+    <string name="pf_birth">Ngày sinh</string>
+    <string name="pf_hintBirth">Chọn ngày sinh</string>
+    <string name="pf_address">Địa chỉ</string>
+    <string name="pf_hintAddress">Nhập địa chỉ</string>
+    <string name="pf_taxCode">Mã số thuế</string>
+    <string name="pf_hintTaxCode">Nhập mã số thuế</string>
+    <string name="pf_male">Nam</string>
+    <string name="pf_female">Nữ</string>
+    <string name="pf_gender">Giới tính</string>
+    <string name="pf_phone">Số điện thoại</string>
+    <string name="pf_hintPhone">Nhập số điện thoại</string>
+    <string name="pf_btnSave">Lưu</string>
+    <string name="error_empty">Vui lòng không bỏ trống các thông tin</string>
+    <string name="PhoneIllegal">Số điện thoại không hợp lệ</string>
+    <string name="EmailIllegal">Email không hợp lệ</string>
+    <string name="PhoneExist">Số điện thoại này đã được sử dụng</string>
+    <string name="EmailExist">Email này đã được sử dụng</string>
+    <string name="AddProfileSucces">Cập nhật hồ sơ thành công</string>
+
+
 
     <!-- home -->
     <string name="action_home">Home</string>
@@ -50,6 +87,8 @@
     <string name="tv_sum">Tổng tiền:</string>
     <string name="tv_checkOut">Đặt hàng</string>
     <string name="add_CDsuccess">Đã thêm vào giỏ hàng</string>
+    <string name="inventNum">Số dư sản phẩm không đủ</string>
+    <string name="delete_Success">Đã xóa sản phẩm khỏi giỏ hàng</string>
 
     <!-- Cart -->
     <string name="dialog_remove">Bạn muốn xóa sản phẩm này?</string>
@@ -57,5 +96,8 @@
 
     <!-- Account -->
     <string name="mess_logOut">Bạn có thực sự muốn đăng xuất?</string>
+
+
+
 
 </resources>

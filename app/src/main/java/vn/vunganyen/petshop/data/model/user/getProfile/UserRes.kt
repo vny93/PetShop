@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.data.model.user
+package vn.vunganyen.petshop.data.model.user.getProfile
 
 import java.io.Serializable
 

@@ -2,20 +2,18 @@ package vn.vunganyen.petshop.screens.login
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import vn.vunganyen.petshop.R
+import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.data.model.user.MainUserRes
 import vn.vunganyen.petshop.databinding.ActivityLoginBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
-import vn.vunganyen.petshop.screens.home.HomePresenter
-import java.util.regex.Pattern
+import vn.vunganyen.petshop.screens.register.newProfile.ProfileActivity
+import vn.vunganyen.petshop.screens.register.newRegister.RegisterActivity
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
     lateinit var binding : ActivityLoginBinding
@@ -29,6 +27,7 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         setContentView(binding.root)
         loginPresenter = LoginPresenter(this)
         setEvent()
+        callRegisterInvoke()
 
     }
 
@@ -44,13 +43,20 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         }
 
         binding.singup.setOnClickListener{
-
+            var intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         binding.scrollViewLogin.setOnClickListener{
             binding.edtUsername.clearFocus()
             binding.edtPassword.clearFocus()
             binding.scrollViewLogin.hideKeyboard()
+        }
+    }
+
+    fun callRegisterInvoke(){
+        ProfileActivity.clickOk = {
+                data -> loginPresenter.handle(data)
         }
     }
 
@@ -81,9 +87,9 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
         dialog.showStartDialog3(getString(R.string.login_empty), this)
     }
 
-    override fun userIllegal() {
-        dialog.showStartDialog3(getString(R.string.user_illegal), this)
-    }
+//    override fun userIllegal() {
+//        dialog.showStartDialog3(getString(R.string.user_illegal), this)
+//    }
 
     override fun loginSuccess() {
         HomeActivity.editor.commit()

@@ -11,5 +11,7 @@ data class ProductRes(
     val hinhanh : String,
     val maloaisp : Int,
     val mahang : String,
-    val manhacc: String
+    val manhacc: String,
+    val isgood : Boolean,
+    val isnew : Boolean
 ) : Serializable

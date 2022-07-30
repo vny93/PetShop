@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        android:id="@+id/lnl_addProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_marginTop="@dimen/_10sdp"
+            style="@style/style_imvlogin"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/black"
+            android:text="@string/pf_title" />
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/pf_name" />
+
+        <EditText
+            android:id="@+id/pf_name"
+            style="@style/style_edit_login"
+            android:hint="@string/pf_hintName"/>
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/pf_birth" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pf_birth"
+                style="@style/style_edit_login"
+                android:layout_weight="3"
+                android:enabled="false"
+                android:hint="@string/pf_hintBirth" />
+
+            <ImageView
+                android:id="@+id/imv_calendar"
+                style="@style/style_imv_icon2"
+                android:layout_marginStart="@dimen/_minus10sdp"
+                android:background="@drawable/ic_baseline_calendar_month_24"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/pf_gender" />
+
+        <RadioGroup
+            android:id="@+id/radG_lbt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:text="@string/pf_male"
+                android:textSize="@dimen/_13sdp" />
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:text="@string/pf_female"
+                android:textSize="@dimen/_13sdp" />
+
+        </RadioGroup>
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/pf_phone" />
+
+        <EditText
+            android:id="@+id/pf_phone"
+            style="@style/style_edit_login"
+            android:hint="@string/pf_hintPhone"/>
+
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/tv_email" />
+
+        <EditText
+            android:id="@+id/rgt_email"
+            style="@style/style_edit_login"
+            android:hint="@string/hint_email" />
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/pf_address" />
+
+        <androidx.cardview.widget.CardView
+            style="@style/style_cardview_itemProductType"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_30sdp">
+
+            <EditText
+                android:id="@+id/pf_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80sdp"
+                android:textSize="@dimen/_13sdp"
+                android:maxLength="100"
+                android:hint="@string/pf_hintAddress"
+                android:background="@drawable/boder_rectangle2"
+                android:padding="@dimen/_8sdp"
+                android:gravity="top"
+                android:inputType="text|textMultiLine" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            style="@style/style_textview_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/pf_taxCode" />
+
+        <EditText
+            android:id="@+id/pf_taxCode"
+            style="@style/style_edit_login"
+            android:hint="@string/pf_hintTaxCode" />
+
+        <Button
+            android:id="@+id/btnSave"
+            style="@style/style_btnlogin"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:text="@string/pf_btnSave"
+            android:textSize="@dimen/_13sdp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

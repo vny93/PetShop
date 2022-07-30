@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterCartDetail
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.databinding.FragmentCartBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
@@ -29,6 +32,7 @@ class FragmentCart : Fragment(), CartInterface {
         checkToken(HomeActivity.token)
         setEvent()
         callInvoke()
+        callDialogInvoke()
         return binding.root
     }
 
@@ -60,7 +64,7 @@ class FragmentCart : Fragment(), CartInterface {
     }
 
     fun callInvoke(){
-        adapter.clickOk={
+        adapter.click={
             price ->
             println("sum: "+HomeActivity.sumPrice)
             println("thêm :"+price)
@@ -70,6 +74,16 @@ class FragmentCart : Fragment(), CartInterface {
                 println(strSumPrice)
                 binding.sumCartMoney.setText(strSumPrice)
             }
+        }
+    }
+
+    fun callDialogInvoke(){
+        adapter.clickOk = {
+            data ->
+            println("magh:"+data.magh)
+            println("masp:"+data.masp)
+            var req = DeleteCDReq(data.magh,data.masp)
+            cartPresenter.removeCartDetail(HomeActivity.token,req)
         }
     }
 
@@ -87,4 +101,7 @@ class FragmentCart : Fragment(), CartInterface {
         binding.tvCartError.setText("Giỏ hàng chưa có sản phẩm")
     }
 
+    override fun deleteSuccess() {
+        getData()
+    }
 }

@@ -1,8 +1,7 @@
 package vn.vunganyen.petshop.screens.home
 
 import com.google.gson.Gson
-import vn.vunganyen.petshop.data.model.user.MainUserRes
-import vn.vunganyen.petshop.screens.login.LoginActivity
+import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
 
 class HomePresenter {
     var homeInterface : HomeInterface
@@ -19,6 +18,6 @@ class HomePresenter {
 
     fun getProfileEditor(){
         var strResponse =  HomeActivity.sharedPreferences.getString("profile","")
-        HomeActivity.profile = gson.fromJson(strResponse,MainUserRes::class.java)
+        HomeActivity.profile = gson.fromJson(strResponse, MainUserRes::class.java)
     }
 }

@@ -20,7 +20,8 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
     private var listData: List<GetCDSpRes> = ArrayList()
     val formatter = DecimalFormat("###,###,###")
     var proDetail = ProDetailActivity()
-    var clickOk: ((price : Float)->Unit)?=null
+    var click: ((price : Float)->Unit)?=null
+    var clickOk: ((data : GetCDSpRes)->Unit)?=null
     var dialog : StartAlertDialog = StartAlertDialog()
     var slbandau = 0
 
@@ -48,7 +49,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
             binding.tvCartPrice.setText(price)
             binding.edtCartNumber.setText(data.ctsoluong.toString())
             slbandau = data.ctsoluong
-            clickOk?.invoke(data.gia*data.ctsoluong)
+            click?.invoke(data.gia*data.ctsoluong)
         }
     }
 
@@ -73,7 +74,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
                 dialog.showStartDialog3(holder.itemView.context.getString(R.string.tv_numProDetail, data.soluong), holder.itemView.context)
             }
             else{
-                clickOk?.invoke(data.gia)
+                click?.invoke(data.gia)
                 var req = PutCDReq(data.magh, data.masp, data.gia, soluong)
                 update(holder.binding,req)
             }
@@ -86,16 +87,23 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
             if(soluong < 1){
                 dialog.showStartDialog4(holder.itemView.context.getString(R.string.dialog_remove),holder.itemView.context)
                 dialog.clickOk = {
-                    -> //call api remove
+                    -> clickOk?.invoke(data)
                 }
                 //nếu xóa thì xóa không thì thôi
             }
             else{
-                clickOk?.invoke(-(data.gia))
+                click?.invoke(-(data.gia))
                 var req =PutCDReq(data.magh, data.masp, data.gia, soluong)
                 update(holder.binding,req)
             }
 
+        }
+
+        holder.binding.actionCartRemove.setOnClickListener{
+            dialog.showStartDialog4(holder.itemView.context.getString(R.string.dialog_remove),holder.itemView.context)
+            dialog.clickOk = {
+                -> clickOk?.invoke(data)
+            }
         }
 
 //        holder.binding.edtCartNumber.addTextChangedListener(object : TextWatcher {

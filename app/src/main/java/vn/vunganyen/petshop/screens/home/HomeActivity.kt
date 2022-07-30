@@ -7,11 +7,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.user.MainUserRes
+import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.databinding.ActivityHomeBinding
 import vn.vunganyen.petshop.screens.account.FragmentAccount
 import vn.vunganyen.petshop.screens.cart.FragmentCart
 import vn.vunganyen.petshop.screens.explore.FragmentExplore
+import java.text.SimpleDateFormat
 import java.util.regex.Pattern
 
 
@@ -20,14 +21,19 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
     lateinit var homePresenter: HomePresenter
 
     companion object{
-        //  var EMAIL_ADDRESS = Pattern.compile("^\\w+[\\w.]+@gmail.com$")
-        var PASSWORD = Pattern.compile("^((?=.*[A-Z])(?=.*[a-z])(?=.*d)|(?=.*[a-z])(?=.*d)(?=.*[^A-Za-zd])|(?=.*[A-Z])(?=.*d)(?=.*[^A-Za-zd])|(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-zd])).{8,}\$")
+        //Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số
+        var USERNAME = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
+        var EMAIL_ADDRESS = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
+        //Mât khẩu tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số
+        var PASSWORD = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}\$")
         var SDT = Pattern.compile("(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})")
         var token : String =""
         lateinit var sharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
         lateinit var profile: MainUserRes
         var sumPrice : Float = 0.0f
+        val formatdate =  SimpleDateFormat("yyyy-MM-dd")
+        val formatdate1 =  SimpleDateFormat("dd/MM/yyyy")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

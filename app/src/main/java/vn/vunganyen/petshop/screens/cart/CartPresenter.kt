@@ -9,6 +9,8 @@ import vn.vunganyen.petshop.data.api.ApiCartService
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
 import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
+import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDRes
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
 
 class CartPresenter {
@@ -59,6 +61,26 @@ class CartPresenter {
 
             override fun onFailure(call: Call<GetMainCDRes>, t: Throwable) {
                 TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun removeCartDetail(token: String, req: DeleteCDReq){
+        println("vô")
+        ApiCartDetailService.Api.api.removeCartDetail(token ,req).enqueue(object : Callback<DeleteCDRes>{
+            override fun onResponse(call: Call<DeleteCDRes>, response: Response<DeleteCDRes>) {
+                println("call đc mà")
+                if(response.isSuccessful){
+                    println("Đã xóa sản phẩm khỏi giỏ hàng")
+                    cartInterface.deleteSuccess()
+                }
+            }
+
+            override fun onFailure(call: Call<DeleteCDRes>, t: Throwable) {
+                Log.d("error" , ""+call)
+                println("error "+call)
+                t.printStackTrace()
             }
 
         })

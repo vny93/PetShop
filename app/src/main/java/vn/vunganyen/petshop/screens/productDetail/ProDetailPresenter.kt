@@ -14,6 +14,10 @@ import vn.vunganyen.petshop.data.model.cart.add.AddCartReq
 import vn.vunganyen.petshop.data.model.cart.add.MainAddCardRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
+import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
+import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDRes
+import vn.vunganyen.petshop.data.model.cartDetail.findCD.FindCDReq
+import vn.vunganyen.petshop.data.model.cartDetail.findCD.MainFindDCRes
 import vn.vunganyen.petshop.data.model.cartDetail.post.PostCDReq
 import vn.vunganyen.petshop.data.model.cartDetail.post.MainPostCDRes
 import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
@@ -59,16 +63,14 @@ class ProDetailPresenter {
         })
     }
 
-    fun getCartByStatus(token : String, req : CartStatusReq, reqCartDetail : PostCDReq ){
+    fun getCartByStatus(token : String, req : CartStatusReq, reqCartDetail : PostCDReq, inventNum : Int ){
         ApiCartService.Api.api.getCartByStatus(token,req).enqueue(object : Callback<MainCartStatusRes>{
             override fun onResponse(call: Call<MainCartStatusRes>, response: Response<MainCartStatusRes>) {
                 if(response.isSuccessful){
                     if(response.body()!!.result.size > 0) {
                         println("kh null" + response.body()!!.result.get(0).magh)
-
-
-                        //update chi tiết giỏ hàng từ mã gh với mã sp nè má
-                        //nếu mã sp chưa có trong chi tiết giỏ hàng thì add mới, nếu có rồi thì update
+                        var reqFin = FindCDReq(response.body()!!.result.get(0).magh,reqCartDetail.masp)
+                        finCartDetail(token, reqFin,reqCartDetail,inventNum)
                     }else{
                         println("rỗng nha") // add giỏ hàng nè -> add chi tiết giỏ luôn
                         var reqCart = AddCartReq(req.makh)
@@ -85,11 +87,58 @@ class ProDetailPresenter {
         })
     }
 
+    fun finCartDetail(token: String, req : FindCDReq , reqCartDetail : PostCDReq, inventNum: Int){
+        ApiCartDetailService.Api.api.findCartDetail(token, req).enqueue(object : Callback<MainFindDCRes>{
+            override fun onResponse(call: Call<MainFindDCRes>, response: Response<MainFindDCRes>) {
+                if(response.isSuccessful){
+                    if(response.body()!!.result.size > 0) {
+                        println("có sp này rồi" + response.body()!!.result.get(0).ctsoluong)
+                        //update nè
+                        var slUpdate = response.body()!!.result.get(0).ctsoluong + reqCartDetail.ctsoluong
+                        if(slUpdate > inventNum){
+                            proDetailInterface.inventNum()
+                            return
+                        }
+                        var putReq = PutCDReq(req.magh,req.masp,reqCartDetail.gia,slUpdate)
+                        updateProDetail(token, putReq)
+
+                    }else{
+                        println("chưa tồn tại sp này trong giỏ")
+                        //add nè
+                        var putReq = PostCDReq(req.magh,req.masp,reqCartDetail.gia,reqCartDetail.ctsoluong)
+                        addCartDetail(token, putReq)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<MainFindDCRes>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
     fun updateCartDetail(token : String, req : PutCDReq){
         ApiCartDetailService.Api.api.updateCartDetail(token, req).enqueue(object : Callback<PutCDRes>{
             override fun onResponse(call: Call<PutCDRes>, response: Response<PutCDRes>) {
                 if(response.isSuccessful){
-                    println(response.body()!!.result)
+
+                }
+            }
+
+            override fun onFailure(call: Call<PutCDRes>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun updateProDetail(token : String, req : PutCDReq){
+        ApiCartDetailService.Api.api.updateCartDetail(token, req).enqueue(object : Callback<PutCDRes>{
+            override fun onResponse(call: Call<PutCDRes>, response: Response<PutCDRes>) {
+                if(response.isSuccessful){
+                    println("Đã thêm vào giỏ hàng")
+                    proDetailInterface.addCDsuccess()
                 }
             }
 
@@ -117,10 +166,6 @@ class ProDetailPresenter {
     }
 
     fun addCartDetail(token: String, req : PostCDReq){
-        println(req.magh)
-        println(req.masp)
-        println(req.gia)
-        println(req.ctsoluong)
         ApiCartDetailService.Api.api.addCartDetail(token, req).enqueue(object : Callback<MainPostCDRes>{
             override fun onResponse(call: Call<MainPostCDRes>, response: Response<MainPostCDRes>) {
                 if(response.isSuccessful){
