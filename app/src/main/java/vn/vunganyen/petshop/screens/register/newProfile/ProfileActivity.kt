@@ -2,19 +2,17 @@ package vn.vunganyen.petshop.screens.register.newProfile
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.data.model.login.LoginReq
+import vn.vunganyen.petshop.data.model.auth.login.LoginReq
 import vn.vunganyen.petshop.data.model.user.addProfile.AddProfileReq
+import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
 import vn.vunganyen.petshop.databinding.ActivityProfileBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ProfileActivity : AppCompatActivity(), ProfileInterface {
@@ -30,6 +28,7 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 
     companion object{
         var clickOk: ((req : LoginReq)->Unit)?=null
+        var clickUpdateOk: ((req : UserReq)->Unit)?=null
     }
 
 
@@ -38,17 +37,41 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         profilePresenter = ProfilePresenter(this)
-        username = getIntent().getStringExtra("username") as String
-        password = getIntent().getStringExtra("password") as String
+        if(HomeActivity.token.equals("")){
+            username = getIntent().getStringExtra("username") as String
+            password = getIntent().getStringExtra("password") as String
+        }
+        else{
+            username = HomeActivity.profile.result.tendangnhap
+        }
+
         setData()
         setEvent()
     }
 
     fun setData(){
         binding.pfBirth.setText("" + day + "/" + (month + 1) + "/" + year)
+        if(!HomeActivity.token.equals("")){
+            binding.pfName.setText(HomeActivity.profile.result.hoten)
+            var date : Date = HomeActivity.formatdate.parse(HomeActivity.profile.result.ngaysinh)
+            var strDate = HomeActivity.formatdate1.format(date)
+            binding.pfBirth.setText(strDate)
+            if(HomeActivity.profile.result.gioitinh.equals("Nam")){
+                binding.radioMale.isChecked = true
+            }
+            else binding.radioFemale.isChecked = true
+            binding.pfPhone.setText(HomeActivity.profile.result.sdt)
+            binding.rgtEmail.setText(HomeActivity.profile.result.email)
+            binding.pfAddress.setText(HomeActivity.profile.result.diachi)
+            binding.pfTaxCode.setText(HomeActivity.profile.result.masothue)
+        }
     }
 
     fun setEvent(){
+        binding.backProfile.setOnClickListener{
+            finish()
+        }
+
         binding.imvCalendar.setOnClickListener {
             val dpd =
                 this?.let { it1 ->
@@ -69,14 +92,13 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
                 dpd.show()
             }
         }
-        var gender =""
-        binding.radGLbt.setOnCheckedChangeListener { radioGroup, i ->
-            gender = clickRadio(i)
-        }
+//        var gender =""
+//        binding.radGLbt.setOnCheckedChangeListener { radioGroup, i ->
+//            gender = clickRadio(i)
+//        }
 
         binding.btnSave.setOnClickListener{
             var name = binding.pfName.text.toString()
-
             var dateBirth = binding.pfBirth.text.toString()
             var mdate : Date = HomeActivity.formatdate1.parse(dateBirth)
             var strDate = HomeActivity.formatdate.format(mdate)
@@ -84,7 +106,13 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
             var phone = binding.pfPhone.text.toString()
             var address = binding.pfAddress.text.toString()
             var taxCode = binding.pfTaxCode.text.toString()
-
+            var gender =""
+            if(binding.radioMale.isChecked == true){
+                gender = "Nam"
+            }
+            if(binding.radioFemale.isChecked == true){
+                gender = "Nữ"
+            }
             println("name: "+name)
             println("strDate: "+strDate)
             println("gendar: "+gender)
@@ -107,14 +135,14 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
         }
     }
 
-    fun clickRadio(id: Int): String {
-        if (id == R.id.radio_female) {
-            return "Nữ"
-        } else if (id == R.id.radio_male) {
-            return "Nam"
-        }
-        return ""
-    }
+//    fun clickRadio(id: Int): String {
+//        if (id == R.id.radio_female) {
+//            return "Nữ"
+//        } else if (id == R.id.radio_male) {
+//            return "Nam"
+//        }
+//        return ""
+//    }
 
     fun View.hideKeyboard(): Boolean {
         try {
@@ -153,5 +181,16 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 //            var intent = Intent(this, HomeActivity::class.java)
 //            startActivity(intent)
         }
+    }
+
+    override fun UpdateSucces() {
+        dialog.showStartDialog3(getString(R.string.AddProfileSucces),this)
+        HomeActivity.editor.commit()
+        profilePresenter.getProfileEditor()
+    }
+
+
+    override fun UpdateError() {
+        dialog.showStartDialog3(getString(R.string.UpdateError),this)
     }
 }

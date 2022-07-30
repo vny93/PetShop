@@ -7,4 +7,6 @@ interface ProfileInterface {
     fun PhoneExist()
     fun EmailExist()
     fun AddSucces()
+    fun UpdateSucces()
+    fun UpdateError()
 }

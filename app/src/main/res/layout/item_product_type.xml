@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_180sdp"
+    android:layout_height="@dimen/_160sdp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -14,7 +14,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/boder_rectangle3"
             android:orientation="vertical">
 
             <ImageView
@@ -33,7 +32,6 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:text="@string/action_home"
-                android:layout_marginBottom="@dimen/_30sdp"
                 android:textColor="@color/black"/>
 
         </LinearLayout>

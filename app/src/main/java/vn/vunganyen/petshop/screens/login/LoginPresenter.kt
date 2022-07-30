@@ -7,8 +7,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiAuthService
 import vn.vunganyen.petshop.data.api.ApiUserService
-import vn.vunganyen.petshop.data.model.login.LoginReq
-import vn.vunganyen.petshop.data.model.login.LoginRes
+import vn.vunganyen.petshop.data.model.auth.login.LoginReq
+import vn.vunganyen.petshop.data.model.auth.login.LoginRes
 import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
 import vn.vunganyen.petshop.screens.home.HomeActivity

@@ -2,8 +2,9 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.login.LoginReq
-import vn.vunganyen.petshop.data.model.login.LoginRes
+import vn.vunganyen.petshop.data.model.auth.changePw.ChangePwRes
+import vn.vunganyen.petshop.data.model.auth.login.LoginReq
+import vn.vunganyen.petshop.data.model.auth.login.LoginRes
 import vn.vunganyen.petshop.data.model.register.addAuth.AddAuthReq
 import vn.vunganyen.petshop.data.model.register.addAuth.MainAddAuth
 import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthReq
@@ -19,6 +20,12 @@ interface ApiAuthService {
 
     @POST("v1/auth/register")
     fun addAuth(@Body req: AddAuthReq):Call<MainAddAuth>
+
+    @POST("v1/auth/check")
+    fun checkAuth(@Header("Authorization") BearerToken: String, @Body req: LoginReq):Call<FindAuthRes>
+
+    @PUT("v1/auth/update/password")
+    fun changePassword(@Header("Authorization") BearerToken: String, @Body req: LoginReq):Call<ChangePwRes>
 
 
     object Api {

@@ -27,6 +27,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".screens.changePassword.ChangePassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.loginRequired.LoginRequired"
+            android:exported="false" />
+        <activity
             android:name=".screens.register.newProfile.ProfileActivity"
             android:exported="false" />
         <activity

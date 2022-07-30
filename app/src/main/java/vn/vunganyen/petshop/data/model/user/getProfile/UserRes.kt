@@ -3,7 +3,7 @@ package vn.vunganyen.petshop.data.model.user.getProfile
 import java.io.Serializable
 
 data class UserRes(
-    var makh: String,
+    var makh: Int,
     var hoten: String,
     var gioitinh: String,
     var diachi: String,

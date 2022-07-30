@@ -47,6 +47,10 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
             startActivity(intent)
         }
 
+        binding.imvCloseLogin.setOnClickListener{
+            finish()
+        }
+
         binding.scrollViewLogin.setOnClickListener{
             binding.edtUsername.clearFocus()
             binding.edtPassword.clearFocus()

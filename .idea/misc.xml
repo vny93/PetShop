@@ -14,20 +14,24 @@
         <entry key="app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.1445" />
         <entry key="app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_manage_search_35.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_remove_circle_outline_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/ic_outline_edit_24.xml" value="0.1445" />
         <entry key="app/src/main/res/drawable/ic_outline_home_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_outline_manage_search_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_outline_shopping_cart_24.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_change_pass.xml" value="0.18206521739130435" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_login_required.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.19429347826086957" />
+        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.19429347826086957" />

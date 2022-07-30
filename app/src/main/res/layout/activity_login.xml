@@ -15,9 +15,15 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imv_closeLogin"
+            style="@style/style_imv_icon"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@drawable/ic_baseline_clear_24" />
+
+        <ImageView
             android:id="@+id/logo"
             style="@style/style_imvlogin"
-            android:layout_marginTop="@dimen/_40sdp"/>
+            android:layout_marginTop="@dimen/_15sdp"/>
 
         <TextView
             android:layout_marginTop="@dimen/_10sdp"

@@ -76,7 +76,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
                 // lưu lại vị trí đứng để login vô lại trang đó
                 // chú ý: chỉ có vài vị trí cần login : chi tiết sản phẩm khi thêm vào card , fragment card, account
                 if (HomeActivity.token.equals("")) {
-                    dialog.showStartDialog4(getString(R.string.proDeltologin), this)
+                    dialog.showStartDialog4(getString(R.string.login_required), this)
                     dialog.clickOk = { ->
                         var intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
