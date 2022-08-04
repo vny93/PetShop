@@ -1,5 +1,5 @@
 package vn.vunganyen.petshop.data.model.product
 
 data class ProductReq(
-    val maloaisp : Int
+    val maloaisp : String
 )

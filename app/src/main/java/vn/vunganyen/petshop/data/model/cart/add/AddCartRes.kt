@@ -10,6 +10,7 @@ data class AddCartRes(
     val ngaygiao: String,
     val tongtien : Float,
     val trangthai: String,
+    val ngaydukien: String,
     val manvduyet: String,
     val manvgiao: String,
     val makh: String

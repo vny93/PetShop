@@ -1,5 +1,6 @@
 package vn.vunganyen.petshop.screens.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,6 +13,7 @@ import vn.vunganyen.petshop.data.adapter.AdapterPhoto
 import vn.vunganyen.petshop.data.model.classSupport.Photo
 import vn.vunganyen.petshop.databinding.FragmentShopBinding
 import vn.vunganyen.petshop.screens.login.LoginActivity
+import vn.vunganyen.petshop.screens.paypal.PaypayActivity
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -27,6 +29,7 @@ class FragmentShop : Fragment() {
         binding.viewPager.adapter = photoAdapter
         binding.circleIndicator.setViewPager(binding.viewPager)
         autoSlideImage()
+        setEvent()
         return binding.root
     }
 
@@ -49,6 +52,13 @@ class FragmentShop : Fragment() {
                 }
             })
         }, 500,3000)
+    }
+
+    fun setEvent(){
+        binding.btnPaypal.setOnClickListener{
+            var intent = Intent(context,PaypayActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {

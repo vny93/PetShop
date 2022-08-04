@@ -8,6 +8,6 @@ interface RegisterInterface {
     fun PassIllegal()
     fun AccountExist()
     fun NotFindRoleId()
-    fun AddAuthSuccess(req : AddAuthReq)
+    fun AddAuthSuccess(username : String, pass : String)
     fun AddAuthError()
 }

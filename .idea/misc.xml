@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login_required.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/activity_paypal.xml" value="0.151268115942029" />
+        <entry key="app/src/main/res/layout/activity_paypay.xml" value="0.161231884057971" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.165" />

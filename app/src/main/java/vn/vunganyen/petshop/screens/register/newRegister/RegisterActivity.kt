@@ -68,13 +68,13 @@ class RegisterActivity : AppCompatActivity(), RegisterInterface {
         dialog.showStartDialog3(getString(R.string.NotFindRoleId),this)
     }
 
-    override fun AddAuthSuccess(req : AddAuthReq) {
+    override fun AddAuthSuccess(username : String, pass: String) {
         dialog.showStartDialog2(getString(R.string.AddAuthSuccess),this)
         dialog.clickOk = {
             -> var intent = Intent(this, ProfileActivity::class.java)
-            println("username: "+req.tendangnhap)
-            intent.putExtra("username",req.tendangnhap)
-            intent.putExtra("password",req.matkhau)
+            println("username: "+username)
+            intent.putExtra("username",username)
+            intent.putExtra("password",pass)
             startActivity(intent)
         }
     }

@@ -64,7 +64,10 @@
 
     <!-- explore -->
     <string name="search_store">Search Store</string>
-    <string name="find_productType">Find Product</string>
+    <string name="prouduct_type">Loại sản phẩm</string>
+    <string name="product">Sản phẩm</string>
+    <string name="find_productType">Tìm kiếm theo tên loại sản phẩm</string>
+    <string name="find_product">Tìm kiểm theo tên sản phẩm</string>
     <string name="price">Price</string>
     <string name="out_of_stock">Hết hàng</string>
 

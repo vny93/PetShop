@@ -81,7 +81,7 @@ class RegisterPresenter {
         ApiAuthService.Api.api.addAuth(req).enqueue(object : Callback<MainAddAuth>{
             override fun onResponse(call: Call<MainAddAuth>, response: Response<MainAddAuth>) {
                 if(response.isSuccessful){
-                    registerInterface.AddAuthSuccess(req)
+                    registerInterface.AddAuthSuccess(username, password)
                 }
                 else registerInterface.AddAuthError()
             }
