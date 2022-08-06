@@ -83,6 +83,23 @@
     <string name="tv_numPro">Sô lượng:</string>
     <string name="proDeltologin">Đăng nhập để thêm vào giỏ hàng</string>
 
+    <!-- Check out -->
+    <string name="checkout">Thanh toán</string>
+    <string name="tv_checkOut2">Thanh toán</string>
+    <string name="tv_infor">Thông tin đặt hàng</string>
+    <string name="tv_product_checkout">Sản phẩm</string>
+    <string name="tv_name">Họ tên người nhận</string>
+    <string name="tv_phone">Số điện thoại người nhận</string>
+    <string name="tv_address">Địa chỉ người nhận</string>
+    <string name="tv_email_receive">Email người nhận</string>
+    <string name="tv_price">Price</string>
+    <string name="tv_amount">Amount</string>
+    <string name="tv_productName">Product Name</string>
+    <string name="tv_cancel">Cancel</string>
+    <string name="tv_payType">Chọn phương thức thanh toán</string>
+    <string name="tv_checkout_success">Đặt hàng thành công</string>
+    <string name="tv_checkout_fail">Đặt hàng thất bại</string>
+
     <!-- Cart Detail -->
     <string name="cart">Giỏ hàng của tôi</string>
     <string name="tv_cartLogin">Vui lòng đăng nhập để xem giỏ hàng</string>
@@ -97,6 +114,7 @@
     <!-- Cart -->
     <string name="dialog_remove">Bạn muốn xóa sản phẩm này?</string>
     <string name="sum_price">0đ</string>
+    <string name="tv_cartEmpty">Giỏ hàng chưa có sản phẩm</string>
 
     <!-- Account -->
     <string name="mess_logOut">Bạn có thực sự muốn đăng xuất?</string>

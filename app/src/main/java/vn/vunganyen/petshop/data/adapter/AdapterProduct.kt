@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.product.ProductRes
+import vn.vunganyen.petshop.data.model.product.get.ProductRes
 import vn.vunganyen.petshop.databinding.ItemProductBinding
-import vn.vunganyen.petshop.screens.product.ProductActivity
 import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
 import java.text.DecimalFormat
-import java.text.NumberFormat
 import java.util.*
 
 class AdapterProduct : RecyclerView.Adapter<AdapterProduct.MainViewHolder>() {

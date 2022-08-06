@@ -14,6 +14,7 @@ import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.databinding.FragmentCartBinding
+import vn.vunganyen.petshop.screens.checkout.CheckOutActivity
 import vn.vunganyen.petshop.screens.home.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
 import java.text.DecimalFormat
@@ -23,7 +24,7 @@ class FragmentCart : Fragment(), CartInterface {
     lateinit var binding: FragmentCartBinding
     lateinit var cartPresenter: CartPresenter
     var adapter : AdapterCartDetail = AdapterCartDetail()
-    val formatter = DecimalFormat("###,###,###")
+    var magh = 0
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
@@ -61,6 +62,12 @@ class FragmentCart : Fragment(), CartInterface {
             var intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnCheckOut.setOnClickListener{
+            var intent = Intent(context, CheckOutActivity::class.java)
+            intent.putExtra("magh",magh)
+            startActivity(intent)
+        }
     }
 
     fun callInvoke(){
@@ -70,7 +77,7 @@ class FragmentCart : Fragment(), CartInterface {
             println("thêm :"+price)
             if(price != null){
                 HomeActivity.sumPrice = HomeActivity.sumPrice + price!!
-                val strSumPrice = formatter.format(HomeActivity.sumPrice).toString() + " đ"
+                val strSumPrice = HomeActivity.formatter.format(HomeActivity.sumPrice).toString() + " đ"
                 println(strSumPrice)
                 binding.sumCartMoney.setText(strSumPrice)
             }
@@ -90,15 +97,27 @@ class FragmentCart : Fragment(), CartInterface {
 
     override fun getListSuccess(list: List<GetCDSpRes>) {
         println("Có list rồi")
+        magh = list.get(0).magh
         adapter.setData(list)
         binding.rcvMyCard.adapter = adapter
         binding.rcvMyCard.layoutManager =  LinearLayoutManager(context,
             LinearLayoutManager.VERTICAL,false)
+        binding.btnCheckOut.isEnabled = true
+        binding.btnCheckOut.setBackground(resources.getDrawable(R.drawable.custom_button))
     }
 
     override fun cartEmpty() {
+        binding.rcvMyCard.visibility = View.GONE
+        binding.sumCartMoney.setText(getString(R.string.sum_price))
         binding.tvCartError.visibility = View.VISIBLE
-        binding.tvCartError.setText("Giỏ hàng chưa có sản phẩm")
+        binding.tvCartError.setText(getString(R.string.tv_cartEmpty))
+        binding.btnCheckOut.isEnabled = false
+        binding.btnCheckOut.setBackground(resources.getDrawable(R.drawable.custom_button_false))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getData()
     }
 
     override fun deleteSuccess() {

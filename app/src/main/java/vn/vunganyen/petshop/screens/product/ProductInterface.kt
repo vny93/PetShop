@@ -1,6 +1,6 @@
 package vn.vunganyen.petshop.screens.product
 
-import vn.vunganyen.petshop.data.model.product.ProductRes
+import vn.vunganyen.petshop.data.model.product.get.ProductRes
 
 
 interface ProductInterface {

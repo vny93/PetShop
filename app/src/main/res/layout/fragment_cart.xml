@@ -87,7 +87,6 @@
             android:layout_weight="1"
             android:layout_gravity="right"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/tv_checkOut"
             android:textSize="@dimen/_13sdp" />
     </LinearLayout>

@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.13858695652173914" />
         <entry key="app/src/main/res/drawable-v24/boder_rectangle2.xml" value="0.15" />
         <entry key="app/src/main/res/drawable-v24/boder_rectangle3.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable-v24/custom_button_false.xml" value="0.136" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/boder_rectangle.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/custom_button.xml" value="0.15" />
@@ -24,6 +25,8 @@
         <entry key="app/src/main/res/drawable/ic_outline_manage_search_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_outline_shopping_cart_24.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_change_pass.xml" value="0.18206521739130435" />
+        <entry key="app/src/main/res/layout/activity_check_out.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_checkout_success.xml" value="0.10625" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login_required.xml" value="0.17708333333333334" />
@@ -33,12 +36,14 @@
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_paypal.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/item_card.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_product_checkout.xml" value="0.161231884057971" />
         <entry key="app/src/main/res/layout/item_product_type.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_slideview.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.24635416666666668" />

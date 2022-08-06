@@ -3,6 +3,7 @@ package vn.vunganyen.petshop.screens.paypal
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.paypal.checkout.PayPalCheckout
 import com.paypal.checkout.approve.OnApprove
 import com.paypal.checkout.config.CheckoutConfig
@@ -60,8 +61,10 @@ class PaypayActivity : AppCompatActivity() {
             OnApprove { approval ->
                 approval.orderActions.capture { captureOrderResult ->
                     Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
+                    Toast.makeText(this,"Thanh toán thành công",Toast.LENGTH_SHORT).show()
                 }
             }
         )
     }
+
 }

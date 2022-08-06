@@ -12,6 +12,7 @@ import vn.vunganyen.petshop.databinding.ActivityHomeBinding
 import vn.vunganyen.petshop.screens.account.FragmentAccount
 import vn.vunganyen.petshop.screens.cart.FragmentCart
 import vn.vunganyen.petshop.screens.explore.FragmentExplore
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
 
@@ -19,7 +20,7 @@ import java.util.regex.Pattern
 class HomeActivity : AppCompatActivity(),HomeInterface {
     lateinit var binding: ActivityHomeBinding
     lateinit var homePresenter: HomePresenter
-
+    var backPressed : Long = 0
     companion object{
         //Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số
         var USERNAME = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
@@ -34,6 +35,7 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
         var sumPrice : Float = 0.0f
         val formatdate =  SimpleDateFormat("yyyy-MM-dd")
         val formatdate1 =  SimpleDateFormat("dd/MM/yyyy")
+        val formatter = DecimalFormat("###,###,###")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,5 +96,18 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.content_frame, fragment)
         transaction.commit()
+    }
+
+    override fun onBackPressed() {
+        if(backPressed + 2000 > System.currentTimeMillis()){
+            super.onBackPressed()
+            moveTaskToBack(true);
+            // System.exit(1);
+            finish();
+        }
+        else{
+            Toast.makeText(this,"Press back again to exit the application",Toast.LENGTH_SHORT).show()
+        }
+        backPressed = System.currentTimeMillis()
     }
 }

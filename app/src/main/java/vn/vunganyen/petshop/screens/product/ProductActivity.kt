@@ -1,13 +1,10 @@
 package vn.vunganyen.petshop.screens.product
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterProduct
-import vn.vunganyen.petshop.data.model.product.ProductReq
-import vn.vunganyen.petshop.data.model.product.ProductRes
+import vn.vunganyen.petshop.data.model.product.get.ProductReq
+import vn.vunganyen.petshop.data.model.product.get.ProductRes
 import vn.vunganyen.petshop.data.model.productType.ProductTypeRes
 import vn.vunganyen.petshop.databinding.ActivityProductBinding
 
