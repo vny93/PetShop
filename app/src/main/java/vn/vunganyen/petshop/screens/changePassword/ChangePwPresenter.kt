@@ -7,7 +7,7 @@ import vn.vunganyen.petshop.data.api.ApiAuthService
 import vn.vunganyen.petshop.data.model.auth.changePw.ChangePwRes
 import vn.vunganyen.petshop.data.model.auth.login.LoginReq
 import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthRes
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 class ChangePwPresenter {
     var changePwInterface : ChangePwInterface

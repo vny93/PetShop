@@ -11,7 +11,7 @@ import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthReq
 import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthRes
 import vn.vunganyen.petshop.data.model.register.findRole.FindRoleReq
 import vn.vunganyen.petshop.data.model.register.findRole.MainFindRole
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 class RegisterPresenter {
     var registerInterface : RegisterInterface

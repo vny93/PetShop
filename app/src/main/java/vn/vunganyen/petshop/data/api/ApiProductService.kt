@@ -14,6 +14,15 @@ interface ApiProductService {
     @POST("v1/product/list_fk")
     fun getListFK(@Body req: ProductReq):Call<MainProductRes>
 
+    @GET("v1/product/list/discount")
+    fun getListDiscount():Call<MainProductRes>
+
+    @GET("v1/product/list/isnew")
+    fun getListIsNew():Call<MainProductRes>
+
+    @GET("v1/product/list/isgood")
+    fun getListIsGood():Call<MainProductRes>
+
     @PUT("v1/product/update/amount")
     fun userUpdateOrder(@Header("Authorization") BearerToken: String, @Body req: UserOrderReq): Call<UserOrderRes>
     //xử lý bằng cách lấy từ cái chi tiết giỏ hàng ra 1 list danh sách rồi call api update cái DS đó

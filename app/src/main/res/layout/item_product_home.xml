@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="@dimen/_220sdp"
     android:orientation="vertical">
 
@@ -18,8 +18,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imv_product"
-                android:layout_width="match_parent"
+                android:id="@+id/imv_homeProduct"
+                android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_90sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -27,7 +27,7 @@
                 android:src="@drawable/panner1" />
 
             <TextView
-                android:id="@+id/tv_prodcutname"
+                android:id="@+id/tv_HomeProdcutname"
                 style="@style/style_textview_product"
                 android:layout_height="@dimen/_35sdp"
                 android:text="@string/action_home"
@@ -36,7 +36,7 @@
 
 
             <TextView
-                android:id="@+id/tv_priceDiscount"
+                android:id="@+id/tv_HomePriceDiscount"
                 style="@style/style_textview_product"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_minus1sdp"
@@ -44,7 +44,7 @@
 
 
             <TextView
-                android:id="@+id/tv_price"
+                android:id="@+id/tv_HomePrice"
                 style="@style/style_textview_product"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_minus1sdp"
@@ -53,9 +53,9 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_status"
+                android:id="@+id/tv_HomeStatus"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_weight="2"
                 android:gravity="right"

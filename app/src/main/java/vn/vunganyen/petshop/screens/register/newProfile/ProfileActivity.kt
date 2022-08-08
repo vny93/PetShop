@@ -12,7 +12,7 @@ import vn.vunganyen.petshop.data.model.auth.login.LoginReq
 import vn.vunganyen.petshop.data.model.user.addProfile.AddProfileReq
 import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
 import vn.vunganyen.petshop.databinding.ActivityProfileBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import java.util.*
 
 class ProfileActivity : AppCompatActivity(), ProfileInterface {

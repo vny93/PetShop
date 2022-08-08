@@ -19,7 +19,7 @@
             <ImageView
                 android:id="@+id/imv_pro_checkout"
                 android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_height="@dimen/_65sdp"
                 android:src="@drawable/panner1" />
 
             <LinearLayout
@@ -44,10 +44,16 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/tv_discount_checkout"
+                    style="@style/style_textview_login3"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:textSize="@dimen/_9sdp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:weightSum="3"
                     android:orientation="horizontal">

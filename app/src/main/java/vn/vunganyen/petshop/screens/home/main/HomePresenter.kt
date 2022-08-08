@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.home
+package vn.vunganyen.petshop.screens.home.main
 
 import com.google.gson.Gson
 import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes

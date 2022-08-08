@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterCart
 import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.databinding.FragmentTransportBinding
-import vn.vunganyen.petshop.databinding.FragmentWaitBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 class TransportFragment : Fragment(), TransportInterface {
     lateinit var binding : FragmentTransportBinding

@@ -14,8 +14,6 @@ import vn.vunganyen.petshop.data.model.cart.add.AddCartReq
 import vn.vunganyen.petshop.data.model.cart.add.MainAddCardRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDRes
 import vn.vunganyen.petshop.data.model.cartDetail.findCD.FindCDReq
 import vn.vunganyen.petshop.data.model.cartDetail.findCD.MainFindDCRes
 import vn.vunganyen.petshop.data.model.cartDetail.post.PostCDReq
@@ -37,7 +35,7 @@ class ProDetailPresenter {
         ApiProDetailService.Api.api.getProDetail(req).enqueue(object : Callback<MainProDetailRes>{
             override fun onResponse(call: Call<MainProDetailRes>, response: Response<MainProDetailRes>) {
                 if(response.isSuccessful){
-                    response.body()?.let { getBranDetail(it.result, BrandDetailReq(response.body()!!.result.mahang) ) }
+                    response.body()?.let { getBranDetail(it.result, BrandDetailReq(response.body()!!.result.get(0).mahang) ) }
                 }
             }
 
@@ -48,11 +46,11 @@ class ProDetailPresenter {
         })
     }
 
-    fun getBranDetail(res : ProDetailRes, req : BrandDetailReq){
+    fun getBranDetail(res: List<ProDetailRes>, req: BrandDetailReq){
         ApiBranDetailService.Api.api.getBrandDetail(req).enqueue(object : Callback<MainBrandDetailRes>{
             override fun onResponse(call: Call<MainBrandDetailRes>, response: Response<MainBrandDetailRes>) {
                 if(response.isSuccessful){
-                    response.body()?.let { proDetailInterface.getDetailSuccess(res, it.result) }
+                    response.body()?.let { proDetailInterface.getDetailSuccess(res.get(0), it.result) }
                 }
             }
 
@@ -99,13 +97,13 @@ class ProDetailPresenter {
                             proDetailInterface.inventNum()
                             return
                         }
-                        var putReq = PutCDReq(req.magh,req.masp,reqCartDetail.gia,slUpdate)
+                        var putReq = PutCDReq(req.magh,req.masp,reqCartDetail.ctgia,slUpdate)
                         updateProDetail(token, putReq)
 
                     }else{
                         println("chưa tồn tại sp này trong giỏ")
                         //add nè
-                        var putReq = PostCDReq(req.magh,req.masp,reqCartDetail.gia,reqCartDetail.ctsoluong)
+                        var putReq = PostCDReq(req.magh,req.masp,reqCartDetail.ctgia,reqCartDetail.ctsoluong)
                         addCartDetail(token, putReq)
                     }
                 }

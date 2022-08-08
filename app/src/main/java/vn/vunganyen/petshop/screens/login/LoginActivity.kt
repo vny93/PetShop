@@ -8,10 +8,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityLoginBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.register.newProfile.ProfileActivity
 import vn.vunganyen.petshop.screens.register.newRegister.RegisterActivity
 

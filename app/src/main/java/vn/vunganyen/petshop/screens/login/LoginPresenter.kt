@@ -11,7 +11,7 @@ import vn.vunganyen.petshop.data.model.auth.login.LoginReq
 import vn.vunganyen.petshop.data.model.auth.login.LoginRes
 import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 class LoginPresenter {
     var loginInterface : LoginInterface

@@ -15,7 +15,7 @@ import vn.vunganyen.petshop.data.model.user.findPhone.FindPhoneRes
 import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
 import vn.vunganyen.petshop.data.model.user.getProfile.UserRes
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 class ProfilePresenter {
     var profileInterface: ProfileInterface
@@ -157,7 +157,7 @@ class ProfilePresenter {
                 if(response.isSuccessful){
                     println("mã khách hàng login: "+response.body()!!.result.makh)
                     //Lưu lại token với profile mới vì mới xóa editor lưu profile cũ
-                    HomeActivity.editor.putString("token",HomeActivity.token)
+                    HomeActivity.editor.putString("token", HomeActivity.token)
                     setProfile(response.body()!!)
                     profileInterface.UpdateSucces()
                 }

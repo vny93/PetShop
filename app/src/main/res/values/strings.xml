@@ -143,4 +143,10 @@
     <string name="title_status">Trạng thái:</string>
     <string name="title_price">Tổng tiền:</string>
 
+    <!--    -->
+    <string name="param_price"><dev>%1$s</dev></string>
+    <string name="tv_rcvDiscout">Khuyến mãi khủng</string>
+    <string name="tv_rcvNew">Sản phẩm mới nhất</string>
+    <string name="tv_rcvGood">Sản phẩm giá tốt</string>
+    <string name="see_all">Xem thêm</string>
 </resources>

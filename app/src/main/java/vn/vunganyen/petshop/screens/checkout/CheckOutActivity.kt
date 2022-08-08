@@ -4,10 +4,8 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.paypal.checkout.PayPalCheckout
 import com.paypal.checkout.approve.OnApprove
@@ -31,7 +29,7 @@ import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityCheckOutBinding
 import vn.vunganyen.petshop.databinding.DialogPaypalBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import java.util.*
 
 class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
@@ -119,7 +117,8 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
             var expectedDate = binding.edtDateReceive.text.toString()
             var mdate : Date = HomeActivity.formatdate1.parse(expectedDate)
             var strDate = HomeActivity.formatdate.format(mdate)
-            var req = UserUpdateReq(name,address,phone,email,HomeActivity.sumPrice,status,strDate,magh)
+            var req = UserUpdateReq(name,address,phone,email,
+                HomeActivity.sumPrice,status,strDate,magh)
             checkOutPresenter.validCheck(req)
         }
     }

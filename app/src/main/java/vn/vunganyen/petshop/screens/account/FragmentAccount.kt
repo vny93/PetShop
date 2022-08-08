@@ -10,9 +10,8 @@ import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.FragmentAccountBinding
 import vn.vunganyen.petshop.screens.changePassword.ChangePassActivity
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
-import vn.vunganyen.petshop.screens.loginRequired.LoginRequired
 import vn.vunganyen.petshop.screens.myOrder.MyOrderActivity
 import vn.vunganyen.petshop.screens.register.newProfile.ProfileActivity
 

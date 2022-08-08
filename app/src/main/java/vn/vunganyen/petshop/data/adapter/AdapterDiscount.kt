@@ -12,11 +12,12 @@ import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.product.get.ProductRes
 import vn.vunganyen.petshop.databinding.ItemProductBinding
+import vn.vunganyen.petshop.databinding.ItemProductHomeBinding
 import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
 
 
-class AdapterProduct : RecyclerView.Adapter<AdapterProduct.MainViewHolder>() {
+class AdapterDiscount : RecyclerView.Adapter<AdapterDiscount.MainViewHolder>() {
     private var listData: List<ProductRes> = ArrayList()
     fun setData(list: List<ProductRes>) {
         this.listData = list
@@ -24,23 +25,23 @@ class AdapterProduct : RecyclerView.Adapter<AdapterProduct.MainViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return listData.size
+        return 5
     }
 
-    inner class MainViewHolder(val binding: ItemProductBinding) :
+    inner class MainViewHolder(val binding: ItemProductHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bindItem(data: ProductRes) {
             if (data.hinhanh != null) {
                 val strUrl: List<String> = data.hinhanh.split("3000/")
                 var url = PathApi.BASE_URL + strUrl.get(1)
-                Picasso.get().load(url).into(binding.imvProduct)
+                Picasso.get().load(url).into(binding.imvHomeProduct)
             }
-            binding.tvProdcutname.setText(data.tensp)
+            binding.tvHomeProdcutname.setText(data.tensp)
             //so sánh giá gốc và giá khuyến mãi
             if(data.giagiam == data.gia){
                 val price = HomeActivity.formatter.format(data.gia.toInt()).toString() + " đ"
-                binding.tvPrice.setText(price)
+                binding.tvHomePrice.setText(price)
             }
             else{
                 val price = HomeActivity.formatter.format(data.gia.toInt()).toString() + " đ"
@@ -48,19 +49,19 @@ class AdapterProduct : RecyclerView.Adapter<AdapterProduct.MainViewHolder>() {
 
                 val spanned = SpannableString(price)
                 spanned.setSpan(StrikethroughSpan(), 0, price.length, 0)
-                binding.tvPriceDiscount.setText(spanned)
-                binding.tvPrice.setText(priceDiscount)
+                binding.tvHomePriceDiscount.setText(spanned)
+                binding.tvHomePrice.setText(priceDiscount)
             }
 
             if(data.soluong.toString().toInt() > 0){
-                binding.tvStatus.visibility = View.GONE
+                binding.tvHomeStatus.visibility = View.GONE
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
-            ItemProductBinding.inflate(
+            ItemProductHomeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

@@ -13,7 +13,7 @@ import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
 import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderReq
 import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderRes
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 class CheckOutPresenter {
     var checkOutInterface : CheckOutInterface

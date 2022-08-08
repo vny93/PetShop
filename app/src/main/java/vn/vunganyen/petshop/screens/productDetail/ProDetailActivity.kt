@@ -5,9 +5,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.StrikethroughSpan
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
@@ -19,9 +20,8 @@ import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailReq
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
 import vn.vunganyen.petshop.databinding.ActivityProductDetailBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
-import java.text.DecimalFormat
 
 class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
     lateinit var binding: ActivityProductDetailBinding
@@ -110,9 +110,19 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
             Picasso.get().load(url).into(binding.imvProDetail)
         }
         binding.nameProDetail.setText(res.tensp)
-        val formatter = DecimalFormat("###,###,###") //định nghĩa 1 lần rồi xài nhiều lần
-        val price = formatter.format(res.gia.toInt()).toString() + " đ"
-        binding.tvPrice.setText(price)
+        if(res.giagiam == res.gia){
+            val price = HomeActivity.formatter.format(res.gia.toInt()).toString() + " đ"
+            binding.tvPrice.setText(price)
+        }
+        else{
+            val price = HomeActivity.formatter.format(res.gia.toInt()).toString() + " đ"
+            val priceDiscount = HomeActivity.formatter.format(res.giagiam.toInt()).toString() + " đ"
+            val spanned = SpannableString(price)
+            spanned.setSpan(StrikethroughSpan(), 0, price.length, 0)
+            binding.tvDiscount.setText(spanned)
+            binding.tvPrice.setText(priceDiscount)
+        }
+
         binding.brand.setText(res2.tenhang)
         binding.tvBody.setText(res.mota)
         soluong = res.soluong
@@ -124,7 +134,9 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
             binding.btnAddCart.isEnabled = false
 //            binding.btnUpdataProfile.isEnabled = false
         } else binding.tvNumberPro.setText(res.soluong.toString())
-        reqAddCartDetail = PostCDReq(0,res.masp,res.gia,0) // gán trước những thuộc tính cần thiết
+
+        //gán gia gốc hay giá giảm đều được, vì nếu giảm thì cũng gán giá giảm và k giảm thì giá giảm cũng = giá gốc
+        reqAddCartDetail = PostCDReq(0,res.masp,res.giagiam,0) // gán trước những thuộc tính cần thiết
     }
 
     override fun addCDsuccess() {

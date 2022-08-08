@@ -1,5 +1,5 @@
 package vn.vunganyen.petshop.data.model.proDetail
 
 data class MainProDetailRes(
-    val result: ProDetailRes
+    val result: List<ProDetailRes>
 )

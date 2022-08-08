@@ -1,19 +1,16 @@
 package vn.vunganyen.petshop.data.adapter
 
 import android.annotation.SuppressLint
+import android.text.SpannableString
+import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.databinding.ItemCardBinding
 import vn.vunganyen.petshop.databinding.ItemProductCheckoutBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
-import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import java.text.DecimalFormat
 import java.util.*
 
@@ -40,8 +37,23 @@ class AdapterProductCheckout : RecyclerView.Adapter<AdapterProductCheckout.MainV
                 Picasso.get().load(url).into(binding.imvProCheckout)
             }
             binding.tvPronameCheckout.setText(data.tensp)
-            val price = formatter.format(data.gia * data.ctsoluong).toString() + " đ"
-            binding.tvProPriceCheckout.setText(price)
+
+            //so sánh giá gốc và giá khuyến mãi
+            if(data.ctgia == data.gia){
+                val price = HomeActivity.formatter.format(data.ctgia.toInt()).toString() + " đ"
+                binding.tvProPriceCheckout.setText(price)
+            }
+            else{
+                val price = HomeActivity.formatter.format(data.gia.toInt()).toString() + " đ"
+                val priceDiscount = HomeActivity.formatter.format(data.ctgia.toInt()).toString() + " đ"
+
+                val spanned = SpannableString(price)
+                spanned.setSpan(StrikethroughSpan(), 0, price.length, 0)
+                binding.tvDiscountCheckout.setText(spanned)
+                binding.tvProPriceCheckout.setText(priceDiscount)
+            }
+            //val price = formatter.format(data.ctgia * data.ctsoluong).toString() + " đ"
+            //binding.tvProPriceCheckout.setText(price)
             binding.tvAmountCheckout.setText("x"+data.ctsoluong.toString())
         }
     }

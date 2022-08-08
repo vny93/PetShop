@@ -11,5 +11,9 @@ data class ProDetailRes(
     val hinhanh : String,
     val maloaisp : Int,
     val mahang : String,
-    val manhacc: String
+    val manhacc: String,
+    val isgood : Int,
+    val isnew : Int,
+    val ptgg : Int,
+    val giagiam : Float
 ) : Serializable

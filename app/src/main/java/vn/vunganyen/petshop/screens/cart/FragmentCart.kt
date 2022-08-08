@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
@@ -15,9 +14,8 @@ import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.databinding.FragmentCartBinding
 import vn.vunganyen.petshop.screens.checkout.CheckOutActivity
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
-import java.text.DecimalFormat
 
 
 class FragmentCart : Fragment(), CartInterface {
@@ -73,7 +71,7 @@ class FragmentCart : Fragment(), CartInterface {
     fun callInvoke(){
         adapter.click={
             price ->
-            println("sum: "+HomeActivity.sumPrice)
+            println("sum: "+ HomeActivity.sumPrice)
             println("thêm :"+price)
             if(price != null){
                 HomeActivity.sumPrice = HomeActivity.sumPrice + price!!

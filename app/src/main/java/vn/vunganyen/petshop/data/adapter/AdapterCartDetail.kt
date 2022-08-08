@@ -11,7 +11,7 @@ import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ItemCardBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
 import java.text.DecimalFormat
 import java.util.*
@@ -45,11 +45,11 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
                 Picasso.get().load(url).into(binding.imvCartPro)
             }
             binding.tvCartProname.setText(data.tensp)
-            val price = formatter.format(data.gia * data.ctsoluong).toString() + " đ"
+            val price = formatter.format(data.ctgia * data.ctsoluong).toString() + " đ"
             binding.tvCartPrice.setText(price)
             binding.edtCartNumber.setText(data.ctsoluong.toString())
             slbandau = data.ctsoluong
-            click?.invoke(data.gia*data.ctsoluong)
+            click?.invoke(data.ctgia*data.ctsoluong)
         }
     }
 
@@ -74,8 +74,8 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
                 dialog.showStartDialog3(holder.itemView.context.getString(R.string.tv_numProDetail, data.soluong), holder.itemView.context)
             }
             else{
-                click?.invoke(data.gia)
-                var req = PutCDReq(data.magh, data.masp, data.gia, soluong)
+                click?.invoke(data.ctgia)
+                var req = PutCDReq(data.magh, data.masp, data.ctgia, soluong)
                 update(holder.binding,req)
             }
 
@@ -92,8 +92,8 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
                 //nếu xóa thì xóa không thì thôi
             }
             else{
-                click?.invoke(-(data.gia))
-                var req =PutCDReq(data.magh, data.masp, data.gia, soluong)
+                click?.invoke(-(data.ctgia))
+                var req =PutCDReq(data.magh, data.masp, data.ctgia, soluong)
                 update(holder.binding,req)
             }
 
@@ -136,7 +136,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
     fun update(binding: ItemCardBinding, data: PutCDReq ){
         binding.edtCartNumber.setText(data.ctsoluong.toString())
         slbandau = data.ctsoluong
-        val price = formatter.format(data.gia * data.ctsoluong).toString() + " đ"
+        val price = formatter.format(data.ctgia * data.ctsoluong).toString() + " đ"
         binding.tvCartPrice.setText(price)
         proDetail.updateDataAdapter(data)
     }

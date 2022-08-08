@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.home
+package vn.vunganyen.petshop.screens.home.main
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -12,12 +12,13 @@ import vn.vunganyen.petshop.databinding.ActivityHomeBinding
 import vn.vunganyen.petshop.screens.account.FragmentAccount
 import vn.vunganyen.petshop.screens.cart.FragmentCart
 import vn.vunganyen.petshop.screens.explore.FragmentExplore
+import vn.vunganyen.petshop.screens.home.shop.FragmentShop
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.regex.Pattern
 
 
-class HomeActivity : AppCompatActivity(),HomeInterface {
+class HomeActivity : AppCompatActivity(), HomeInterface {
     lateinit var binding: ActivityHomeBinding
     lateinit var homePresenter: HomePresenter
     var backPressed : Long = 0

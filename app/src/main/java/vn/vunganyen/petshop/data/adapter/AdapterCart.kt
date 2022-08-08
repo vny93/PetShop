@@ -4,17 +4,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.databinding.ItemCardBinding
 import vn.vunganyen.petshop.databinding.ItemOrderBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
-import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import java.text.DecimalFormat
 import java.util.*
 

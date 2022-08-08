@@ -10,7 +10,7 @@ import vn.vunganyen.petshop.data.adapter.AdapterCart
 import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.databinding.FragmentWaitBinding
-import vn.vunganyen.petshop.screens.home.HomeActivity
+import vn.vunganyen.petshop.screens.home.main.HomeActivity
 
 
 class WaitFragment : Fragment(), WaitInterface {
