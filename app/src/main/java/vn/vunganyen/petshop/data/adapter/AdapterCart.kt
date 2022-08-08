@@ -7,21 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
+import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ItemCardBinding
-import vn.vunganyen.petshop.databinding.ItemProductCheckoutBinding
+import vn.vunganyen.petshop.databinding.ItemOrderBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
 import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
 import java.text.DecimalFormat
 import java.util.*
 
-class AdapterProductCheckout : RecyclerView.Adapter<AdapterProductCheckout.MainViewHolder>() {
-    private var listData: List<GetCDSpRes> = ArrayList()
+class AdapterCart : RecyclerView.Adapter<AdapterCart.MainViewHolder>() {
+    private var listData: List<AddCartRes> = ArrayList()
     val formatter = DecimalFormat("###,###,###")
 
-    fun setData(list: List<GetCDSpRes>) {
+    fun setData(list: List<AddCartRes>) {
         this.listData = list
         notifyDataSetChanged()
     }
@@ -30,25 +31,23 @@ class AdapterProductCheckout : RecyclerView.Adapter<AdapterProductCheckout.MainV
         return listData.size
     }
 
-    inner class MainViewHolder(val binding: ItemProductCheckoutBinding) :
+    inner class MainViewHolder(val binding: ItemOrderBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
-        fun bindItem(data: GetCDSpRes) {
-            if (data.hinhanh != null) {
-                val strUrl: List<String> = data.hinhanh.split("3000/")
-                var url = PathApi.BASE_URL + strUrl.get(1)
-                Picasso.get().load(url).into(binding.imvProCheckout)
-            }
-            binding.tvPronameCheckout.setText(data.tensp)
-            val price = formatter.format(data.gia * data.ctsoluong).toString() + " đ"
-            binding.tvProPriceCheckout.setText(price)
-            binding.tvAmountCheckout.setText("x"+data.ctsoluong.toString())
+        fun bindItem(data: AddCartRes) {
+            binding.tvIdCart.setText(data.magh.toString())
+            var mdate : Date = HomeActivity.formatdate2.parse(data.ngaydat)
+            var strDate = HomeActivity.formatdate3.format(mdate)
+            binding.tvBookDate.setText(strDate)
+            val price = formatter.format(data.tongtien).toString() + " đ"
+            binding.tvPriceOrder.setText(price)
+            binding.tvStatus.setText(data.trangthai)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         return MainViewHolder(
-            ItemProductCheckoutBinding.inflate(
+            ItemOrderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -60,5 +59,7 @@ class AdapterProductCheckout : RecyclerView.Adapter<AdapterProductCheckout.MainV
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val data = listData[position]
         holder.bindItem(data)
+//        holder.binding.cartAdd.setOnClickListener {
+//        }
     }
 }

@@ -99,10 +99,12 @@
     <string name="tv_payType">Chọn phương thức thanh toán</string>
     <string name="tv_checkout_success">Đặt hàng thành công</string>
     <string name="tv_checkout_fail">Đặt hàng thất bại</string>
+    <string name="tv_dateReceive">Ngày nhận dự kiến</string>
+    <string name="hint_dateReceive">Chọn ngày nhận dự kiến</string>
 
     <!-- Cart Detail -->
     <string name="cart">Giỏ hàng của tôi</string>
-    <string name="tv_cartLogin">Vui lòng đăng nhập để xem giỏ hàng</string>
+    <string name="tv_cartLogin">Hãy đăng nhập để dùng tính năng này nhé</string>
     <string name="tv_numProDetail">Số lượng còn lại của sản phẩm là %1$s</string>
     <string name="tv_numError">Vui lòng chọn số lượng lớn hơn 0</string>
     <string name="tv_sum">Tổng tiền:</string>
@@ -119,9 +121,9 @@
     <!-- Account -->
     <string name="mess_logOut">Bạn có thực sự muốn đăng xuất?</string>
     <string name="btn_logout">log out</string>
-    <string name="header_name">Họ và tên</string>
+    <string name="header_name">Chào bạn</string>
     <string name="header_username">Tên đăng nhập</string>
-    <string name="account_order">Đơn đặt hàng</string>
+    <string name="account_order">Đơn hàng</string>
     <string name="account_changepass">Đổi mật khẩu</string>
     <string name="account_help">Trợ giúp</string>
     <string name="account_about">About</string>
@@ -134,5 +136,11 @@
     <string name="account_changePwFail">Thay đổi mật khẩu thất bại</string>
     <string name="account_changePwSuccess">Thay đổi mật khẩu thành công</string>
 
+    <!--my order-->
+    <string name="tv_nametitle">Đơn mua</string>
+    <string name="title_idCart">Mã đơn hàng:</string>
+    <string name="title_Bookdate">Ngày đặt hàng:</string>
+    <string name="title_status">Trạng thái:</string>
+    <string name="title_price">Tổng tiền:</string>
 
 </resources>

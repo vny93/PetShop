@@ -28,7 +28,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".screens.checkout.checkoutSuccess.CheckoutSuccess"
+            android:name=".screens.myOrder.MyOrderActivity"
             android:exported="false" />
         <activity
             android:name=".screens.checkout.CheckOutActivity"

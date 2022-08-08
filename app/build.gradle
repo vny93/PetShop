@@ -119,4 +119,8 @@ dependencies {
 
     //paypal
     implementation 'com.paypal.checkout:android-sdk:0.6.0'
+
+    //badge
+    implementation 'com.nex3z:notification-badge:1.0.4'
+
 }

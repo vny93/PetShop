@@ -117,7 +117,9 @@ class FragmentCart : Fragment(), CartInterface {
 
     override fun onResume() {
         super.onResume()
-        getData()
+        if(!HomeActivity.token.equals("")){
+            getData()
+        }
     }
 
     override fun deleteSuccess() {

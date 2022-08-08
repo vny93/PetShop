@@ -41,7 +41,6 @@
                     android:id="@+id/tvHeaderUser"
                     style="@style/style_textview2"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/header_username"
                     android:textSize="@dimen/_13sdp" />
 
             </LinearLayout>

@@ -13,6 +13,7 @@ import vn.vunganyen.petshop.screens.changePassword.ChangePassActivity
 import vn.vunganyen.petshop.screens.home.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
 import vn.vunganyen.petshop.screens.loginRequired.LoginRequired
+import vn.vunganyen.petshop.screens.myOrder.MyOrderActivity
 import vn.vunganyen.petshop.screens.register.newProfile.ProfileActivity
 
 
@@ -69,6 +70,10 @@ class FragmentAccount : Fragment() {
                 dialog.clickOk = { -> var intent = Intent(context, LoginActivity::class.java)
                     startActivity(intent)
                 } }
+            else{
+                var intent = Intent(context, MyOrderActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         binding.imvChangePass.setOnClickListener{

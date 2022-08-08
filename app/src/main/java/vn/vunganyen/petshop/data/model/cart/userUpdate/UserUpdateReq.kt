@@ -7,5 +7,6 @@ data class UserUpdateReq(
     var emailnguoinhan: String,
     var tongtien: Float,
     var trangthai: String,
+    var ngaydukien: String,
     var magh: Int
 )

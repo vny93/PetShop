@@ -1,7 +1,7 @@
 package vn.vunganyen.petshop.screens.checkout
 
+import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,16 +32,24 @@ import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityCheckOutBinding
 import vn.vunganyen.petshop.databinding.DialogPaypalBinding
 import vn.vunganyen.petshop.screens.home.HomeActivity
+import java.util.*
 
 class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     lateinit var binding : ActivityCheckOutBinding
     lateinit var checkOutPresenter : CheckOutPresenter
     lateinit var bindingDialog : DialogPaypalBinding
     lateinit var dialog: Dialog
+    var c = Calendar.getInstance()
+    var year = c.get(Calendar.YEAR)
+    var month = c.get(Calendar.MONTH)
+    var day = c.get(Calendar.DAY_OF_MONTH)
     var alertDialog: StartAlertDialog = StartAlertDialog()
     var adapter : AdapterProductCheckout = AdapterProductCheckout()
     var magh = 0
     var value = ""
+    companion object{
+        lateinit var listCartDetail : List<GetCDSpRes>
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckOutBinding.inflate(layoutInflater)
@@ -56,11 +64,11 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
 
     fun exchangeRate(price : Float): Float{
         var VND = 23390
-        println("chia ra bao nhiêu v: "+price/VND)
         return price/VND
     }
 
     fun setViewDate(){
+        binding.edtDateReceive.setText("" + day + "/" + (month + 1) + "/" + year)
         val strSumPrice = HomeActivity.formatter.format(HomeActivity.sumPrice).toString() + " đ"
         println(strSumPrice)
         binding.sumCartMoney2.setText(strSumPrice)
@@ -78,6 +86,27 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     }
 
     fun setEvent(){
+        binding.imvCalendar.setOnClickListener {
+            val dpd =
+                this?.let { it1 ->
+                    DatePickerDialog(
+                        it1,
+                        DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                            binding.edtDateReceive.setText("" + mDay + "/" + (mMonth + 1) + "/" + mYear)
+                            day = mDay
+                            month = mMonth
+                            year = mYear
+                        },
+                        year,
+                        month,
+                        day
+                    )
+                }
+            if (dpd != null) {
+                dpd.show()
+            }
+        }
+
         binding.backCheckout.setOnClickListener{
             finish()
         }
@@ -86,8 +115,11 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
             var phone = binding.edtPhoneReceive.text.toString()
             var email = binding.edtEmailReceive.text.toString()
             var address = binding.edtAddressReceive.text.toString()
-            var status = "Đang chờ duyệt"
-            var req = UserUpdateReq(name,address,phone,email,HomeActivity.sumPrice,status,magh)
+            var status = "Chờ xác nhận"
+            var expectedDate = binding.edtDateReceive.text.toString()
+            var mdate : Date = HomeActivity.formatdate1.parse(expectedDate)
+            var strDate = HomeActivity.formatdate.format(mdate)
+            var req = UserUpdateReq(name,address,phone,email,HomeActivity.sumPrice,status,strDate,magh)
             checkOutPresenter.validCheck(req)
         }
     }
@@ -127,8 +159,8 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
             onApprove =
             OnApprove { approval ->
                 approval.orderActions.capture { captureOrderResult ->
-                    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
-                    Toast.makeText(this,"Thanh toán thành công", Toast.LENGTH_SHORT).show()
+                //    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
+                //    Toast.makeText(this,"Thanh toán thành công", Toast.LENGTH_SHORT).show()
                     //xử lí lưu thông tin và thông báo thanh toán thành công!
                     checkOutPresenter.userUpdateCart(req)
                 }

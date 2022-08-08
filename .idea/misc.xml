@@ -30,6 +30,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login_required.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/activity_my_order.xml" value="0.13020833333333334" />
         <entry key="app/src/main/res/layout/activity_paypal.xml" value="0.151268115942029" />
         <entry key="app/src/main/res/layout/activity_paypay.xml" value="0.161231884057971" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.19429347826086957" />
@@ -39,9 +40,13 @@
         <entry key="app/src/main/res/layout/dialog_paypal.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_delivered.xml" value="0.13020833333333334" />
         <entry key="app/src/main/res/layout/fragment_explore.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.19429347826086957" />
+        <entry key="app/src/main/res/layout/fragment_transport.xml" value="0.13020833333333334" />
+        <entry key="app/src/main/res/layout/fragment_wait.xml" value="0.13020833333333334" />
         <entry key="app/src/main/res/layout/item_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_product_checkout.xml" value="0.161231884057971" />
         <entry key="app/src/main/res/layout/item_product_type.xml" value="0.25" />

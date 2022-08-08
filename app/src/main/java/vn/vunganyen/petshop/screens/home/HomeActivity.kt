@@ -35,6 +35,8 @@ class HomeActivity : AppCompatActivity(),HomeInterface {
         var sumPrice : Float = 0.0f
         val formatdate =  SimpleDateFormat("yyyy-MM-dd")
         val formatdate1 =  SimpleDateFormat("dd/MM/yyyy")
+        val formatdate2 =  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val formatdate3 =  SimpleDateFormat("dd-MM-yyyy hh:mm")
         val formatter = DecimalFormat("###,###,###")
     }
 
