@@ -10,7 +10,7 @@ import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import java.text.DecimalFormat
 import java.util.*
 
-class AdapterCart : RecyclerView.Adapter<AdapterCart.MainViewHolder>() {
+class AdapterOrder : RecyclerView.Adapter<AdapterOrder.MainViewHolder>() {
     private var listData: List<AddCartRes> = ArrayList()
     val formatter = DecimalFormat("###,###,###")
 

@@ -11,10 +11,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.*
+import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.data.model.classSupport.Photo
 import vn.vunganyen.petshop.data.model.product.get.ProductRes
 import vn.vunganyen.petshop.databinding.FragmentShopBinding
 import vn.vunganyen.petshop.screens.home.seeAllProduct.SeeAllActivity
+import vn.vunganyen.petshop.screens.search.SearchProActivity
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -27,10 +29,12 @@ class FragmentShop : Fragment(), ShopInterface {
     var adapterDiscount : AdapterDiscount = AdapterDiscount()
     var adapterNew : AdapterIsNew = AdapterIsNew()
     var adapterGood : AdapterIsGood = AdapterIsGood()
+    var adapterBrand : AdapterBrand = AdapterBrand()
     companion object{
         lateinit var listDiscount : List<ProductRes>
         lateinit var listIsNew : List<ProductRes>
         lateinit var listIsGood : List<ProductRes>
+        lateinit var listBrand : List<BrandDetailRes>
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = FragmentShopBinding.inflate(inflater,container,false)
@@ -86,6 +90,10 @@ class FragmentShop : Fragment(), ShopInterface {
             intent.putExtra("type",3)
             startActivity(intent)
         }
+        binding.edtSearchProduct.setOnClickListener{
+            var intent = Intent(context, SearchProActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onDestroy() {
@@ -120,6 +128,12 @@ class FragmentShop : Fragment(), ShopInterface {
         binding.rcvHomeGood.adapter = adapterGood
         binding.rcvHomeGood.layoutManager =  LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL,false)
+
+        adapterBrand.setData(listBrand)
+        binding.rcvBrand.adapter = adapterBrand
+        binding.rcvBrand.layoutManager =  LinearLayoutManager(context,
+            LinearLayoutManager.HORIZONTAL,false)
+
     }
 
 }

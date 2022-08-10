@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import vn.vunganyen.petshop.data.adapter.AdapterCart
+import vn.vunganyen.petshop.data.adapter.AdapterOrder
 import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.databinding.FragmentWaitBinding
@@ -16,7 +16,7 @@ import vn.vunganyen.petshop.screens.home.main.HomeActivity
 class WaitFragment : Fragment(), WaitInterface {
     lateinit var binding : FragmentWaitBinding
     lateinit var waitPresenter : WaitPresenter
-    var adapter : AdapterCart = AdapterCart()
+    var adapter : AdapterOrder = AdapterOrder()
     var status = "Chờ xác nhận"
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentWaitBinding.inflate(inflater,container,false)

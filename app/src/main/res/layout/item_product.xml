@@ -24,7 +24,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:src="@drawable/panner1" />
+                android:src="@drawable/no_image" />
 
             <TextView
                 android:id="@+id/tv_prodcutname"

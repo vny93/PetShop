@@ -33,7 +33,7 @@
                     android:id="@+id/imv_proDetail"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_200sdp"
-                    android:src="@drawable/panner1" />
+                    android:src="@drawable/no_image" />
 
                 <TextView
                     android:id="@+id/name_proDetail"
@@ -61,6 +61,7 @@
                         style="@style/style_textview_login2"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text="@string/tv_brandname"
+                        android:textColor="@color/color1"
                         android:textSize="@dimen/_15sdp" />
 
                 </LinearLayout>
@@ -147,7 +148,6 @@
                     style="@style/style_textview_login2"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/tv_body"
                     android:textSize="@dimen/_15sdp" />
 
                 <TextView

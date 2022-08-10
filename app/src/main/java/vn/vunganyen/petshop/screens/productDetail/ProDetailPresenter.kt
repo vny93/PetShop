@@ -4,7 +4,7 @@ import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vn.vunganyen.petshop.data.api.ApiBranDetailService
+import vn.vunganyen.petshop.data.api.ApiBrandDetailService
 import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
 import vn.vunganyen.petshop.data.api.ApiProDetailService
@@ -47,7 +47,7 @@ class ProDetailPresenter {
     }
 
     fun getBranDetail(res: List<ProDetailRes>, req: BrandDetailReq){
-        ApiBranDetailService.Api.api.getBrandDetail(req).enqueue(object : Callback<MainBrandDetailRes>{
+        ApiBrandDetailService.Api.api.getBrandDetail(req).enqueue(object : Callback<MainBrandDetailRes>{
             override fun onResponse(call: Call<MainBrandDetailRes>, response: Response<MainBrandDetailRes>) {
                 if(response.isSuccessful){
                     response.body()?.let { proDetailInterface.getDetailSuccess(res.get(0), it.result) }

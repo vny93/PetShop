@@ -149,4 +149,13 @@
     <string name="tv_rcvNew">Sản phẩm mới nhất</string>
     <string name="tv_rcvGood">Sản phẩm giá tốt</string>
     <string name="see_all">Xem thêm</string>
+
+    <!--  search -->
+    <string name="tv_titleBrand">Hãng sản xuất</string>
+    <string name="title_product">Sản phẩm</string>
+    <string name="title_priceSearch">Giá từ</string>
+    <string name="title_priceSearch2">Đến</string>
+    <string name="title_introduce">Giới thiệu</string>
+    <string name="title_contact">Thông tin liên hệ</string>
+
 </resources>

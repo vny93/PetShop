@@ -20,6 +20,7 @@ import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailReq
 import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
 import vn.vunganyen.petshop.databinding.ActivityProductDetailBinding
+import vn.vunganyen.petshop.screens.brand.BrandDetailActivity
 import vn.vunganyen.petshop.screens.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.login.LoginActivity
 
@@ -28,6 +29,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
     lateinit var proDetailPresenter: ProDetailPresenter
     var dialog: StartAlertDialog = StartAlertDialog()
     var soluong = 0
+    var idBrand = ""
     lateinit var reqAddCartDetail : PostCDReq
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +52,12 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
     fun setEvent() {
         binding.backProductDetail.setOnClickListener {
             finish()
+        }
+
+        binding.brand.setOnClickListener{
+            var intent = Intent(this, BrandDetailActivity::class.java)
+            intent.putExtra("idBrand",idBrand)
+            startActivity(intent)
         }
 
         binding.minus.setOnClickListener {
@@ -104,6 +112,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
 
 
     override fun getDetailSuccess(res: ProDetailRes, res2: BrandDetailRes) {
+        idBrand = res.mahang
         if (res.hinhanh != null) {
             val strUrl: List<String> = res.hinhanh.split("3000/")
             var url = PathApi.BASE_URL + strUrl.get(1)
@@ -124,7 +133,9 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
         }
 
         binding.brand.setText(res2.tenhang)
-        binding.tvBody.setText(res.mota)
+        if(res.mota != null){
+            binding.tvBody.setText(res.mota)
+        }
         soluong = res.soluong
         if (soluong == 0) {
             binding.tvNumberPro.setText(getString(R.string.out_of_stock))

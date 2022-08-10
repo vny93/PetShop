@@ -2,10 +2,10 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateReq
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateRes
+import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
 import vn.vunganyen.petshop.data.model.product.get.MainProductRes
 import vn.vunganyen.petshop.data.model.product.get.ProductReq
+import vn.vunganyen.petshop.data.model.product.search.SearchProductReq
 import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderReq
 import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderRes
 
@@ -22,6 +22,14 @@ interface ApiProductService {
 
     @GET("v1/product/list/isgood")
     fun getListIsGood():Call<MainProductRes>
+
+    @POST("v1/product/list/brand")
+    fun getListByBrand(@Body req : BrandDetailReq):Call<MainProductRes>
+
+    @POST("v1/product/list/search")
+    fun searchProduct(@Body req: SearchProductReq):Call<MainProductRes>
+
+
 
     @PUT("v1/product/update/amount")
     fun userUpdateOrder(@Header("Authorization") BearerToken: String, @Body req: UserOrderReq): Call<UserOrderRes>

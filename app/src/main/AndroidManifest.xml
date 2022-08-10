@@ -28,6 +28,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".screens.brand.BrandDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.search.SearchProActivity"
+            android:exported="false" />
+        <activity
             android:name=".screens.home.seeAllProduct.SeeAllActivity"
             android:exported="false" />
         <activity

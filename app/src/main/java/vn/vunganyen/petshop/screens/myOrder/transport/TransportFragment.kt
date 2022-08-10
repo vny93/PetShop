@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import vn.vunganyen.petshop.data.adapter.AdapterCart
+import vn.vunganyen.petshop.data.adapter.AdapterOrder
 import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.databinding.FragmentTransportBinding
@@ -15,7 +15,7 @@ import vn.vunganyen.petshop.screens.home.main.HomeActivity
 class TransportFragment : Fragment(), TransportInterface {
     lateinit var binding : FragmentTransportBinding
     lateinit var transportPresenter: TransportPresenter
-    var adapter : AdapterCart = AdapterCart()
+    var adapter : AdapterOrder = AdapterOrder()
     var status = "Chờ lấy hàng"
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentTransportBinding.inflate(inflater,container,false)
