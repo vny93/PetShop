@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.productType.ProductTypeRes
 import vn.vunganyen.petshop.databinding.ItemProductTypeBinding
-import vn.vunganyen.petshop.screens.product.ProductActivity
+import vn.vunganyen.petshop.screens.client.product.ProductActivity
 import java.util.*
 
 class AdapterProductType : RecyclerView.Adapter<AdapterProductType.MainViewHolder>() {

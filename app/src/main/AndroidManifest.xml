@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="vn.vunganyen.petshop">
+    package="vn.vunganyen.petshop" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,26 +26,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".screens.brand.BrandDetailActivity"
+            android:name="vn.vunganyen.petshop.screens.admin.main.MainAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.search.SearchProActivity"
+            android:name="vn.vunganyen.petshop.screens.client.myOrderDetail.OrderDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.home.seeAllProduct.SeeAllActivity"
+            android:name="vn.vunganyen.petshop.screens.client.brand.BrandDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.myOrder.MyOrderActivity"
+            android:name="vn.vunganyen.petshop.screens.client.search.SearchProActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.checkout.CheckOutActivity"
+            android:name="vn.vunganyen.petshop.screens.client.home.seeAllProduct.SeeAllActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.paypal.PaypayActivity"
-            android:exported="true">
-            <intent-filter android:autoVerify="true">
+            android:name="vn.vunganyen.petshop.screens.client.myOrder.MyOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name="vn.vunganyen.petshop.screens.client.checkout.CheckOutActivity"
+            android:exported="false" />
+        <activity
+            android:name="vn.vunganyen.petshop.screens.client.paypal.PaypayActivity"
+            android:exported="true" >
+            <intent-filter android:autoVerify="true" >
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -57,26 +63,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.changePassword.ChangePassActivity"
+            android:name="vn.vunganyen.petshop.screens.client.changePassword.ChangePassActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.loginRequired.LoginRequired"
+            android:name="vn.vunganyen.petshop.screens.client.loginRequired.LoginRequired"
             android:exported="false" />
         <activity
-            android:name=".screens.register.newProfile.ProfileActivity"
+            android:name="vn.vunganyen.petshop.screens.client.register.newProfile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.register.newRegister.RegisterActivity"
+            android:name="vn.vunganyen.petshop.screens.client.register.newRegister.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.productDetail.ProDetailActivity"
+            android:name="vn.vunganyen.petshop.screens.client.productDetail.ProDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.product.ProductActivity"
+            android:name="vn.vunganyen.petshop.screens.client.product.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.home.main.HomeActivity"
-            android:exported="true">
+            android:name="vn.vunganyen.petshop.screens.client.home.main.HomeActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +90,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.login.LoginActivity"
+            android:name="vn.vunganyen.petshop.screens.client.login.LoginActivity"
             android:exported="false" />
     </application>
 

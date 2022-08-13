@@ -1,12 +1,14 @@
 package vn.vunganyen.petshop.data.adapter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.databinding.ItemOrderBinding
-import vn.vunganyen.petshop.screens.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.client.myOrderDetail.OrderDetailActivity
 import java.text.DecimalFormat
 import java.util.*
 
@@ -51,7 +53,10 @@ class AdapterOrder : RecyclerView.Adapter<AdapterOrder.MainViewHolder>() {
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val data = listData[position]
         holder.bindItem(data)
-//        holder.binding.cartAdd.setOnClickListener {
-//        }
+        holder.itemView.setOnClickListener{
+            var intent = Intent(holder.itemView.context, OrderDetailActivity::class.java)
+            intent.putExtra("magh",data.magh)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 }

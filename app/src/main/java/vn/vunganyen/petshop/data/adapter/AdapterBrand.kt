@@ -2,18 +2,14 @@ package vn.vunganyen.petshop.data.adapter
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.text.SpannableString
-import android.text.style.StrikethroughSpan
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.databinding.ItemBrandBinding
-import vn.vunganyen.petshop.screens.home.seeAllProduct.SeeAllActivity
-import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.client.home.seeAllProduct.SeeAllActivity
 
 
 class AdapterBrand : RecyclerView.Adapter<AdapterBrand.MainViewHolder>() {

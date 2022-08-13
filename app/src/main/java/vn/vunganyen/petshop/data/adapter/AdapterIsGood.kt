@@ -11,10 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.product.get.ProductRes
-import vn.vunganyen.petshop.databinding.ItemProductBinding
 import vn.vunganyen.petshop.databinding.ItemProductHomeBinding
-import vn.vunganyen.petshop.screens.home.main.HomeActivity
-import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.client.productDetail.ProDetailActivity
 
 
 class AdapterIsGood : RecyclerView.Adapter<AdapterIsGood.MainViewHolder>() {

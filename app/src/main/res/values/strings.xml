@@ -101,6 +101,7 @@
     <string name="tv_checkout_fail">Đặt hàng thất bại</string>
     <string name="tv_dateReceive">Ngày nhận dự kiến</string>
     <string name="hint_dateReceive">Chọn ngày nhận dự kiến</string>
+    <string name="errorDate">Ngày dự kiến phải tính từ ngày hiện tại trở đi</string>
 
     <!-- Cart Detail -->
     <string name="cart">Giỏ hàng của tôi</string>
@@ -157,5 +158,23 @@
     <string name="title_priceSearch2">Đến</string>
     <string name="title_introduce">Giới thiệu</string>
     <string name="title_contact">Thông tin liên hệ</string>
+
+    <!--   Order Detail -->
+    <string name="order_detail">Chi tiết đơn đặt hàng</string>
+    <string name="error_getCart">Không lấy được dữ liệu thông tin đơn hàng </string>
+    <string name="error_getList">Không lấy được dữ liệu sản phẩm của đơn hàng</string>
+    <string name="tv_infor2">Thông tin nhận hàng</string>
+    <string name="tv_idOrder">Mã đơn hàng:</string>
+    <string name="tv_timeOrder">Thời gian đặt hàng:</string>
+    <string name="tv_intendTime">Thời gian nhận dự kiến:</string>
+    <string name="tv_deliveryTime">Thời gian giao hàng:</string>
+
+    <!-- Admin-->
+    <string name="ad_nav1_mainStaff">Quản lý nhân viên</string>
+    <string name="ad_nav2_mainProduct">Quản lý nhập liệu</string>
+    <string name="ad_nav3_mainOrder">Quản lý đơn hàng</string> <!--có quản lí giao hàng, thống kê doanh thu trong này -->
+    <string name="ad_nav4_mainLogout">Đăng xuất</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 
 </resources>

@@ -2,12 +2,10 @@ package vn.vunganyen.petshop.data.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import vn.vunganyen.petshop.screens.myOrder.delivered.DeliveredFragment
-import vn.vunganyen.petshop.screens.myOrder.transport.TransportFragment
-import vn.vunganyen.petshop.screens.myOrder.waitForConfirm.WaitFragment
+import vn.vunganyen.petshop.screens.client.myOrder.delivered.DeliveredFragment
+import vn.vunganyen.petshop.screens.client.myOrder.transport.TransportFragment
+import vn.vunganyen.petshop.screens.client.myOrder.waitForConfirm.WaitFragment
 
 class ViewPagerAdapter : FragmentStateAdapter{
 

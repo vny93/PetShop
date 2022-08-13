@@ -11,8 +11,8 @@ import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
 import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ItemCardBinding
-import vn.vunganyen.petshop.screens.home.main.HomeActivity
-import vn.vunganyen.petshop.screens.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.client.productDetail.ProDetailActivity
 import java.text.DecimalFormat
 import java.util.*
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nax_1"
+            android:title="@string/ad_nav1_mainStaff"
+            android:icon="@drawable/ic_baseline_person_24"/>
+        <item android:id="@+id/nax_2"
+            android:title="@string/ad_nav2_mainProduct"
+            android:icon="@drawable/ic_baseline_edit_note_24"/>
+        <item android:id="@+id/nax_3"
+            android:title="@string/ad_nav3_mainOrder"
+            android:icon="@drawable/ic_outline_sticky_note_2_24"/>
+        <item android:id="@+id/nax_4"
+            android:title="@string/ad_nav4_mainLogout"
+            android:icon="@drawable/ic_baseline_logout_24"/>
+    </group>
+
+</menu>

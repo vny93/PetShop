@@ -3,9 +3,12 @@ package vn.vunganyen.petshop.data.api
 import retrofit2.Call
 import retrofit2.http.*
 import vn.vunganyen.petshop.data.model.cart.add.AddCartReq
+import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
 import vn.vunganyen.petshop.data.model.cart.add.MainAddCardRes
 import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
+import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.cart.getCart.MainGetCartRes
 import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateReq
 import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateRes
 
@@ -22,6 +25,9 @@ interface ApiCartService {
 
     @PUT("v1/cart/update/user")
     fun userUpdateCard(@Header("Authorization") BearerToken: String, @Body req: UserUpdateReq): Call<UserUpdateRes>
+
+    @POST("v1/cart/detail")
+    fun get(@Header("Authorization") BearerToken: String, @Body req: GetCartReq): Call<MainGetCartRes>
 
     object Api {
         val api: ApiCartService by lazy { RetrofitSetting().retrofit.create(ApiCartService::class.java) }

@@ -8,7 +8,12 @@ data class GetCartRes(
     val hotennguoinhan : String,
     val diachinguoinhan : String,
     val sdtnguoinhan : String,
-    val emailnguoinhan : String,
+    val emailnguoinhan: String,
+    val ngaygiao: String,
     val tongtien : Float,
-    val makh : String
+    val trangthai: String,
+    val ngaydukien: String,
+    val manvduyet: String,
+    val manvgiao: String,
+    val makh: String
 ) : Serializable
