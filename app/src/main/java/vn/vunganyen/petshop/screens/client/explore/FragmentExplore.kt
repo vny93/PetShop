@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import vn.vunganyen.petshop.data.adapter.AdapterProductType
-import vn.vunganyen.petshop.data.model.productType.ProductTypeRes
+import vn.vunganyen.petshop.data.model.client.productType.ProductTypeRes
 import vn.vunganyen.petshop.databinding.FragmentExploreBinding
 
 

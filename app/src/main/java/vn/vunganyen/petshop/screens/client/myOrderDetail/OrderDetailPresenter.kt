@@ -5,9 +5,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
-import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
-import vn.vunganyen.petshop.data.model.cart.getCart.MainGetCartRes
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cart.getCart.MainGetCartRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
 
 class OrderDetailPresenter {
     var orderDetailInterface : OrderDetailInterface

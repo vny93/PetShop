@@ -5,8 +5,8 @@ import android.os.Bundle
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.databinding.ActivityBrandDetailBinding
 
 class BrandDetailActivity : AppCompatActivity(), BrandDelInterface {

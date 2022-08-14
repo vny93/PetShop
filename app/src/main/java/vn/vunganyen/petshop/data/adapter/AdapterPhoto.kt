@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
-import vn.vunganyen.petshop.data.model.classSupport.Photo
+import vn.vunganyen.petshop.data.model.client.classSupport.Photo
 import vn.vunganyen.petshop.databinding.ItemSlideviewBinding
 
 class AdapterPhoto : PagerAdapter {

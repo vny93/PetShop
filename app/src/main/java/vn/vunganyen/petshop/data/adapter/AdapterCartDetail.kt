@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDReq
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ItemCardBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.text.DecimalFormat
 import java.util.*
 
@@ -27,7 +27,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
 
     fun setData(list: List<GetCDSpRes>) {
         this.listData = list
-        HomeActivity.sumPrice = 0.0f
+        SplashScreenActivity.sumPrice = 0.0f
         notifyDataSetChanged()
     }
 

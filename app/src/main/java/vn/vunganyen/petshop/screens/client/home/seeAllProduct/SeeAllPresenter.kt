@@ -4,8 +4,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiProductService
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
-import vn.vunganyen.petshop.data.model.product.get.MainProductRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
+import vn.vunganyen.petshop.data.model.client.product.get.MainProductRes
 
 class SeeAllPresenter {
     var seeAllInterface : SeeAllInterface

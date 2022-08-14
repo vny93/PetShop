@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterProduct
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
-import vn.vunganyen.petshop.data.model.product.get.ProductRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
+import vn.vunganyen.petshop.data.model.client.product.get.ProductRes
 import vn.vunganyen.petshop.databinding.ActivitySeeAllBinding
 import vn.vunganyen.petshop.screens.client.home.shop.FragmentShop
 

@@ -8,11 +8,13 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityLoginBinding
+import vn.vunganyen.petshop.screens.admin.main.MainAdminActivity
 import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.register.newProfile.ProfileActivity
 import vn.vunganyen.petshop.screens.client.register.newRegister.RegisterActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 class LoginActivity : AppCompatActivity(), LoginInterface {
     lateinit var binding : ActivityLoginBinding
@@ -94,12 +96,18 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
 //        dialog.showStartDialog3(getString(R.string.user_illegal), this)
 //    }
 
-    override fun loginSuccess() {
-        HomeActivity.editor.commit()
+    override fun loginClientSuccess() {
+        SplashScreenActivity.editor.commit()
         var intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
      //   println("token: "+token)
     //    println("makh: "+ profile.result.makh)
+    }
+
+    override fun loginStaffSuccess() {
+        SplashScreenActivity.editor.commit()
+        var intent = Intent(this, MainAdminActivity::class.java)
+        startActivity(intent)
     }
 
     override fun tokendie() {

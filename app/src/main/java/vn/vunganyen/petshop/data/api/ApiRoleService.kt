@@ -2,8 +2,8 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.register.findRole.FindRoleReq
-import vn.vunganyen.petshop.data.model.register.findRole.MainFindRole
+import vn.vunganyen.petshop.data.model.client.register.findRole.FindRoleReq
+import vn.vunganyen.petshop.data.model.client.register.findRole.MainFindRole
 
 interface ApiRoleService {
 

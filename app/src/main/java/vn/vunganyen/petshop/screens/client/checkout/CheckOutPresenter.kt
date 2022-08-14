@@ -6,14 +6,14 @@ import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
 import vn.vunganyen.petshop.data.api.ApiProductService
-import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateReq
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateRes
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
-import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderReq
-import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderRes
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateReq
+import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
+import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderReq
+import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderRes
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.util.*
 
 class CheckOutPresenter {
@@ -50,15 +50,15 @@ class CheckOutPresenter {
             checkOutInterface.Empty()
             return
         }
-        if (!HomeActivity.SDT.matcher(req.sdtnguoinhan).matches()) {
+        if (!SplashScreenActivity.SDT.matcher(req.sdtnguoinhan).matches()) {
             checkOutInterface.PhoneIllegal()
             return
         }
-        if (!HomeActivity.EMAIL_ADDRESS.matcher(req.emailnguoinhan).matches()) {
+        if (!SplashScreenActivity.EMAIL_ADDRESS.matcher(req.emailnguoinhan).matches()) {
             checkOutInterface.EmailIllegal()
             return
         }
-        val current : String = HomeActivity.formatdate.format(Date())
+        val current : String = SplashScreenActivity.formatdate.format(Date())
         val result = req.ngaydukien.compareTo(current)
         println("ngaydukien: "+req.ngaydukien)
         println("ngayhientai: "+current)
@@ -71,7 +71,7 @@ class CheckOutPresenter {
     }
 
     fun  userUpdateCart(req : UserUpdateReq){
-        ApiCartService.Api.api.userUpdateCard(HomeActivity.token,req).enqueue(object : Callback<UserUpdateRes>{
+        ApiCartService.Api.api.userUpdateCard(SplashScreenActivity.token,req).enqueue(object : Callback<UserUpdateRes>{
             override fun onResponse(call: Call<UserUpdateRes>, response: Response<UserUpdateRes>) {
                 if(response.isSuccessful){
                     //checkOutInterface.UpdateSuccess()
@@ -95,7 +95,7 @@ class CheckOutPresenter {
     }
 
     fun calApiUpdateProduct(req: UserOrderReq, size : Int){
-        ApiProductService.Api.api.userUpdateOrder(HomeActivity.token,req).enqueue(object : Callback<UserOrderRes>{
+        ApiProductService.Api.api.userUpdateOrder(SplashScreenActivity.token,req).enqueue(object : Callback<UserOrderRes>{
             override fun onResponse(call: Call<UserOrderRes>, response: Response<UserOrderRes>) {
                 if(response.isSuccessful){
                     if(count == size){

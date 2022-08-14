@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.data.adapter.AdapterOrder
-import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cart.add.AddCartRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
 import vn.vunganyen.petshop.databinding.FragmentWaitBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 
 class WaitFragment : Fragment(), WaitInterface {
@@ -26,8 +26,8 @@ class WaitFragment : Fragment(), WaitInterface {
     }
 
     fun getData(){
-        var req = CartStatusReq(status, HomeActivity.profile.result.makh)
-        waitPresenter.getCartByStatus(HomeActivity.token,req)
+        var req = CartStatusReq(status, SplashScreenActivity.profileClient.result.makh)
+        waitPresenter.getCartByStatus(SplashScreenActivity.token,req)
     }
 
     override fun getListSuccess(list: List<AddCartRes>) {

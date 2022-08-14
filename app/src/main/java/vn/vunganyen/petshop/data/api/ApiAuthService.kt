@@ -2,13 +2,13 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.auth.changePw.ChangePwRes
-import vn.vunganyen.petshop.data.model.auth.login.LoginReq
-import vn.vunganyen.petshop.data.model.auth.login.LoginRes
-import vn.vunganyen.petshop.data.model.register.addAuth.AddAuthReq
-import vn.vunganyen.petshop.data.model.register.addAuth.MainAddAuth
-import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthReq
-import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthRes
+import vn.vunganyen.petshop.data.model.client.auth.changePw.ChangePwRes
+import vn.vunganyen.petshop.data.model.client.auth.login.LoginReq
+import vn.vunganyen.petshop.data.model.client.auth.login.LoginRes
+import vn.vunganyen.petshop.data.model.client.register.addAuth.AddAuthReq
+import vn.vunganyen.petshop.data.model.client.register.addAuth.MainAddAuth
+import vn.vunganyen.petshop.data.model.client.register.findAuth.FindAuthReq
+import vn.vunganyen.petshop.data.model.client.register.findAuth.FindAuthRes
 
 interface ApiAuthService {
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout style="@style/style_appBarLayout">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_inputData"
+            style="@style/style_toolbar"
+            app:title="@string/ad_nav2_mainProduct" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
+    <Button
+        android:id="@+id/btn_staffMng"
+        style="@style/style_btnlogin"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="@string/tv_staff_manage"/>
+    <Button
+        android:id="@+id/btn_brandMng"
+        style="@style/style_btnlogin"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="@string/tv_brand_manage"/>
+    <Button
+        android:id="@+id/btn_protypeMng"
+        style="@style/style_btnlogin"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="@string/tv_productType_manage"/>
+    <Button
+        android:id="@+id/btn_proMng"
+        style="@style/style_btnlogin"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:text="@string/tv_product_manage"/>
+</LinearLayout>

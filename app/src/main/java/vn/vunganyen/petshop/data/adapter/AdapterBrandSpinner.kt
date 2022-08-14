@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.databinding.ItemBrandBinding
 import vn.vunganyen.petshop.databinding.ItemSpinnerBrandBinding
 

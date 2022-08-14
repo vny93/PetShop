@@ -5,17 +5,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiUserService
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDRes
-import vn.vunganyen.petshop.data.model.user.addProfile.AddProfileReq
-import vn.vunganyen.petshop.data.model.user.addProfile.MainAddProfile
-import vn.vunganyen.petshop.data.model.user.findEmail.FindEmailReq
-import vn.vunganyen.petshop.data.model.user.findEmail.FindEmailRes
-import vn.vunganyen.petshop.data.model.user.findPhone.FindPhoneReq
-import vn.vunganyen.petshop.data.model.user.findPhone.FindPhoneRes
-import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
-import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
-import vn.vunganyen.petshop.data.model.user.getProfile.UserRes
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDRes
+import vn.vunganyen.petshop.data.model.client.user.addProfile.AddProfileReq
+import vn.vunganyen.petshop.data.model.client.user.addProfile.MainAddProfile
+import vn.vunganyen.petshop.data.model.client.user.findEmail.FindEmailReq
+import vn.vunganyen.petshop.data.model.client.user.findEmail.FindEmailRes
+import vn.vunganyen.petshop.data.model.client.user.findPhone.FindPhoneReq
+import vn.vunganyen.petshop.data.model.client.user.findPhone.FindPhoneRes
+import vn.vunganyen.petshop.data.model.client.user.getProfile.MainUserRes
+import vn.vunganyen.petshop.data.model.client.user.getProfile.UserReq
+import vn.vunganyen.petshop.data.model.client.user.getProfile.UserRes
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 class ProfilePresenter {
     var profileInterface: ProfileInterface
@@ -31,11 +31,11 @@ class ProfilePresenter {
             profileInterface.Empty()
             return
         }
-        if (!HomeActivity.SDT.matcher(req.sdt).matches()) {
+        if (!SplashScreenActivity.SDT.matcher(req.sdt).matches()) {
             profileInterface.PhoneIllegal()
             return
         }
-        if (!HomeActivity.EMAIL_ADDRESS.matcher(req.email).matches()) {
+        if (!SplashScreenActivity.EMAIL_ADDRESS.matcher(req.email).matches()) {
             profileInterface.EmailIllegal()
             return
         }
@@ -49,11 +49,11 @@ class ProfilePresenter {
             override fun onResponse(call: Call<FindPhoneRes>, response: Response<FindPhoneRes>) {
                 if(response.isSuccessful){
                     println("Phone đã tồn tại")
-                    if(HomeActivity.token.equals("")){
+                    if(SplashScreenActivity.token.equals("")){
                         profileInterface.PhoneExist()
                     }
                     else{//tồn tại nhưng của user hiện tại nên vẫn đúng
-                        if(response.body()!!.result == HomeActivity.profile.result.makh){
+                        if(response.body()!!.result == SplashScreenActivity.profileClient.result.makh){
                             checkEmailExist(req)
                         }
                         else profileInterface.PhoneExist()
@@ -75,27 +75,27 @@ class ProfilePresenter {
             override fun onResponse(call: Call<FindEmailRes>, response: Response<FindEmailRes>) {
                 if(response.isSuccessful){
                     println("đã tồn tại email")
-                    if(HomeActivity.token.equals("")){
+                    if(SplashScreenActivity.token.equals("")){
                         profileInterface.EmailExist()
                     }
                     else{//tồn tại nhưng là của kh hiện tại thì vẫn được
-                        if(response.body()!!.result == HomeActivity.profile.result.makh){
-                            var id = HomeActivity.profile.result.makh
+                        if(response.body()!!.result == SplashScreenActivity.profileClient.result.makh){
+                            var id = SplashScreenActivity.profileClient.result.makh
                             var request = UserRes(id,req.hoten,req.gioitinh,req.diachi,req.ngaysinh,req.sdt,req.email,req.masothue,req.tendangnhap)
-                            updateProfile(HomeActivity.token,request)
+                            updateProfile(SplashScreenActivity.token,request)
                         }
                         else profileInterface.EmailExist()
                     }
                 }
 
                 else{
-                    if(HomeActivity.token.equals("")){
+                    if(SplashScreenActivity.token.equals("")){
                         addProfile(req)
                     }
                     else{
-                        var id = HomeActivity.profile.result.makh
+                        var id = SplashScreenActivity.profileClient.result.makh
                         var request = UserRes(id,req.hoten,req.gioitinh,req.diachi,req.ngaysinh,req.sdt,req.email,req.masothue,req.tendangnhap)
-                        updateProfile(HomeActivity.token,request)
+                        updateProfile(SplashScreenActivity.token,request)
                     }
                 }
             }
@@ -134,9 +134,9 @@ class ProfilePresenter {
                 if(response.isSuccessful){
                     if(response.body() != null){
                         println("Cập nhật profile thành công")
-                        HomeActivity.editor.clear().apply() // cập nhật lại editor
+                        SplashScreenActivity.editor.clear().apply() // cập nhật lại editor
                        // profileInterface.UpdateSucces()
-                        getProfile(HomeActivity.token, UserReq(req.tendangnhap))
+                        getProfile(SplashScreenActivity.token, UserReq(req.tendangnhap))
                     }
                     else{
                         println("Cập nhật profile thất bại")
@@ -157,7 +157,7 @@ class ProfilePresenter {
                 if(response.isSuccessful){
                     println("mã khách hàng login: "+response.body()!!.result.makh)
                     //Lưu lại token với profile mới vì mới xóa editor lưu profile cũ
-                    HomeActivity.editor.putString("token", HomeActivity.token)
+                    SplashScreenActivity.editor.putString("token", SplashScreenActivity.token)
                     setProfile(response.body()!!)
                     profileInterface.UpdateSucces()
                 }
@@ -174,11 +174,11 @@ class ProfilePresenter {
 
     fun setProfile(response : MainUserRes){
         var strResponse = gson.toJson(response).toString()
-        HomeActivity.editor.putString("profile",strResponse)
+        SplashScreenActivity.editor.putString("profileClient",strResponse)
     }
 
     fun getProfileEditor(){
-        var strResponse =  HomeActivity.sharedPreferences.getString("profile","")
-        HomeActivity.profile = gson.fromJson(strResponse, MainUserRes::class.java)
+        var strResponse =  SplashScreenActivity.sharedPreferences.getString("profileClient","")
+        SplashScreenActivity.profileClient = gson.fromJson(strResponse, MainUserRes::class.java)
     }
 }

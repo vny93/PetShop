@@ -3,9 +3,9 @@ package vn.vunganyen.petshop.screens.client.product
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import vn.vunganyen.petshop.data.adapter.AdapterProduct
-import vn.vunganyen.petshop.data.model.product.get.ProductReq
-import vn.vunganyen.petshop.data.model.product.get.ProductRes
-import vn.vunganyen.petshop.data.model.productType.ProductTypeRes
+import vn.vunganyen.petshop.data.model.client.product.get.ProductReq
+import vn.vunganyen.petshop.data.model.client.product.get.ProductRes
+import vn.vunganyen.petshop.data.model.client.productType.ProductTypeRes
 import vn.vunganyen.petshop.databinding.ActivityProductBinding
 
 class ProductActivity : AppCompatActivity(), ProductInterface {

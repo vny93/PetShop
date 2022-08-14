@@ -26,13 +26,13 @@ import com.paypal.checkout.order.PurchaseUnit
 import vn.vunganyen.petshop.BuildConfig
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterProductCheckout
-import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateReq
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityCheckOutBinding
 import vn.vunganyen.petshop.databinding.DialogPaypalBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.util.*
 
 class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
@@ -61,7 +61,7 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
         setViewDate()
         getData()
         setEvent()
-        value = String.format("%.2f", exchangeRate(HomeActivity.sumPrice))
+        value = String.format("%.2f", exchangeRate(SplashScreenActivity.sumPrice))
     }
 
     fun exchangeRate(price : Float): Float{
@@ -71,20 +71,20 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
 
     fun setViewDate(){
         binding.edtDateReceive.setText("" + day + "/" + (month + 1) + "/" + year)
-        val strSumPrice = HomeActivity.formatter.format(HomeActivity.sumPrice).toString() + " đ"
+        val strSumPrice = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPrice).toString() + " đ"
         println(strSumPrice)
         binding.sumCartMoney2.setText(strSumPrice)
-        binding.edtNameReceive.setText(HomeActivity.profile.result.hoten)
-        binding.edtPhoneReceive.setText(HomeActivity.profile.result.sdt)
-        binding.edtEmailReceive.setText(HomeActivity.profile.result.email)
-        binding.edtAddressReceive.setText(HomeActivity.profile.result.diachi)
+        binding.edtNameReceive.setText(SplashScreenActivity.profileClient.result.hoten)
+        binding.edtPhoneReceive.setText(SplashScreenActivity.profileClient.result.sdt)
+        binding.edtEmailReceive.setText(SplashScreenActivity.profileClient.result.email)
+        binding.edtAddressReceive.setText(SplashScreenActivity.profileClient.result.diachi)
     }
 
 
     fun getData(){
         magh = getIntent().getIntExtra("magh",0)
         var req = GetCartReq(magh)
-        checkOutPresenter.getListCartDetail(HomeActivity.token,req)
+        checkOutPresenter.getListCartDetail(SplashScreenActivity.token,req)
     }
 
     fun setEvent(){
@@ -127,10 +127,10 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
             var address = binding.edtAddressReceive.text.toString()
         //    var status = "Chờ xác nhận"
             var expectedDate = binding.edtDateReceive.text.toString()
-            var mdate : Date = HomeActivity.formatdate1.parse(expectedDate)
-            var strDate = HomeActivity.formatdate.format(mdate)
+            var mdate : Date = SplashScreenActivity.formatdate1.parse(expectedDate)
+            var strDate = SplashScreenActivity.formatdate.format(mdate)
             var req = UserUpdateReq(name,address,phone,email,
-                HomeActivity.sumPrice,WAIT_STATUS,strDate,magh)
+                SplashScreenActivity.sumPrice,WAIT_STATUS,strDate,magh)
             checkOutPresenter.validCheck(req)
         }
     }

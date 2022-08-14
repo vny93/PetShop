@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.product.get.ProductRes
+import vn.vunganyen.petshop.data.model.client.product.get.ProductRes
 import vn.vunganyen.petshop.databinding.ItemProductHomeBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.productDetail.ProDetailActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 
 class AdapterIsGood : RecyclerView.Adapter<AdapterIsGood.MainViewHolder>() {
@@ -39,12 +39,12 @@ class AdapterIsGood : RecyclerView.Adapter<AdapterIsGood.MainViewHolder>() {
             binding.tvHomeProdcutname.setText(data.tensp)
             //so sánh giá gốc và giá khuyến mãi
             if(data.giagiam == data.gia){
-                val price = HomeActivity.formatter.format(data.gia.toInt()).toString() + " đ"
+                val price = SplashScreenActivity.formatter.format(data.gia.toInt()).toString() + " đ"
                 binding.tvHomePrice.setText(price)
             }
             else{
-                val price = HomeActivity.formatter.format(data.gia.toInt()).toString() + " đ"
-                val priceDiscount = HomeActivity.formatter.format(data.giagiam.toInt()).toString() + " đ"
+                val price = SplashScreenActivity.formatter.format(data.gia.toInt()).toString() + " đ"
+                val priceDiscount = SplashScreenActivity.formatter.format(data.giagiam.toInt()).toString() + " đ"
 
                 val spanned = SpannableString(price)
                 spanned.setSpan(StrikethroughSpan(), 0, price.length, 0)

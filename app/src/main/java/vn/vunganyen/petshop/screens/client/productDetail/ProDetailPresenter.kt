@@ -4,25 +4,25 @@ import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vn.vunganyen.petshop.data.api.ApiBrandDetailService
+import vn.vunganyen.petshop.data.api.ApiBrandService
 import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
 import vn.vunganyen.petshop.data.api.ApiProDetailService
-import vn.vunganyen.petshop.data.model.brandDetail.MainBrandDetailRes
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
-import vn.vunganyen.petshop.data.model.cart.add.AddCartReq
-import vn.vunganyen.petshop.data.model.cart.add.MainAddCardRes
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
-import vn.vunganyen.petshop.data.model.cartDetail.findCD.FindCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.findCD.MainFindDCRes
-import vn.vunganyen.petshop.data.model.cartDetail.post.PostCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.post.MainPostCDRes
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDRes
-import vn.vunganyen.petshop.data.model.proDetail.MainProDetailRes
-import vn.vunganyen.petshop.data.model.proDetail.ProDetailReq
-import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.MainBrandDetailRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
+import vn.vunganyen.petshop.data.model.client.cart.add.AddCartReq
+import vn.vunganyen.petshop.data.model.client.cart.add.MainAddCardRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.MainCartStatusRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.findCD.FindCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.findCD.MainFindDCRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.post.PostCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.post.MainPostCDRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDRes
+import vn.vunganyen.petshop.data.model.client.proDetail.MainProDetailRes
+import vn.vunganyen.petshop.data.model.client.proDetail.ProDetailReq
+import vn.vunganyen.petshop.data.model.client.proDetail.ProDetailRes
 
 class ProDetailPresenter {
     var proDetailInterface : ProDetailInterface
@@ -47,7 +47,7 @@ class ProDetailPresenter {
     }
 
     fun getBranDetail(res: List<ProDetailRes>, req: BrandDetailReq){
-        ApiBrandDetailService.Api.api.getBrandDetail(req).enqueue(object : Callback<MainBrandDetailRes>{
+        ApiBrandService.Api.api.getBrandDetail(req).enqueue(object : Callback<MainBrandDetailRes>{
             override fun onResponse(call: Call<MainBrandDetailRes>, response: Response<MainBrandDetailRes>) {
                 if(response.isSuccessful){
                     response.body()?.let { proDetailInterface.getDetailSuccess(res.get(0), it.result) }

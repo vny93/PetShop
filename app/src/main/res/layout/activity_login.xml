@@ -33,7 +33,7 @@
         <EditText
             android:id="@+id/edtUsername"
             style="@style/style_edit_login"
-            android:text="vunganyen2000"
+            android:text="admin2005"
             android:hint="@string/hint_edtusername" />
 
         <TextView
@@ -50,7 +50,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPassword"
                 style="@style/style_edit_login"
-                android:text="Nganyen1234"
+                android:text="Admin123"
                 android:hint="@string/hint_edtpassword"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>

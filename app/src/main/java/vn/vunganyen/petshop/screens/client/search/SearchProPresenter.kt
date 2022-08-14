@@ -3,11 +3,11 @@ package vn.vunganyen.petshop.screens.client.search
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vn.vunganyen.petshop.data.api.ApiBrandDetailService
+import vn.vunganyen.petshop.data.api.ApiBrandService
 import vn.vunganyen.petshop.data.api.ApiProductService
-import vn.vunganyen.petshop.data.model.brand.MainBrandRes
-import vn.vunganyen.petshop.data.model.product.get.MainProductRes
-import vn.vunganyen.petshop.data.model.product.search.SearchProductReq
+import vn.vunganyen.petshop.data.model.client.brand.MainBrandRes
+import vn.vunganyen.petshop.data.model.client.product.get.MainProductRes
+import vn.vunganyen.petshop.data.model.client.product.search.SearchProductReq
 
 class SearchProPresenter {
     var searchProInterface : SearchProInterface
@@ -17,7 +17,7 @@ class SearchProPresenter {
     }
 
     fun getBrandName(){
-        ApiBrandDetailService.Api.api.getList().enqueue(object : Callback<MainBrandRes>{
+        ApiBrandService.Api.api.getList().enqueue(object : Callback<MainBrandRes>{
             override fun onResponse(call: Call<MainBrandRes>,response: Response<MainBrandRes>) {
                 if(response.isSuccessful){
                     searchProInterface.getBrandName(response.body()!!.result)

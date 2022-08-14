@@ -5,8 +5,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiCartService
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.MainCartStatusRes
 
 class TransportPresenter {
     var transportInterface : TransportInterface

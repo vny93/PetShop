@@ -2,12 +2,12 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailReq
-import vn.vunganyen.petshop.data.model.product.get.MainProductRes
-import vn.vunganyen.petshop.data.model.product.get.ProductReq
-import vn.vunganyen.petshop.data.model.product.search.SearchProductReq
-import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderReq
-import vn.vunganyen.petshop.data.model.product.userUpdateOrder.UserOrderRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
+import vn.vunganyen.petshop.data.model.client.product.get.MainProductRes
+import vn.vunganyen.petshop.data.model.client.product.get.ProductReq
+import vn.vunganyen.petshop.data.model.client.product.search.SearchProductReq
+import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderReq
+import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderRes
 
 interface ApiProductService {
 

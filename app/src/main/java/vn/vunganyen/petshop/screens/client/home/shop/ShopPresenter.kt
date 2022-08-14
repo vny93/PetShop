@@ -3,10 +3,10 @@ package vn.vunganyen.petshop.screens.client.home.shop
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vn.vunganyen.petshop.data.api.ApiBrandDetailService
+import vn.vunganyen.petshop.data.api.ApiBrandService
 import vn.vunganyen.petshop.data.api.ApiProductService
-import vn.vunganyen.petshop.data.model.brand.MainBrandRes
-import vn.vunganyen.petshop.data.model.product.get.MainProductRes
+import vn.vunganyen.petshop.data.model.client.brand.MainBrandRes
+import vn.vunganyen.petshop.data.model.client.product.get.MainProductRes
 
 class ShopPresenter {
     var shopInterface : ShopInterface
@@ -64,7 +64,7 @@ class ShopPresenter {
     }
 
     fun getListBrand(){
-        ApiBrandDetailService.Api.api.getList().enqueue(object : Callback<MainBrandRes>{
+        ApiBrandService.Api.api.getList().enqueue(object : Callback<MainBrandRes>{
             override fun onResponse(call: Call<MainBrandRes>, response: Response<MainBrandRes>) {
                 if(response.isSuccessful){
                     FragmentShop.listBrand = response.body()!!.result

@@ -1,28 +1,24 @@
 package vn.vunganyen.petshop.screens.client.home.main
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.databinding.ActivityHomeBinding
 import vn.vunganyen.petshop.screens.client.account.FragmentAccount
 import vn.vunganyen.petshop.screens.client.cart.FragmentCart
 import vn.vunganyen.petshop.screens.client.explore.FragmentExplore
 import vn.vunganyen.petshop.screens.client.home.shop.FragmentShop
-import java.text.DecimalFormat
-import java.text.SimpleDateFormat
-import java.util.regex.Pattern
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 
 class HomeActivity : AppCompatActivity(), HomeInterface {
     lateinit var binding: ActivityHomeBinding
     lateinit var homePresenter: HomePresenter
     var backPressed : Long = 0
-    companion object{
+/*    companion object{
         //Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số
         var USERNAME = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
         var EMAIL_ADDRESS = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
@@ -42,11 +38,13 @@ class HomeActivity : AppCompatActivity(), HomeInterface {
         val formatter = DecimalFormat("###,###,###")
     }
 
+ */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initPreferences()
+   //     initPreferences()
         homePresenter = HomePresenter(this)
         checkShaharedPre()
         setEventBottomNav()
@@ -54,16 +52,16 @@ class HomeActivity : AppCompatActivity(), HomeInterface {
     }
 
     private fun initPreferences() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        editor = sharedPreferences.edit()
+        SplashScreenActivity.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        SplashScreenActivity.editor = SplashScreenActivity.sharedPreferences.edit()
     }
 
     fun checkShaharedPre(){
-        var tokenEditor = sharedPreferences.getString("token", "").toString()
+        var tokenEditor = SplashScreenActivity.sharedPreferences.getString("token", "").toString()
         println("token lúc đầu: "+tokenEditor)
         if(!tokenEditor.equals("")){
-            token = tokenEditor
-            homePresenter.getProfileEditor()
+            SplashScreenActivity.token = tokenEditor
+            homePresenter.getProfileClientEditor()
         }
     }
 

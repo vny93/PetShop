@@ -5,13 +5,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiAuthService
 import vn.vunganyen.petshop.data.api.ApiRoleService
-import vn.vunganyen.petshop.data.model.register.addAuth.AddAuthReq
-import vn.vunganyen.petshop.data.model.register.addAuth.MainAddAuth
-import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthReq
-import vn.vunganyen.petshop.data.model.register.findAuth.FindAuthRes
-import vn.vunganyen.petshop.data.model.register.findRole.FindRoleReq
-import vn.vunganyen.petshop.data.model.register.findRole.MainFindRole
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.data.model.client.register.addAuth.AddAuthReq
+import vn.vunganyen.petshop.data.model.client.register.addAuth.MainAddAuth
+import vn.vunganyen.petshop.data.model.client.register.findAuth.FindAuthReq
+import vn.vunganyen.petshop.data.model.client.register.findAuth.FindAuthRes
+import vn.vunganyen.petshop.data.model.client.register.findRole.FindRoleReq
+import vn.vunganyen.petshop.data.model.client.register.findRole.MainFindRole
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 class RegisterPresenter {
     var registerInterface : RegisterInterface
@@ -25,11 +25,11 @@ class RegisterPresenter {
             registerInterface.RgtEmpty()
             return
         }
-        if(!HomeActivity.USERNAME.matcher(username).matches()){
+        if(!SplashScreenActivity.USERNAME.matcher(username).matches()){
             registerInterface.UserIllegal()
             return
         }
-        if(!HomeActivity.PASSWORD.matcher(password).matches()){
+        if(!SplashScreenActivity.PASSWORD.matcher(password).matches()){
             registerInterface.PassIllegal()
             return
         }

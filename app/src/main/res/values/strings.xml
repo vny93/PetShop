@@ -177,4 +177,22 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <!-- input data    -->
+    <string name="tv_staff_manage">Quản lý nhân viên</string>
+    <string name="tv_brand_manage">Quản lý hãng sản xuất</string>
+    <string name="tv_productType_manage">Quản lý loại sản phẩm</string>
+    <string name="tv_product_manage">Quản lý sản phẩm</string>
+
+    <!-- brand manage    -->
+    <string name="tv_brand_id">Mã hãng</string>
+    <string name="tv_brand_name">Tên hãng</string>
+    <string name="tv_brand_email">Email</string>
+    <string name="tv_brand_phone">Số điện thoại</string>
+    <string name="tv_brand_describe">Mô tả</string>
+    <string name="tv_save">Cập nhật</string>
+    <string name="tv_toolbar_listBrand">Danh sách hãng sản xuất</string>
+    <string name="tv_toolbar_nameBrand">Chi tiết hãng sản xuất</string>
+    <string name="tv_find_nameBrand">Tìm kiếm theo tên hãng sản xuất</string>
+    <string name="UpdateBrandError">Cập nhật thất bại</string>
+    <string name="UpdateBrandSuccess">Cập nhật thành công</string>
 </resources>

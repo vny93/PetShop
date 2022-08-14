@@ -5,10 +5,10 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
+import vn.vunganyen.petshop.data.model.client.cart.add.AddCartRes
 import vn.vunganyen.petshop.databinding.ItemOrderBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.myOrderDetail.OrderDetailActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.text.DecimalFormat
 import java.util.*
 
@@ -30,8 +30,8 @@ class AdapterOrder : RecyclerView.Adapter<AdapterOrder.MainViewHolder>() {
         @SuppressLint("ResourceAsColor")
         fun bindItem(data: AddCartRes) {
             binding.tvIdCart.setText(data.magh.toString())
-            var mdate : Date = HomeActivity.formatdate2.parse(data.ngaydat)
-            var strDate = HomeActivity.formatdate3.format(mdate)
+            var mdate : Date = SplashScreenActivity.formatdate2.parse(data.ngaydat)
+            var strDate = SplashScreenActivity.formatdate3.format(mdate)
             binding.tvBookDate.setText(strDate)
             val price = formatter.format(data.tongtien).toString() + " đ"
             binding.tvPriceOrder.setText(price)

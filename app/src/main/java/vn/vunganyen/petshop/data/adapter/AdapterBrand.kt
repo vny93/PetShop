@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.databinding.ItemBrandBinding
 import vn.vunganyen.petshop.screens.client.home.seeAllProduct.SeeAllActivity
 
@@ -28,9 +28,11 @@ class AdapterBrand : RecyclerView.Adapter<AdapterBrand.MainViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bindItem(data: BrandDetailRes) {
-            val strUrl: List<String> = data.logo.split("3000/")
-            val url = PathApi.BASE_URL + strUrl.get(1)
-            Picasso.get().load(url).into(binding.imvBrand)
+            if(data.logo != null){
+                val strUrl: List<String> = data.logo.split("3000/")
+                val url = PathApi.BASE_URL + strUrl.get(1)
+                Picasso.get().load(url).into(binding.imvBrand)
+            }
         }
     }
 

@@ -12,17 +12,17 @@ import android.view.inputmethod.InputMethodManager
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cartDetail.post.PostCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.data.model.proDetail.ProDetailReq
-import vn.vunganyen.petshop.data.model.proDetail.ProDetailRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.post.PostCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDReq
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.proDetail.ProDetailReq
+import vn.vunganyen.petshop.data.model.client.proDetail.ProDetailRes
 import vn.vunganyen.petshop.databinding.ActivityProductDetailBinding
 import vn.vunganyen.petshop.screens.client.brand.BrandDetailActivity
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.login.LoginActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
     lateinit var binding: ActivityProductDetailBinding
@@ -83,7 +83,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
                 //check token để đưa qua trang login
                 // lưu lại vị trí đứng để login vô lại trang đó
                 // chú ý: chỉ có vài vị trí cần login : chi tiết sản phẩm khi thêm vào card , fragment card, account
-                if (HomeActivity.token.equals("")) {
+                if (SplashScreenActivity.token.equals("")) {
                     dialog.showStartDialog4(getString(R.string.login_required), this)
                     dialog.clickOk = { ->
                         var intent = Intent(this, LoginActivity::class.java)
@@ -91,9 +91,9 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
                     }
                 } else {
                     println("gọi api status nè")
-                    var req = CartStatusReq("", HomeActivity.profile.result.makh)
+                    var req = CartStatusReq("", SplashScreenActivity.profileClient.result.makh)
                     reqAddCartDetail.ctsoluong = number
-                    proDetailPresenter.getCartByStatus(HomeActivity.token, req, reqAddCartDetail, soluong)
+                    proDetailPresenter.getCartByStatus(SplashScreenActivity.token, req, reqAddCartDetail, soluong)
                 }
             }
         }
@@ -106,7 +106,7 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
 
     fun updateDataAdapter(data : PutCDReq){ //bên Adapter gọi
         proDetailPresenter = ProDetailPresenter(this)
-        proDetailPresenter.updateCartDetail(HomeActivity.token,data)
+        proDetailPresenter.updateCartDetail(SplashScreenActivity.token,data)
 
     }
 
@@ -120,12 +120,12 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
         }
         binding.nameProDetail.setText(res.tensp)
         if(res.giagiam == res.gia){
-            val price = HomeActivity.formatter.format(res.gia.toInt()).toString() + " đ"
+            val price = SplashScreenActivity.formatter.format(res.gia.toInt()).toString() + " đ"
             binding.tvPrice.setText(price)
         }
         else{
-            val price = HomeActivity.formatter.format(res.gia.toInt()).toString() + " đ"
-            val priceDiscount = HomeActivity.formatter.format(res.giagiam.toInt()).toString() + " đ"
+            val price = SplashScreenActivity.formatter.format(res.gia.toInt()).toString() + " đ"
+            val priceDiscount = SplashScreenActivity.formatter.format(res.giagiam.toInt()).toString() + " đ"
             val spanned = SpannableString(price)
             spanned.setSpan(StrikethroughSpan(), 0, price.length, 0)
             binding.tvDiscount.setText(spanned)

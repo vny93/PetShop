@@ -5,16 +5,16 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDRes
-import vn.vunganyen.petshop.data.model.user.addProfile.AddProfileReq
-import vn.vunganyen.petshop.data.model.user.addProfile.MainAddProfile
-import vn.vunganyen.petshop.data.model.user.findEmail.FindEmailReq
-import vn.vunganyen.petshop.data.model.user.findEmail.FindEmailRes
-import vn.vunganyen.petshop.data.model.user.findPhone.FindPhoneReq
-import vn.vunganyen.petshop.data.model.user.findPhone.FindPhoneRes
-import vn.vunganyen.petshop.data.model.user.getProfile.MainUserRes
-import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
-import vn.vunganyen.petshop.data.model.user.getProfile.UserRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDRes
+import vn.vunganyen.petshop.data.model.client.user.addProfile.AddProfileReq
+import vn.vunganyen.petshop.data.model.client.user.addProfile.MainAddProfile
+import vn.vunganyen.petshop.data.model.client.user.findEmail.FindEmailReq
+import vn.vunganyen.petshop.data.model.client.user.findEmail.FindEmailRes
+import vn.vunganyen.petshop.data.model.client.user.findPhone.FindPhoneReq
+import vn.vunganyen.petshop.data.model.client.user.findPhone.FindPhoneRes
+import vn.vunganyen.petshop.data.model.client.user.getProfile.MainUserRes
+import vn.vunganyen.petshop.data.model.client.user.getProfile.UserReq
+import vn.vunganyen.petshop.data.model.client.user.getProfile.UserRes
 
 interface ApiUserService {
     @POST("v1/user/detail/tk")

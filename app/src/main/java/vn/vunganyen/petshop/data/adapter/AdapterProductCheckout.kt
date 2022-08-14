@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.databinding.ItemProductCheckoutBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.text.DecimalFormat
 import java.util.*
 
@@ -40,12 +40,12 @@ class AdapterProductCheckout : RecyclerView.Adapter<AdapterProductCheckout.MainV
 
             //so sánh giá gốc và giá khuyến mãi
             if(data.ctgia == data.gia){
-                val price = HomeActivity.formatter.format(data.ctgia.toInt()).toString() + " đ"
+                val price = SplashScreenActivity.formatter.format(data.ctgia.toInt()).toString() + " đ"
                 binding.tvProPriceCheckout.setText(price)
             }
             else{
-                val price = HomeActivity.formatter.format(data.gia.toInt()).toString() + " đ"
-                val priceDiscount = HomeActivity.formatter.format(data.ctgia.toInt()).toString() + " đ"
+                val price = SplashScreenActivity.formatter.format(data.gia.toInt()).toString() + " đ"
+                val priceDiscount = SplashScreenActivity.formatter.format(data.ctgia.toInt()).toString() + " đ"
 
                 val spanned = SpannableString(price)
                 spanned.setSpan(StrikethroughSpan(), 0, price.length, 0)

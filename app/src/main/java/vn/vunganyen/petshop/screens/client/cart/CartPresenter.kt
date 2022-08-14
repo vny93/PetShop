@@ -6,12 +6,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
-import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDRes
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.MainCartStatusRes
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.deleteCD.DeleteCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.deleteCD.DeleteCDRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
 
 class CartPresenter {
     var cartInterface : CartInterface

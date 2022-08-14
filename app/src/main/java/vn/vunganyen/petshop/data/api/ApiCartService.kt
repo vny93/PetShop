@@ -2,15 +2,14 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.cart.add.AddCartReq
-import vn.vunganyen.petshop.data.model.cart.add.AddCartRes
-import vn.vunganyen.petshop.data.model.cart.add.MainAddCardRes
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cart.getByStatus.MainCartStatusRes
-import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
-import vn.vunganyen.petshop.data.model.cart.getCart.MainGetCartRes
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateReq
-import vn.vunganyen.petshop.data.model.cart.userUpdate.UserUpdateRes
+import vn.vunganyen.petshop.data.model.client.cart.add.AddCartReq
+import vn.vunganyen.petshop.data.model.client.cart.add.MainAddCardRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.MainCartStatusRes
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cart.getCart.MainGetCartRes
+import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateReq
+import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateRes
 
 interface ApiCartService {
 

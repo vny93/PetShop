@@ -2,7 +2,7 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.productType.MainProTypeRes
+import vn.vunganyen.petshop.data.model.client.productType.MainProTypeRes
 
 interface ApiProductTypeService {
 

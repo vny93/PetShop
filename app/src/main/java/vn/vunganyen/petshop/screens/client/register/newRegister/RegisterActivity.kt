@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityRegisterBinding
 import vn.vunganyen.petshop.screens.client.register.newProfile.ProfileActivity
 

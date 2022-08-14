@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="vn.vunganyen.petshop" >
+    package="vn.vunganyen.petshop">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -26,7 +26,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".screens.admin.inputData.brandDetailMng.BrandDetailMngActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.productType.ProTypeMngActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.product.ProductMngActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.staff.StaffManageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.brand.BrandMngActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.InputDataActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.splashScreen.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="vn.vunganyen.petshop.screens.admin.main.MainAdminActivity"
             android:exported="false" />
@@ -50,8 +77,8 @@
             android:exported="false" />
         <activity
             android:name="vn.vunganyen.petshop.screens.client.paypal.PaypayActivity"
-            android:exported="true" >
-            <intent-filter android:autoVerify="true" >
+            android:exported="true">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -82,13 +109,7 @@
             android:exported="false" />
         <activity
             android:name="vn.vunganyen.petshop.screens.client.home.main.HomeActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name="vn.vunganyen.petshop.screens.client.login.LoginActivity"
             android:exported="false" />

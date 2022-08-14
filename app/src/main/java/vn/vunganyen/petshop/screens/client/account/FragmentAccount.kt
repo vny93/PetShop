@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.FragmentAccountBinding
 import vn.vunganyen.petshop.screens.client.changePassword.ChangePassActivity
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.login.LoginActivity
 import vn.vunganyen.petshop.screens.client.myOrder.MyOrderActivity
 import vn.vunganyen.petshop.screens.client.register.newProfile.ProfileActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 
 class FragmentAccount : Fragment() {
@@ -31,9 +31,9 @@ class FragmentAccount : Fragment() {
     }
 
     fun setData() {
-        if (!HomeActivity.token.equals("")) {
-            binding.tvHeaderName.text = HomeActivity.profile.result.hoten
-            binding.tvHeaderUser.text = HomeActivity.profile.result.tendangnhap
+        if (!SplashScreenActivity.token.equals("")) {
+            binding.tvHeaderName.text = SplashScreenActivity.profileClient.result.hoten
+            binding.tvHeaderUser.text = SplashScreenActivity.profileClient.result.tendangnhap
             binding.titleRequired.visibility = View.GONE
             binding.btnAcclogIn.visibility = View.GONE
             binding.imvCartError.visibility = View.GONE
@@ -47,9 +47,9 @@ class FragmentAccount : Fragment() {
         binding.btnLogOut.setOnClickListener {
             context?.let { it1 -> dialog.showStartDialog4(getString(R.string.mess_logOut), it1) }
             dialog.clickOk = { ->
-                HomeActivity.token = ""
-                HomeActivity.editor.clear().apply()
-                HomeActivity.sharedPreferences.edit().clear().apply()
+                SplashScreenActivity.token = ""
+                SplashScreenActivity.editor.clear().apply()
+                SplashScreenActivity.sharedPreferences.edit().clear().apply()
                 println("đã xóa")
                 binding.tvHeaderName.text = getString(R.string.header_name)
                 binding.tvHeaderUser.text = getString(R.string.header_username)
@@ -101,9 +101,9 @@ class FragmentAccount : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if (!HomeActivity.token.equals("")) {
-            binding.tvHeaderName.text = HomeActivity.profile.result.hoten
-            binding.tvHeaderUser.text = HomeActivity.profile.result.tendangnhap
+        if (!SplashScreenActivity.token.equals("")) {
+            binding.tvHeaderName.text = SplashScreenActivity.profileClient.result.hoten
+            binding.tvHeaderUser.text = SplashScreenActivity.profileClient.result.tendangnhap
             binding.btnAcclogIn.visibility = View.GONE
         } else binding.lnlAccount.visibility = View.GONE
     }

@@ -2,16 +2,16 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
-import vn.vunganyen.petshop.data.model.cart.getCart.GetCartReq
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDRes
-import vn.vunganyen.petshop.data.model.cartDetail.findCD.FindCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.findCD.MainFindDCRes
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetMainCDRes
-import vn.vunganyen.petshop.data.model.cartDetail.post.PostCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.post.MainPostCDRes
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.update.PutCDRes
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.deleteCD.DeleteCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.deleteCD.DeleteCDRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.findCD.FindCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.findCD.MainFindDCRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.post.PostCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.post.MainPostCDRes
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.update.PutCDRes
 
 interface ApiCartDetailService {
 

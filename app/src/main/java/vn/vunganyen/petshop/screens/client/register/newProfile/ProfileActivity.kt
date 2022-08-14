@@ -7,12 +7,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.classSupport.StartAlertDialog
-import vn.vunganyen.petshop.data.model.auth.login.LoginReq
-import vn.vunganyen.petshop.data.model.user.addProfile.AddProfileReq
-import vn.vunganyen.petshop.data.model.user.getProfile.UserReq
+import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.client.auth.login.LoginReq
+import vn.vunganyen.petshop.data.model.client.user.addProfile.AddProfileReq
+import vn.vunganyen.petshop.data.model.client.user.getProfile.UserReq
 import vn.vunganyen.petshop.databinding.ActivityProfileBinding
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.util.*
 
 class ProfileActivity : AppCompatActivity(), ProfileInterface {
@@ -37,12 +37,12 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         profilePresenter = ProfilePresenter(this)
-        if(HomeActivity.token.equals("")){
+        if(SplashScreenActivity.token.equals("")){
             username = getIntent().getStringExtra("username") as String
             password = getIntent().getStringExtra("password") as String
         }
         else{
-            username = HomeActivity.profile.result.tendangnhap
+            username = SplashScreenActivity.profileClient.result.tendangnhap
         }
 
         setData()
@@ -51,19 +51,19 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 
     fun setData(){
         binding.pfBirth.setText("" + day + "/" + (month + 1) + "/" + year)
-        if(!HomeActivity.token.equals("")){
-            binding.pfName.setText(HomeActivity.profile.result.hoten)
-            var date : Date = HomeActivity.formatdate.parse(HomeActivity.profile.result.ngaysinh)
-            var strDate = HomeActivity.formatdate1.format(date)
+        if(!SplashScreenActivity.token.equals("")){
+            binding.pfName.setText(SplashScreenActivity.profileClient.result.hoten)
+            var date : Date = SplashScreenActivity.formatdate.parse(SplashScreenActivity.profileClient.result.ngaysinh)
+            var strDate = SplashScreenActivity.formatdate1.format(date)
             binding.pfBirth.setText(strDate)
-            if(HomeActivity.profile.result.gioitinh.equals("Nam")){
+            if(SplashScreenActivity.profileClient.result.gioitinh.equals("Nam")){
                 binding.radioMale.isChecked = true
             }
             else binding.radioFemale.isChecked = true
-            binding.pfPhone.setText(HomeActivity.profile.result.sdt)
-            binding.rgtEmail.setText(HomeActivity.profile.result.email)
-            binding.pfAddress.setText(HomeActivity.profile.result.diachi)
-            binding.pfTaxCode.setText(HomeActivity.profile.result.masothue)
+            binding.pfPhone.setText(SplashScreenActivity.profileClient.result.sdt)
+            binding.rgtEmail.setText(SplashScreenActivity.profileClient.result.email)
+            binding.pfAddress.setText(SplashScreenActivity.profileClient.result.diachi)
+            binding.pfTaxCode.setText(SplashScreenActivity.profileClient.result.masothue)
         }
     }
 
@@ -100,8 +100,8 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
         binding.btnSave.setOnClickListener{
             var name = binding.pfName.text.toString()
             var dateBirth = binding.pfBirth.text.toString()
-            var mdate : Date = HomeActivity.formatdate1.parse(dateBirth)
-            var strDate = HomeActivity.formatdate.format(mdate)
+            var mdate : Date = SplashScreenActivity.formatdate1.parse(dateBirth)
+            var strDate = SplashScreenActivity.formatdate.format(mdate)
             var email = binding.rgtEmail.text.toString()
             var phone = binding.pfPhone.text.toString()
             var address = binding.pfAddress.text.toString()
@@ -185,7 +185,7 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 
     override fun UpdateSucces() {
         dialog.showStartDialog3(getString(R.string.AddProfileSucces),this)
-        HomeActivity.editor.commit()
+        SplashScreenActivity.editor.commit()
         profilePresenter.getProfileEditor()
     }
 

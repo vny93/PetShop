@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiProductTypeService
-import vn.vunganyen.petshop.data.model.productType.MainProTypeRes
+import vn.vunganyen.petshop.data.model.client.productType.MainProTypeRes
 
 class ExplorePresenter {
     var exploreInterface : ExploreInterface

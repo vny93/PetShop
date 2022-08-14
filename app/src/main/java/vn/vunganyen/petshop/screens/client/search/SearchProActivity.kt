@@ -9,9 +9,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import vn.vunganyen.petshop.data.adapter.AdapterProduct
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
-import vn.vunganyen.petshop.data.model.product.get.ProductRes
-import vn.vunganyen.petshop.data.model.product.search.SearchProductReq
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.data.model.client.product.get.ProductRes
+import vn.vunganyen.petshop.data.model.client.product.search.SearchProductReq
 import vn.vunganyen.petshop.databinding.ActivitySearchProBinding
 
 class SearchProActivity : AppCompatActivity(), SearchProInterface {

@@ -11,9 +11,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.*
-import vn.vunganyen.petshop.data.model.brandDetail.BrandDetailRes
-import vn.vunganyen.petshop.data.model.classSupport.Photo
-import vn.vunganyen.petshop.data.model.product.get.ProductRes
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.data.model.client.classSupport.Photo
+import vn.vunganyen.petshop.data.model.client.product.get.ProductRes
 import vn.vunganyen.petshop.databinding.FragmentShopBinding
 import vn.vunganyen.petshop.screens.client.home.seeAllProduct.SeeAllActivity
 import vn.vunganyen.petshop.screens.client.search.SearchProActivity

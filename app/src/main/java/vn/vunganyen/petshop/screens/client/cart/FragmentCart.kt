@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterCartDetail
-import vn.vunganyen.petshop.data.model.cart.getByStatus.CartStatusReq
-import vn.vunganyen.petshop.data.model.cartDetail.deleteCD.DeleteCDReq
-import vn.vunganyen.petshop.data.model.cartDetail.getListCartDetail.GetCDSpRes
+import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.deleteCD.DeleteCDReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.databinding.FragmentCartBinding
 import vn.vunganyen.petshop.screens.client.checkout.CheckOutActivity
-import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.login.LoginActivity
+import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 
 class FragmentCart : Fragment(), CartInterface {
@@ -28,7 +28,7 @@ class FragmentCart : Fragment(), CartInterface {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         binding = FragmentCartBinding.inflate(inflater,container,false)
         cartPresenter = CartPresenter(this)
-        checkToken(HomeActivity.token)
+        checkToken(SplashScreenActivity.token)
         setEvent()
         callInvoke()
         callDialogInvoke()
@@ -51,8 +51,8 @@ class FragmentCart : Fragment(), CartInterface {
     }
 
     fun getData(){
-        var req = CartStatusReq("", HomeActivity.profile.result.makh)
-        cartPresenter.getCartByStatus(HomeActivity.token,req)
+        var req = CartStatusReq("", SplashScreenActivity.profileClient.result.makh)
+        cartPresenter.getCartByStatus(SplashScreenActivity.token,req)
     }
 
     fun setEvent(){
@@ -71,11 +71,11 @@ class FragmentCart : Fragment(), CartInterface {
     fun callInvoke(){
         adapter.click={
             price ->
-            println("sum: "+ HomeActivity.sumPrice)
+            println("sum: "+ SplashScreenActivity.sumPrice)
             println("thêm :"+price)
             if(price != null){
-                HomeActivity.sumPrice = HomeActivity.sumPrice + price!!
-                val strSumPrice = HomeActivity.formatter.format(HomeActivity.sumPrice).toString() + " đ"
+                SplashScreenActivity.sumPrice = SplashScreenActivity.sumPrice + price!!
+                val strSumPrice = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPrice).toString() + " đ"
                 println(strSumPrice)
                 binding.sumCartMoney.setText(strSumPrice)
             }
@@ -88,7 +88,7 @@ class FragmentCart : Fragment(), CartInterface {
             println("magh:"+data.magh)
             println("masp:"+data.masp)
             var req = DeleteCDReq(data.magh,data.masp)
-            cartPresenter.removeCartDetail(HomeActivity.token,req)
+            cartPresenter.removeCartDetail(SplashScreenActivity.token,req)
         }
     }
 
@@ -115,7 +115,7 @@ class FragmentCart : Fragment(), CartInterface {
 
     override fun onResume() {
         super.onResume()
-        if(!HomeActivity.token.equals("")){
+        if(!SplashScreenActivity.token.equals("")){
             getData()
         }
     }
