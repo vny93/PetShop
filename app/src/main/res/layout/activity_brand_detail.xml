@@ -111,6 +111,7 @@
                 android:id="@+id/tv_bodyBrand"
                 style="@style/style_textview_login2"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textSize="@dimen/_15sdp" />
 

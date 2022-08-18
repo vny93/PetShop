@@ -105,17 +105,21 @@ class FragmentShop : Fragment(), ShopInterface {
 
     fun getListData(): List<Photo>{
         var list = ArrayList<Photo>()
-        list.add(Photo(R.drawable.panner1))
-        list.add(Photo(R.drawable.panner2))
-        list.add(Photo(R.drawable.panner3))
-        list.add(Photo(R.drawable.panner4))
-        list.add(Photo(R.drawable.panner5))
+//        list.add(Photo(R.drawable.panner1))
+//        list.add(Photo(R.drawable.panner2))
+//        list.add(Photo(R.drawable.panner3))
+//        list.add(Photo(R.drawable.panner4))
+//        list.add(Photo(R.drawable.panner5))
+        list.add(Photo(R.drawable.imv1))
+        list.add(Photo(R.drawable.imv2))
+        list.add(Photo(R.drawable.imv5))
+        list.add(Photo(R.drawable.imv4))
+        list.add(Photo(R.drawable.imv3))
         return list
     }
 
     override fun getListSuccess() {
         if(listDiscount.size > 0){
-            println("khác null à ?")
             adapterDiscount.setData(listDiscount)
             binding.rcvHomeDiscount.adapter = adapterDiscount
             binding.rcvHomeDiscount.layoutManager =  LinearLayoutManager(context,

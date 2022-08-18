@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import vn.vunganyen.petshop.databinding.ActivityInputDataBinding
-import vn.vunganyen.petshop.screens.admin.inputData.brand.BrandMngActivity
+import vn.vunganyen.petshop.screens.admin.inputData.mngBrand.listBrand.BrandMngActivity
+import vn.vunganyen.petshop.screens.admin.inputData.mngProduct.product.ProductMngActivity
+import vn.vunganyen.petshop.screens.admin.inputData.mngProductType.listPT.ProTypeMngActivity
 
 class InputDataActivity : AppCompatActivity() {
     lateinit var binding : ActivityInputDataBinding
@@ -20,6 +22,14 @@ class InputDataActivity : AppCompatActivity() {
     fun setEvent(){
         binding.btnBrandMng.setOnClickListener{
             var intent = Intent(this, BrandMngActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnProMng.setOnClickListener {
+            var intent = Intent(this, ProductMngActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnProtypeMng.setOnClickListener {
+            var intent = Intent(this, ProTypeMngActivity::class.java)
             startActivity(intent)
         }
     }

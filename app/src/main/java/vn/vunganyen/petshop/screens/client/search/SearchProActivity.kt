@@ -88,7 +88,10 @@ class SearchProActivity : AppCompatActivity(), SearchProInterface {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun afterTextChanged(p0: Editable?) {
-                min = binding.edtMin.text.toString().toInt()
+                if(binding.edtMin.text.length == 0){
+                    min = 0
+                }
+                else min = binding.edtMin.text.toString().toInt()
                 var req = SearchProductReq(nameProduct,option,min,max)
                 searchProPresenter.searchProduct(req)
             }
@@ -100,7 +103,10 @@ class SearchProActivity : AppCompatActivity(), SearchProInterface {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
             override fun afterTextChanged(p0: Editable?) {
-                max = binding.edtMax.text.toString().toInt()
+                if(binding.edtMax.text.length == 0){
+                    max = 100000000
+                }
+                else max = binding.edtMax.text.toString().toInt()
                 var req = SearchProductReq(nameProduct,option,min,max)
                 searchProPresenter.searchProduct(req)
             }

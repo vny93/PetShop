@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.admin.inputData.brandDetailMng
+package vn.vunganyen.petshop.screens.admin.inputData.mngBrand.updateBrand
 
 interface BrandDetMngInterface {
     fun Empty()

@@ -78,7 +78,8 @@ class ProDetailActivity : AppCompatActivity(), ProDetailInterface {
             if (number == 0) {
                 dialog.showStartDialog3(getString(R.string.tv_numError), this)
             } else if (number > soluong) {
-                dialog.showStartDialog3(getString(R.string.tv_numProDetail, soluong), this)
+                //dialog.showStartDialog3(getString(R.string.tv_numProDetail, soluong), this)
+                dialog.showStartDialog3(getString(R.string.inventNum), this)
             } else {
                 //check token để đưa qua trang login
                 // lưu lại vị trí đứng để login vô lại trang đó

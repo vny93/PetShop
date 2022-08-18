@@ -25,7 +25,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
         //Mât khẩu tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số
         var PASSWORD = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}\$")
-        var SDT = Pattern.compile("(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})")
+        //var SDT = Pattern.compile("(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})")
+        var SDT = Pattern.compile("(84|0){1}(3|5|7|8|9){1}+([0-9]{8})")
         var token: String = ""
         var roleId: Int = 0
         lateinit var sharedPreferences: SharedPreferences

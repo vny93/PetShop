@@ -200,48 +200,48 @@
             android:layout_marginEnd="@dimen/_20sdp"
             android:background="#c0c0c0" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="2">-->
 
-            <ImageView
-                style="@style/style_imv_icon2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:background="@drawable/ic_outline_error_outline_24" />
+<!--            <ImageView-->
+<!--                style="@style/style_imv_icon2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/_20sdp"-->
+<!--                android:layout_marginTop="@dimen/_13sdp"-->
+<!--                android:background="@drawable/ic_outline_error_outline_24" />-->
 
-            <TextView
-                style="@style/style_textview_login3"
-                android:layout_margin="@dimen/_12sdp"
-                android:layout_weight="2.4"
-                android:text="@string/account_about"
-                android:textSize="@dimen/_15sdp" />
+<!--            <TextView-->
+<!--                style="@style/style_textview_login3"-->
+<!--                android:layout_margin="@dimen/_12sdp"-->
+<!--                android:layout_weight="2.4"-->
+<!--                android:text="@string/account_about"-->
+<!--                android:textSize="@dimen/_15sdp" />-->
 
-            <ImageView
-                android:id="@+id/imv_about"
-                style="@style/style_imv_icon"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
-        </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/imv_about"-->
+<!--                style="@style/style_imv_icon"-->
+<!--                android:layout_marginTop="@dimen/_13sdp"-->
+<!--                android:background="@drawable/ic_baseline_arrow_forward_ios_24" />-->
+<!--        </LinearLayout>-->
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:background="#c0c0c0" />
+<!--        <View-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:layout_height="@dimen/_1sdp"-->
+<!--            android:layout_marginStart="@dimen/_20sdp"-->
+<!--            android:layout_marginTop="@dimen/_5sdp"-->
+<!--            android:layout_marginEnd="@dimen/_20sdp"-->
+<!--            android:background="#c0c0c0" />-->
 
         <Button
             android:id="@+id/btn_logOut"
             style="@style/style_btnlogin"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_130sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:text="@string/btn_logout"
             android:textSize="@dimen/_13sdp" />

@@ -7,6 +7,6 @@ data class BrandDetailRes(
     val tenhang : String,
     val email : String,
     val sdt: String,
-    val logo : String,
+    var logo : String,
     val mota : String
 ) : Serializable

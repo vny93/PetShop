@@ -9,11 +9,12 @@ import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
 import vn.vunganyen.petshop.databinding.ItemBrand2Binding
-import vn.vunganyen.petshop.screens.admin.inputData.brandDetailMng.BrandDetailMngActivity
+import vn.vunganyen.petshop.screens.admin.inputData.mngBrand.updateBrand.BrandDetailMngActivity
 
 
 class AdapterBrandMng : RecyclerView.Adapter<AdapterBrandMng.MainViewHolder>() {
     private var listData: List<BrandDetailRes> = ArrayList()
+    var click: ((data : BrandDetailRes)->Unit)?=null
     @SuppressLint("NotifyDataSetChanged")
     fun setData(list: List<BrandDetailRes>) {
         this.listData = list
@@ -26,13 +27,13 @@ class AdapterBrandMng : RecyclerView.Adapter<AdapterBrandMng.MainViewHolder>() {
 
     inner class MainViewHolder(val binding: ItemBrand2Binding) :
         RecyclerView.ViewHolder(binding.root) {
-        @SuppressLint("ResourceAsColor")
         fun bindItem(data: BrandDetailRes) {
-            if (data.logo != null) {
+            if(!(data.logo.isEmpty())){
                 val strUrl: List<String> = data.logo.split("3000/")
                 val url = PathApi.BASE_URL + strUrl.get(1)
                 Picasso.get().load(url).into(binding.imvBrandMng)
             }
+            binding.tvIdBrand.text = data.mahang
             binding.tvNameBrand.text = data.tenhang
         }
     }
@@ -54,6 +55,9 @@ class AdapterBrandMng : RecyclerView.Adapter<AdapterBrandMng.MainViewHolder>() {
             var intent = Intent(holder.itemView.context, BrandDetailMngActivity::class.java)
             intent.putExtra("data",data)
             holder.itemView.context.startActivity(intent)
+        }
+        holder.binding.deleteBrand.setOnClickListener{
+            click?.invoke(data)
         }
 
     }

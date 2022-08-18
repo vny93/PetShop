@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.admin.inputData.brandDetailMng
+package vn.vunganyen.petshop.screens.admin.inputData.mngBrand.updateBrand
 
 import android.Manifest
 import android.content.Context
@@ -54,7 +54,7 @@ class BrandDetailMngActivity : AppCompatActivity(),BrandDetMngInterface {
 
     fun setData(){
         brand = getIntent().getSerializableExtra("data") as BrandDetailRes
-        if(brand.logo != null){
+        if(!brand.logo.isEmpty()){
             val strUrl: List<String> = brand.logo.split("3000/")
             val url = PathApi.BASE_URL + strUrl.get(1)
             Picasso.get().load(url).into(binding.imvLogoBrand)
@@ -63,7 +63,7 @@ class BrandDetailMngActivity : AppCompatActivity(),BrandDetMngInterface {
         binding.edtBrandName.setText(brand.tenhang)
         binding.edtBrandEmail.setText(brand.email)
         binding.edtBrandPhone.setText(brand.sdt)
-        if(brand.mota != null){
+        if(!brand.mota.isEmpty()){
             binding.edtBrandDecs.setText(brand.mota)
         }
         binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))

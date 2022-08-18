@@ -18,7 +18,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
-            android:text="@string/prouduct_type" />
+            android:text="@string/action_search" />
 
         <androidx.cardview.widget.CardView
             style="@style/style_cardview_search"

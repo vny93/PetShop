@@ -25,7 +25,7 @@ class ShopPresenter {
             }
 
             override fun onFailure(call: Call<MainProductRes>, t: Throwable) {
-                TODO("Not yet implemented")
+                println("Explore: Không lấy được dữ liệu")
             }
 
         })
@@ -41,7 +41,7 @@ class ShopPresenter {
             }
 
             override fun onFailure(call: Call<MainProductRes>, t: Throwable) {
-                TODO("Not yet implemented")
+                println("Explore: Không lấy được dữ liệu")
             }
 
         })
@@ -57,7 +57,7 @@ class ShopPresenter {
             }
 
             override fun onFailure(call: Call<MainProductRes>, t: Throwable) {
-                TODO("Not yet implemented")
+                println("Explore: Không lấy được dữ liệu")
             }
 
         })
@@ -73,7 +73,7 @@ class ShopPresenter {
             }
 
             override fun onFailure(call: Call<MainBrandRes>, t: Throwable) {
-                TODO("Not yet implemented")
+                println("Explore: Không lấy được dữ liệu")
             }
 
         })

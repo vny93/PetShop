@@ -90,12 +90,12 @@ class FragmentAccount : Fragment() {
         }
 
 
-        binding.imvAbout.setOnClickListener {
-            dialog.clickOk = { ->
-                var intent = Intent(context, LoginActivity::class.java)
-                startActivity(intent)
-            }
-        }
+//        binding.imvAbout.setOnClickListener {
+//            dialog.clickOk = { ->
+//                var intent = Intent(context, LoginActivity::class.java)
+//                startActivity(intent)
+//            }
+//        }
     }
 
 

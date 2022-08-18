@@ -2,6 +2,9 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
+import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductReq
+import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductRes
+import vn.vunganyen.petshop.data.model.admin.product.getList.MainProductOriginalRes
 import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
 import vn.vunganyen.petshop.data.model.client.product.get.MainProductRes
 import vn.vunganyen.petshop.data.model.client.product.get.ProductReq
@@ -13,6 +16,9 @@ interface ApiProductService {
 
     @POST("v1/product/list_fk")
     fun getListFK(@Body req: ProductReq):Call<MainProductRes>
+
+    @GET("v1/product/list")
+    fun getList(@Header("Authorization") BearerToken: String):Call<MainProductOriginalRes>
 
     @GET("v1/product/list/discount")
     fun getListDiscount():Call<MainProductRes>
@@ -28,6 +34,12 @@ interface ApiProductService {
 
     @POST("v1/product/list/search")
     fun searchProduct(@Body req: SearchProductReq):Call<MainProductRes>
+
+    @POST("v1/product/check/use")
+    fun checkProductUse(@Header("Authorization") BearerToken: String,@Body req: CheckProductReq): Call<CheckProductRes>
+
+    @POST("v1/product/delete")
+    fun removeProduct(@Header("Authorization") BearerToken: String,@Body req: CheckProductReq): Call<CheckProductRes>
 
 
 

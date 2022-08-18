@@ -12,7 +12,7 @@
     <string name="tv_singup">Do not have an account?</string>
     <string name="tv_singup2"><u>Singup</u></string>
     <string name="tv_register"><u>Đăng ký</u></string>
-    <string name="login_empty">Tên đăng nhập hoặc mật khẩu không được bỏ trống</string>
+    <string name="login_empty">Tên đăng nhập và mật khẩu không được bỏ trống</string>
     <string name="user_illegal">Incorrect username format</string>
     <string name="login_success">Logged in successfully!</string>
     <string name="login_error">Xảy ra lổi server</string>
@@ -21,7 +21,7 @@
     <string name="login_required">Vui lòng đăng nhập để tiếp tục</string>
 
     <!-- Register-->
-    <string name="RgtEmpty">Tên đăng nhập hoặc mật khẩu không được bỏ trống</string>
+    <string name="RgtEmpty">Tên đăng nhập và mật khẩu không được bỏ trống</string>
     <string name="AccountExist">Tên đăng nhập đã tồn tại</string>
     <string name="NotFindRoleId">Không tìm thấy mã quyền</string>
     <string name="AddAuthSuccess">Đăng ký tài khoản thành công</string>
@@ -55,10 +55,10 @@
 
 
     <!-- home -->
-    <string name="action_home">Home</string>
-    <string name="action_search">Explore</string>
-    <string name="action_cart">Cart</string>
-    <string name="action_account">Account</string>
+    <string name="action_home">Trang chủ</string>
+    <string name="action_search">Danh mục</string>
+    <string name="action_cart">Giỏ hàng</string>
+    <string name="action_account">Tài khoản</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -67,7 +67,8 @@
     <string name="prouduct_type">Loại sản phẩm</string>
     <string name="product">Sản phẩm</string>
     <string name="find_productType">Tìm kiếm theo tên loại sản phẩm</string>
-    <string name="find_product">Tìm kiểm theo tên sản phẩm</string>
+    <string name="find_product">Tìm kiếm theo tên sản phẩm</string>
+    <string name="find">Tìm kiểm</string>
     <string name="price">Price</string>
     <string name="out_of_stock">Hết hàng</string>
 
@@ -139,6 +140,7 @@
 
     <!--my order-->
     <string name="tv_nametitle">Đơn mua</string>
+    <string name="tv_titleOrder">Đơn hàng</string>
     <string name="title_idCart">Mã đơn hàng:</string>
     <string name="title_Bookdate">Ngày đặt hàng:</string>
     <string name="title_status">Trạng thái:</string>
@@ -191,8 +193,34 @@
     <string name="tv_brand_describe">Mô tả</string>
     <string name="tv_save">Cập nhật</string>
     <string name="tv_toolbar_listBrand">Danh sách hãng sản xuất</string>
-    <string name="tv_toolbar_nameBrand">Chi tiết hãng sản xuất</string>
+    <string name="tv_toolbar_nameBrand">Cập nhật hãng sản xuất</string>
+    <string name="tv_toolbar_insertBrand">Thêm hãng sản xuất</string>
     <string name="tv_find_nameBrand">Tìm kiếm theo tên hãng sản xuất</string>
     <string name="UpdateBrandError">Cập nhật thất bại</string>
     <string name="UpdateBrandSuccess">Cập nhật thành công</string>
+    <string name="RemoveBrandFail">Bạn không thể xóa hãng sản xuất này</string>
+    <string name="AllRemoveBrand">Bạn có chắc chắn muốn xóa hãng sản xuất này?</string>
+    <string name="RemoveBrandSuccess">Xóa thành công</string>
+    <string name="tv_insert">Thêm mới</string>
+    <string name="tv_insert_success">Thêm mới thành công</string>
+    <string name="tv_insert_fail">Thêm mới thất bại</string>
+    <string name="BrandId_exist">Mã hãng đã tồn tại</string>
+    <string name="Image_empty">Vui lòng chọn hình ảnh</string>
+
+    <!--    product type manage-->
+    <string name="tv_find_namePT">Tìm kiếm theo mã loại sản phẩm</string>
+    <string name="RemovePTFail">Bạn không thể xóa loại sản phẩm này</string>
+    <string name="AllowRemovePT">Bạn có chắc chắn muốn xóa loại sản phẩm này?</string>
+    <string name="tv_toolbar_namePT">Cập nhật loại sản phẩm</string>
+    <string name="tv_toolbar_insertPT">Thêm loại sản phẩm</string>
+
+
+    <!--   product manage -->
+    <string name="tv_PT_id">Mã loại sản phẩm</string>
+    <string name="tv_PT_name">Tên loại sản phẩm</string>
+    <string name="tv_find_nameP">Tìm kiếm theo mã sản phẩm</string>
+    <string name="RemovePFail">Bạn không thể xóa sản phẩm này</string>
+    <string name="AllowRemoveP">Bạn có chắc chắn muốn xóa sản phẩm này?</string>
+    <string name="tv_toolbar_nameProduct">Cập nhật sản phẩm</string>
+    <string name="tv_toolbar_insertProduct">Thêm sản phẩm</string>
 </resources>
