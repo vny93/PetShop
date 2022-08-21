@@ -27,6 +27,19 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".screens.admin.profile.information.InforActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.profile.account.AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.staff.customStaff.CustomStaffMngActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screens.admin.inputData.mngProduct.customProduct.CustomPMngActivity"
+            android:exported="false" />
         <activity
             android:name=".screens.admin.inputData.mngProductType.custom.CustomPTMngActivity"
             android:exported="false" />
@@ -40,10 +53,10 @@
             android:name="vn.vunganyen.petshop.screens.admin.inputData.mngProductType.listPT.ProTypeMngActivity"
             android:exported="false" />
         <activity
-            android:name="vn.vunganyen.petshop.screens.admin.inputData.mngProduct.product.ProductMngActivity"
+            android:name="vn.vunganyen.petshop.screens.admin.inputData.mngProduct.listProduct.ProductMngActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.admin.inputData.staff.StaffManageActivity"
+            android:name=".screens.admin.inputData.staff.getList.StaffManageActivity"
             android:exported="false" />
         <activity
             android:name="vn.vunganyen.petshop.screens.admin.inputData.mngBrand.listBrand.BrandMngActivity"

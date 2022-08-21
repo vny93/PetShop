@@ -13,9 +13,6 @@ import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateRes
 
 interface ApiCartService {
 
-//    @POST("v1/cart/detail")
-//    fun getCartBrand(@Body req: BrandDetailReq):Call<MainBrandDetailRes>
-
     @POST("v1/cart/add")
     fun addCart(@Header("Authorization") BearerToken: String, @Body req: AddCartReq): Call<MainAddCardRes>
 

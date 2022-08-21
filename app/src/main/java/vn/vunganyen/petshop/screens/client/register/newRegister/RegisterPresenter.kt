@@ -59,7 +59,7 @@ class RegisterPresenter {
     }
 
     fun getRoleId(username : String, password : String){
-        var roleName = "khách hàng"
+        var roleName = "Khách hàng"
         var req = FindRoleReq(roleName)
         ApiRoleService.Api.api.findRole(req).enqueue(object : Callback<MainFindRole>{
             override fun onResponse(call: Call<MainFindRole>, response: Response<MainFindRole>) {

@@ -139,6 +139,7 @@ class ProfilePresenter {
                         getProfile(SplashScreenActivity.token, UserReq(req.tendangnhap))
                     }
                     else{
+                        profileInterface.UpdateError()
                         println("Cập nhật profile thất bại")
                     }
                 }
@@ -158,6 +159,9 @@ class ProfilePresenter {
                     println("mã khách hàng login: "+response.body()!!.result.makh)
                     //Lưu lại token với profile mới vì mới xóa editor lưu profile cũ
                     SplashScreenActivity.editor.putString("token", SplashScreenActivity.token)
+                    println("mã quyền là: "+SplashScreenActivity.roleId)
+                    SplashScreenActivity.editor.putInt("roleId",SplashScreenActivity.roleId)
+
                     setProfile(response.body()!!)
                     profileInterface.UpdateSucces()
                 }
@@ -180,5 +184,20 @@ class ProfilePresenter {
     fun getProfileEditor(){
         var strResponse =  SplashScreenActivity.sharedPreferences.getString("profileClient","")
         SplashScreenActivity.profileClient = gson.fromJson(strResponse, MainUserRes::class.java)
+    }
+
+    fun handleString(s: String): String {
+        var str = s
+        str = str.trim()
+        val arrWord = str.split(" ");
+        str = ""
+        for (word in arrWord) {
+            var newWord = word.toLowerCase()
+            if (newWord.length > 0) {
+                newWord = newWord.replaceFirst((newWord[0] + ""), (newWord[0] + "").toUpperCase())
+                str += newWord + " "
+            }
+        }
+        return str.trim()
     }
 }

@@ -11,11 +11,13 @@ import vn.vunganyen.petshop.data.api.ApiBrandService
 import vn.vunganyen.petshop.data.api.ApiProductTypeService
 import vn.vunganyen.petshop.data.api.RealPathUtil
 import vn.vunganyen.petshop.data.model.admin.brand.uploadInfor.PostBrandRes
+import vn.vunganyen.petshop.data.model.admin.productType.checkPTUse.CheckPTReq
 import vn.vunganyen.petshop.data.model.admin.productType.checkPTUse.CheckPTRes
 import vn.vunganyen.petshop.data.model.admin.productType.insert.MainPTRes
 import vn.vunganyen.petshop.data.model.admin.productType.updateInfor.ImagePTReq
 import vn.vunganyen.petshop.data.model.admin.productType.updateInfor.InforPTReq
 import vn.vunganyen.petshop.data.model.client.productType.ProductTypeRes
+import vn.vunganyen.petshop.screens.admin.inputData.mngBrand.updateBrand.BrandDetailMngActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.io.File
 
@@ -36,11 +38,29 @@ class CustomPTMngPresenter {
             updateInforPT(SplashScreenActivity.token, InforPTReq(id,name))
         }
         else {
-            if (CustomPTMngActivity.mUri != null) {
-                pathImage(CustomPTMngActivity.mUri!!, SplashScreenActivity.token, id, name)
-            }
-            else customPTMngInterface.ImageEmpty()
+            checkIdExist(SplashScreenActivity.token, id, name)
         }
+    }
+
+    fun checkIdExist(token: String, id :String, name : String){
+        ApiProductTypeService.Api.api.getPTDetail(token, CheckPTReq(id)).enqueue(object : Callback<MainPTRes>{
+            override fun onResponse(call: Call<MainPTRes>, response: Response<MainPTRes>) {
+                if(response.isSuccessful){
+                    customPTMngInterface.IdExist()
+                }else {
+                    if (CustomPTMngActivity.mUri != null) {
+                        pathImage(CustomPTMngActivity.mUri!!, SplashScreenActivity.token, id,name)
+                    }
+                    else customPTMngInterface.ImageEmpty()
+                }
+            }
+
+            override fun onFailure(call: Call<MainPTRes>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
     }
 
     fun insert(token: String, req : ProductTypeRes ){

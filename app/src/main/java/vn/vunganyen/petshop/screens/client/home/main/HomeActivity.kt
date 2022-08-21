@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import vn.vunganyen.petshop.R
+import vn.vunganyen.petshop.data.model.client.user.getProfile.UserReq
 import vn.vunganyen.petshop.databinding.ActivityHomeBinding
 import vn.vunganyen.petshop.screens.client.account.FragmentAccount
 import vn.vunganyen.petshop.screens.client.cart.FragmentCart
@@ -58,10 +59,12 @@ class HomeActivity : AppCompatActivity(), HomeInterface {
 
     fun checkShaharedPre(){
         var tokenEditor = SplashScreenActivity.sharedPreferences.getString("token", "").toString()
+        var username = SplashScreenActivity.sharedPreferences.getString("username", "").toString()
         println("token lúc đầu: "+tokenEditor)
         if(!tokenEditor.equals("")){
             SplashScreenActivity.token = tokenEditor
             homePresenter.getProfileClientEditor()
+           // homePresenter.getProfileClient(tokenEditor, UserReq(username))
         }
     }
 

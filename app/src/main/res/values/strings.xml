@@ -2,7 +2,7 @@
     <string name="app_name">PetShop</string>
     <!-- login/register -->
     <string name="hint_edtusername">Nhập tên đăng nhập</string>
-    <string name="hint_edtpassword">nhập mật khẩu</string>
+    <string name="hint_edtpassword">Nhập mật khẩu</string>
     <string name="tv_forgotpass">Forgot password?</string>
     <string name="tv_username">Tên đăng nhập</string>
     <string name="tv_password">Mật khẩu</string>
@@ -174,7 +174,8 @@
     <!-- Admin-->
     <string name="ad_nav1_mainStaff">Quản lý nhân viên</string>
     <string name="ad_nav2_mainProduct">Quản lý nhập liệu</string>
-    <string name="ad_nav3_mainOrder">Quản lý đơn hàng</string> <!--có quản lí giao hàng, thống kê doanh thu trong này -->
+    <string name="ad_nav3_mainOrder">Quản lý đơn hàng</string> <!--có quản lí giao hàng-->
+    <string name="ad_nav4_statistics">Thống kê</string>
     <string name="ad_nav4_mainLogout">Đăng xuất</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -213,14 +214,44 @@
     <string name="AllowRemovePT">Bạn có chắc chắn muốn xóa loại sản phẩm này?</string>
     <string name="tv_toolbar_namePT">Cập nhật loại sản phẩm</string>
     <string name="tv_toolbar_insertPT">Thêm loại sản phẩm</string>
+    <string name="tv_PT_id">Mã loại sản phẩm</string>
+    <string name="tv_PT_name">Tên loại sản phẩm</string>
+    <string name="id_pt_exist">Mã loại sản phẩm đã tồn tại</string>
 
 
     <!--   product manage -->
-    <string name="tv_PT_id">Mã loại sản phẩm</string>
-    <string name="tv_PT_name">Tên loại sản phẩm</string>
+    <string name="tv_product_id">Mã sản phẩm</string>
+    <string name="tv_product_name">Tên sản phẩm</string>
+    <string name="tv_product_price">Giá</string>
+    <string name="tv_product_number">Số lượng</string>
+    <string name="tv_product_describe">Mô tả</string>
+    <string name="tv_product_ptId">Loại sản phẩm</string>
+    <string name="tv_product_brandId">Hãng sản xuất</string>
+    <string name="tv_product_providerId">Nhà cung cấp</string>
+    <string name="tv_product_isnew">Sản phẩm mới</string>
+    <string name="tv_product_isgood">Sản phẩm tốt</string>
     <string name="tv_find_nameP">Tìm kiếm theo mã sản phẩm</string>
     <string name="RemovePFail">Bạn không thể xóa sản phẩm này</string>
     <string name="AllowRemoveP">Bạn có chắc chắn muốn xóa sản phẩm này?</string>
     <string name="tv_toolbar_nameProduct">Cập nhật sản phẩm</string>
     <string name="tv_toolbar_insertProduct">Thêm sản phẩm</string>
+    <string name="id_product_exist">Mã sản phẩm đã tồn tại</string>
+    <string name="tv_price_error">Giá tiền phải lớn hơn 0</string>
+    <string name="tv_number_error">Số lượng phải lớn hơn 0</string>
+
+    <!--    Staff manage-->
+    <string name="RemoveStaffFail">Bạn không thể xóa nhân viên này</string>
+    <string name="AllowRemoveStaff">Bạn có chắc chắn muốn xóa nhân viên này?</string>
+    <string name="tv_toolbar_updateStaff">Cập nhật hồ sơ</string>
+    <string name="tv_stauts_Staff">Trạng thái</string>
+    <string name="tv_role_Staff">Quyền</string>
+    <string name="tv_staffId">Mã nhân viên</string>
+    <string name="staffId_exist">Mã nhân viên đã tồn tại</string>
+    <string-array name="option">
+        <item>Hoạt động</item>
+        <item>Khóa</item>
+    </string-array>
+
+<!--    change pass admin-->
+    <string name="title_changePw">Đổi mật khẩu</string>
 </resources>

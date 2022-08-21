@@ -7,4 +7,5 @@ interface CustomPTMngInterface {
     fun InsertError()
     fun InsertSuccess()
     fun ImageEmpty()
+    fun IdExist()
 }

@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.product
+package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.listProduct
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +9,9 @@ import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.admin.AdapterProductMng
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductReq
 import vn.vunganyen.petshop.data.model.admin.product.getList.ProductOriginalRes
-import vn.vunganyen.petshop.data.model.admin.productType.checkPTUse.CheckPTReq
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityProductMngBinding
-import vn.vunganyen.petshop.screens.admin.inputData.mngBrand.insertBrand.InsertBrandActivity
+import vn.vunganyen.petshop.screens.admin.inputData.mngProduct.customProduct.CustomPMngActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 class ProductMngActivity : AppCompatActivity(),ProductMngInterface {
@@ -37,7 +36,8 @@ class ProductMngActivity : AppCompatActivity(),ProductMngInterface {
 
     fun setEvent(){
         binding.imvInsertP.setOnClickListener{
-            val intent = Intent(this, InsertBrandActivity::class.java)
+            val intent = Intent(this, CustomPMngActivity::class.java)
+            intent.putExtra("type","insert")
             startActivity(intent)
         }
     }

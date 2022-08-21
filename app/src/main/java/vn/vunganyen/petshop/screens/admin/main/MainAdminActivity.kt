@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -13,17 +12,23 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import vn.vunganyen.petshop.R
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.MainStaffRes
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffReq
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityMainAdminBinding
 import vn.vunganyen.petshop.databinding.HeaderNaviBinding
 import vn.vunganyen.petshop.screens.admin.inputData.InputDataActivity
+import vn.vunganyen.petshop.screens.admin.profile.account.AccountActivity
+import vn.vunganyen.petshop.screens.admin.profile.information.InforActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
-class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,MainAdminInterface {
     lateinit var binding: ActivityMainAdminBinding
     lateinit var toogle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     var dialog: StartAlertDialog = StartAlertDialog()
+    lateinit var mainAdminPresenter: MainAdminPresenter
+    lateinit var headerBinding: HeaderNaviBinding
     var FRAGMENT_QR = 0
 
     //        var FRAGMENT_PROFILE = 1
@@ -36,16 +41,20 @@ class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         super.onCreate(savedInstanceState)
         binding = ActivityMainAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mainAdminPresenter = MainAdminPresenter(this)
         checkShaharedPre()
         setNavigationView()
     }
 
     fun checkShaharedPre(){
         var tokenEditor = SplashScreenActivity.sharedPreferences.getString("token", "").toString()
+      //  var username = SplashScreenActivity.sharedPreferences.getString("username", "").toString()
         println("token lúc đầu: "+tokenEditor)
+       // println("username:"+username)
         if(!tokenEditor.equals("")){
             SplashScreenActivity.token = tokenEditor
-           // homePresenter.getProfileClientEditor()
+            mainAdminPresenter.getProfileAdminEditor()
+          //  mainAdminPresenter.getProfileAdmin(tokenEditor, StaffReq(username))
         }
     }
 
@@ -57,36 +66,37 @@ class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toogle.syncState()
         var navigationView: NavigationView = binding.navigationView
         navigationView.setNavigationItemSelectedListener(this)
-        //    replaceFragment(FragmenQRCode())
+        replaceFragment(HomeAdminFragment())
         navigationView.menu.findItem(R.id.nax_1).setCheckable(true)
-        val headerBinding: HeaderNaviBinding =
-            HeaderNaviBinding.bind(binding.navigationView.getHeaderView(0))
+        headerBinding= HeaderNaviBinding.bind(binding.navigationView.getHeaderView(0))
         //picasso
 //        if(LoginActivity.profile.data.imageUrl != null) {
 //            val url = LoginActivity.profile.data.imageUrl
 //            Picasso.get().load(url).into(headerBinding.ImvAvatar)
 //        }
-        /*
-            headerBinding.tvadHeaderName.text = LoginActivity.profile.data.name
-            headerBinding.tvadHeaderUser.text = LoginActivity.workspace.data.name
-            headerBinding.tvadHeaderName.setOnClickListener {
-                var intent = Intent(this, ProfileActivity::class.java)
-                startActivity(intent)
-                drawerLayout.closeDrawer(GravityCompat.START)
-            }
-         */
+
+        headerBinding.tvadHeaderName.text = SplashScreenActivity.profileAdmin.result.hoten
+        headerBinding.tvadHeaderUser.text = SplashScreenActivity.profileAdmin.result.tendangnhap
+        headerBinding.tvadHeaderName.setOnClickListener {
+            var intent = Intent(this, InforActivity::class.java)
+            startActivity(intent)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+        headerBinding.tvadHeaderUser.setOnClickListener {
+            var intent = Intent(this, AccountActivity::class.java)
+            startActivity(intent)
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var id = item.itemId
         if (id == R.id.nax_1) {
-//            if (mCurrentFragment != FRAGMENT_QR) {
-//                replaceFragment(FragmenQRCode())
-//                mCurrentFragment = FRAGMENT_QR
-//            }
+            var intent = Intent(this, InputDataActivity::class.java)
+            startActivity(intent)
         } else if (id == R.id.nax_2) {
-               var intent = Intent(this, InputDataActivity::class.java)
-               startActivity(intent)
+
         } else if (id == R.id.nax_3) {
             //  var intent = Intent(this, ComHisActivity::class.java)
             //  startActivity(intent)
@@ -124,4 +134,11 @@ class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         }
         backPressed = System.currentTimeMillis()
     }
+
+    override fun onResume() {
+        super.onResume()
+        headerBinding.tvadHeaderName.text = SplashScreenActivity.profileAdmin.result.hoten
+    }
+
+
 }

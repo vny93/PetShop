@@ -4,31 +4,26 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:layout_margin="@dimen/_5sdp"
     android:orientation="vertical">
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/gray"
             app:cardCornerRadius="@dimen/_5sdp">
 
         <ImageView
             android:id="@+id/imv_brand"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_60sdp"
-            android:layout_margin="@dimen/_5sdp"
             android:src="@drawable/no_image" />
         </androidx.cardview.widget.CardView>
 
-        <View
-            android:layout_width="@dimen/_1sdp"
-            android:layout_height="fill_parent"
-            android:background="@color/black" />
+<!--        <View-->
+<!--            android:layout_width="@dimen/_1sdp"-->
+<!--            android:layout_height="fill_parent"-->
+<!--            android:background="@color/black" />-->
 <!--        <TextView-->
 <!--            android:id="@+id/tv_nameBrand"-->
 <!--            android:layout_width="wrap_content"-->
@@ -39,7 +34,6 @@
 <!--            android:textColor="@color/black"-->
 <!--            android:textSize="@dimen/_10sdp" />-->
 
-    </LinearLayout>
 
 <!--    <View-->
 <!--        android:layout_width="fill_parent"-->

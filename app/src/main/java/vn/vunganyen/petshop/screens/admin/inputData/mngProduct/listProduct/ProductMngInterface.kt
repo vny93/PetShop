@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.product
+package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.listProduct
 
 import vn.vunganyen.petshop.data.model.admin.product.getList.ProductOriginalRes
 

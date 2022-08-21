@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 import vn.vunganyen.petshop.data.api.PathApi
 import vn.vunganyen.petshop.data.model.admin.product.getList.ProductOriginalRes
 import vn.vunganyen.petshop.databinding.ItemManageBinding
+import vn.vunganyen.petshop.screens.admin.inputData.mngProduct.customProduct.CustomPMngActivity
 
 
 class AdapterProductMng : RecyclerView.Adapter<AdapterProductMng.MainViewHolder>() {
@@ -51,9 +52,10 @@ class AdapterProductMng : RecyclerView.Adapter<AdapterProductMng.MainViewHolder>
         val data = listData[position]
         holder.bindItem(data)
         holder.itemView.setOnClickListener{
-//            var intent = Intent(holder.itemView.context, ProductMngActivity::class.java)
-//            intent.putExtra("data",data)
-//            holder.itemView.context.startActivity(intent)
+            var intent = Intent(holder.itemView.context, CustomPMngActivity::class.java)
+            intent.putExtra("type","update")
+            intent.putExtra("data",data)
+            holder.itemView.context.startActivity(intent)
         }
         holder.binding.deleteMng.setOnClickListener{
             click?.invoke(data)

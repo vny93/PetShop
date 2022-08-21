@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".screens.admin.main.HomeAdminFragment">
+
+    <TextView
+        style="@style/style_textview_login3"
+        android:text="Xin chào!"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_120sdp"
+        android:textSize="@dimen/_30sdp" />
+
+    <TextView
+        android:id="@+id/home_nameAdmin"
+        style="@style/style_textview_login3"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/_30sdp" />
+
+    <TextView
+        style="@style/style_textview_login3"
+        android:text="Chúc ngày mới tốt lành"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:textSize="@dimen/_25sdp" />
+</LinearLayout>

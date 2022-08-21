@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -66,83 +67,50 @@ class BrandDetailMngActivity : AppCompatActivity(),BrandDetMngInterface {
         if(!brand.mota.isEmpty()){
             binding.edtBrandDecs.setText(brand.mota)
         }
-        binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-        binding.btnUpdateBrand.isEnabled = false
+        binding.imvLogoBrand.isEnabled = false
     }
 
     fun setEvent(){
         binding.btnUpdateBrand.setOnClickListener {
-            var id = binding.edtBrandId.text.toString()
-            var name = binding.edtBrandName.text.toString()
-            var email = binding.edtBrandEmail.text.toString()
-            var phone = binding.edtBrandPhone.text.toString()
-            var describe = binding.edtBrandDecs.text.toString()
-            println(name)
-            println(email)
-            println(phone)
-            println(describe)
-            var req = PostBrandReq(id,name,email,phone,describe)
-            brandDetMngPresenter.validCheck(req)
+            if(binding.btnUpdateBrand.text.toString().equals("Cập nhật")){
+                binding.btnUpdateBrand.setText(getString(R.string.pf_btnSave))
+
+                binding.imvLogoBrand.isEnabled = true
+
+                binding.cartBrandName.setCardBackgroundColor(Color.WHITE)
+                binding.edtBrandName.setBackground(resources.getDrawable(R.color.white))
+                binding.edtBrandName.isEnabled = true
+
+                binding.cartBrandEmail.setCardBackgroundColor(Color.WHITE)
+                binding.edtBrandEmail.setBackground(resources.getDrawable(R.color.white))
+                binding.edtBrandEmail.isEnabled = true
+
+                binding.cartBrandPhone.setCardBackgroundColor(Color.WHITE)
+                binding.edtBrandPhone.setBackground(resources.getDrawable(R.color.white))
+                binding.edtBrandPhone.isEnabled = true
+
+                binding.cartBrandDecs.setCardBackgroundColor(Color.WHITE)
+                binding.edtBrandDecs.setBackground(resources.getDrawable(R.color.white))
+                binding.edtBrandDecs.isEnabled = true
+            }
+            else{
+                var id = binding.edtBrandId.text.toString()
+                var name = binding.edtBrandName.text.toString()
+                var email = binding.edtBrandEmail.text.toString()
+                var phone = binding.edtBrandPhone.text.toString()
+                var describe = binding.edtBrandDecs.text.toString()
+                println(name)
+                println(email)
+                println(phone)
+                println(describe)
+                var req = PostBrandReq(id,name,email,phone,describe)
+                brandDetMngPresenter.validCheck(req)
+            }
+
         }
         binding.imvLogoBrand.setOnClickListener {
             onClickRequestPermission()
         }
-        binding.edtBrandName.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {
-                val brandName = binding.edtBrandName.text.toString()
-                if (brandName.equals(brand.tenhang)) {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-                    binding.btnUpdateBrand.isEnabled = false
-                } else {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button))
-                    binding.btnUpdateBrand.isEnabled = true
-                }
-            }
-        })
-        binding.edtBrandEmail.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {
-                val brandEmail = binding.edtBrandEmail.text.toString()
-                if (brandEmail.equals(brand.email)) {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-                    binding.btnUpdateBrand.isEnabled = false
-                } else {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button))
-                    binding.btnUpdateBrand.isEnabled = true
-                }
-            }
-        })
-        binding.edtBrandPhone.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {
-                val brandPhone = binding.edtBrandPhone.text.toString()
-                if (brandPhone.equals(brand.sdt)) {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-                    binding.btnUpdateBrand.isEnabled = false
-                } else {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button))
-                    binding.btnUpdateBrand.isEnabled = true
-                }
-            }
-        })
-        binding.edtBrandDecs.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun afterTextChanged(p0: Editable?) {
-                val brandDecs = binding.edtBrandDecs.text.toString()
-                if (brandDecs.equals(brand.mota)) {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-                    binding.btnUpdateBrand.isEnabled = false
-                } else {
-                    binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button))
-                    binding.btnUpdateBrand.isEnabled = true
-                }
-            }
-        })
 
         activityResultLauncher =
             registerForActivityResult<Intent, ActivityResult>(
@@ -159,8 +127,6 @@ class BrandDetailMngActivity : AppCompatActivity(),BrandDetMngInterface {
                                 MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri)
                             println("Bitmap: " + bitmapUpload)
                             binding.imvLogoBrand.setImageBitmap(bitmapUpload)
-                            binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button))
-                            binding.btnUpdateBrand.isEnabled = true
                         } catch (e: IOException) {
                             e.printStackTrace()
                         }
@@ -257,7 +223,25 @@ class BrandDetailMngActivity : AppCompatActivity(),BrandDetMngInterface {
 
     override fun UpdateSuccess() {
         dialog.showStartDialog3(getString(R.string.UpdateBrandSuccess),this)
-        binding.btnUpdateBrand.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-        binding.btnUpdateBrand.isEnabled = false
+        binding.btnUpdateBrand.setText(getString(R.string.tv_save))
+
+        binding.imvLogoBrand.isEnabled = false
+
+        binding.cartBrandName.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.edtBrandName.setBackground(resources.getDrawable(R.color.gray))
+        binding.edtBrandName.isEnabled = false
+
+        binding.cartBrandEmail.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.edtBrandEmail.setBackground(resources.getDrawable(R.color.gray))
+        binding.edtBrandEmail.isEnabled = false
+
+        binding.cartBrandPhone.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.edtBrandPhone.setBackground(resources.getDrawable(R.color.gray))
+        binding.edtBrandPhone.isEnabled = false
+
+        binding.cartBrandDecs.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.edtBrandDecs.setBackground(resources.getDrawable(R.color.gray))
+        binding.edtBrandDecs.isEnabled = false
+
     }
 }

@@ -9,7 +9,7 @@ data class ProDetailRes(
     val soluong : Int,
     val mota : String,
     val hinhanh : String,
-    val maloaisp : Int,
+    val maloaisp : String,
     val mahang : String,
     val manhacc: String,
     val isgood : Int,

@@ -1,4 +1,4 @@
-package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.product
+package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.listProduct
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -7,7 +7,6 @@ import vn.vunganyen.petshop.data.api.ApiProductService
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductReq
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductRes
 import vn.vunganyen.petshop.data.model.admin.product.getList.MainProductOriginalRes
-import vn.vunganyen.petshop.screens.admin.inputData.mngProductType.listPT.ProTypeMngInterface
 
 class ProductMngPresenter {
     var productMngInterface : ProductMngInterface

@@ -15,6 +15,9 @@ interface ApiProductTypeService {
     @GET("v1/productType/list")
     fun getList():Call<MainProTypeRes>
 
+    @POST("v1/productType/detail")
+    fun getPTDetail(@Header("Authorization") BearerToken: String,@Body req: CheckPTReq): Call<MainPTRes>
+
     @POST("v1/productType/check/use")
     fun checkPTUse(@Header("Authorization") BearerToken: String,@Body req: CheckPTReq): Call<CheckPTRes>
 
@@ -32,10 +35,6 @@ interface ApiProductTypeService {
 
     @POST("v1/productType/add")
     fun insertProductType(@Header("Authorization") BearerToken: String,@Body req: ProductTypeRes): Call<MainPTRes>
-
-//    @DELETE("v1/auth/logout")
-//    fun authLogout(@Header("Authorization") BearerToken: String):Call<ComplaintResponse>
-
 
     object Api {
         val api: ApiProductTypeService by lazy { RetrofitSetting().retrofit.create(ApiProductTypeService::class.java) }

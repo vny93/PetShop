@@ -81,19 +81,19 @@
                 android:text="@string/tv_brand_name" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cart_brandName"
                 style="@style/style_cardview_userlogin2"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:backgroundTint="@color/white">
+                android:layout_marginBottom="@dimen/_5sdp">
 
                 <EditText
                     android:id="@+id/edt_brandName"
                     style="@style/style_edt_login2"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:textColor="@color/black"
-                    android:background="@color/white"
+                    android:enabled="false"
                     android:hint="@string/tv_brand_name"/>
 
             </androidx.cardview.widget.CardView>
@@ -113,18 +113,18 @@
 
             <androidx.cardview.widget.CardView
                 style="@style/style_cardview_userlogin2"
+                android:id="@+id/cart_brandEmail"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:backgroundTint="@color/white">
+                android:layout_marginBottom="@dimen/_5sdp">
 
                 <EditText
                     android:id="@+id/edt_brandEmail"
                     style="@style/style_edt_login2"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:textColor="@color/black"
-                    android:background="@color/white"
+                    android:enabled="false"
                     android:hint="@string/tv_brand_email" />
 
             </androidx.cardview.widget.CardView>
@@ -144,19 +144,19 @@
 
             <androidx.cardview.widget.CardView
                 style="@style/style_cardview_userlogin2"
+                android:id="@+id/cart_brandPhone"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:backgroundTint="@color/white">
+                android:layout_marginBottom="@dimen/_5sdp">
 
                 <EditText
                     android:id="@+id/edt_brandPhone"
                     style="@style/style_edt_login2"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:textColor="@color/black"
-                    android:background="@color/white"
                     android:inputType="number"
+                    android:enabled="false"
                     android:hint="@string/tv_brand_phone" />
             </androidx.cardview.widget.CardView>
 
@@ -176,22 +176,22 @@
 
             <androidx.cardview.widget.CardView
                 style="@style/style_cardview_userlogin2"
+                android:id="@+id/cart_brandDecs"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:backgroundTint="@color/white">
+                android:layout_marginBottom="@dimen/_5sdp">
 
                 <EditText
                     android:id="@+id/edt_brandDecs"
                     style="@style/style_edt_login2"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:textColor="@color/black"
-                    android:background="@color/white"
                     android:hint="@string/tv_brand_describe"
                     android:maxLength="100"
                     android:padding="@dimen/_8sdp"
                     android:gravity="top"
+                    android:enabled="false"
                     android:inputType="text|textMultiLine" />
 
             </androidx.cardview.widget.CardView>
@@ -206,7 +206,7 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_100sdp"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:text="@string/pf_btnSave" />
+            android:text="@string/tv_save" />
     </LinearLayout>
 
 

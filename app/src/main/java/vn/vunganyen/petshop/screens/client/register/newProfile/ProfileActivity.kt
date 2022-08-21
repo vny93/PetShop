@@ -1,7 +1,9 @@
 package vn.vunganyen.petshop.screens.client.register.newProfile
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -49,12 +51,15 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
         setEvent()
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun setData(){
         binding.pfBirth.setText("" + day + "/" + (month + 1) + "/" + year)
         if(!SplashScreenActivity.token.equals("")){
             binding.pfName.setText(SplashScreenActivity.profileClient.result.hoten)
             var date : Date = SplashScreenActivity.formatdate.parse(SplashScreenActivity.profileClient.result.ngaysinh)
-            var strDate = SplashScreenActivity.formatdate1.format(date)
+            c.time = date
+            c.add(Calendar.DATE, 1) // number of days to add
+            var strDate = SplashScreenActivity.formatdate1.format(c.time)
             binding.pfBirth.setText(strDate)
             if(SplashScreenActivity.profileClient.result.gioitinh.equals("Nam")){
                 binding.radioMale.isChecked = true
@@ -64,9 +69,40 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
             binding.rgtEmail.setText(SplashScreenActivity.profileClient.result.email)
             binding.pfAddress.setText(SplashScreenActivity.profileClient.result.diachi)
             binding.pfTaxCode.setText(SplashScreenActivity.profileClient.result.masothue)
+            binding.imvCalendar.isEnabled = false
+        }
+        else{
+            binding.btnSave.setText(getString(R.string.pf_btnSave))
+            binding.cartPfName.setCardBackgroundColor(Color.WHITE)
+            binding.pfName.setBackground(resources.getDrawable(R.color.white))
+            binding.pfName.isEnabled = true
+
+            binding.cartPfBirth.setCardBackgroundColor(Color.WHITE)
+            binding.pfBirth.setBackground(resources.getDrawable(R.color.white))
+            binding.pfBirth.isEnabled = true
+
+            binding.radioFemale.isEnabled = true
+            binding.radioMale.isEnabled = true
+
+            binding.cartPfPhone.setCardBackgroundColor(Color.WHITE)
+            binding.pfPhone.setBackground(resources.getDrawable(R.color.white))
+            binding.pfPhone.isEnabled = true
+
+            binding.cartRgtEmail.setCardBackgroundColor(Color.WHITE)
+            binding.rgtEmail.setBackground(resources.getDrawable(R.color.white))
+            binding.rgtEmail.isEnabled = true
+
+            binding.cartPfAddress.setCardBackgroundColor(Color.WHITE)
+            binding.pfAddress.setBackground(resources.getDrawable(R.color.white))
+            binding.pfAddress.isEnabled = true
+
+            binding.cartPfTaxCode.setCardBackgroundColor(Color.WHITE)
+            binding.pfTaxCode.setBackground(resources.getDrawable(R.color.white))
+            binding.pfTaxCode.isEnabled = true
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun setEvent(){
         binding.backProfile.setOnClickListener{
             finish()
@@ -98,31 +134,64 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 //        }
 
         binding.btnSave.setOnClickListener{
-            var name = binding.pfName.text.toString()
-            var dateBirth = binding.pfBirth.text.toString()
-            var mdate : Date = SplashScreenActivity.formatdate1.parse(dateBirth)
-            var strDate = SplashScreenActivity.formatdate.format(mdate)
-            var email = binding.rgtEmail.text.toString()
-            var phone = binding.pfPhone.text.toString()
-            var address = binding.pfAddress.text.toString()
-            var taxCode = binding.pfTaxCode.text.toString()
-            var gender =""
-            if(binding.radioMale.isChecked == true){
-                gender = "Nam"
+            if(binding.btnSave.text.toString().equals("Cập nhật")){
+                binding.btnSave.setText(getString(R.string.pf_btnSave))
+                binding.imvCalendar.isEnabled = true
+                binding.cartPfName.setCardBackgroundColor(Color.WHITE)
+                binding.pfName.setBackground(resources.getDrawable(R.color.white))
+                binding.pfName.isEnabled = true
+
+                binding.cartPfBirth.setCardBackgroundColor(Color.WHITE)
+                binding.pfBirth.setBackground(resources.getDrawable(R.color.white))
+                binding.pfBirth.isEnabled = true
+
+                binding.radioFemale.isEnabled = true
+                binding.radioMale.isEnabled = true
+
+                binding.cartPfPhone.setCardBackgroundColor(Color.WHITE)
+                binding.pfPhone.setBackground(resources.getDrawable(R.color.white))
+                binding.pfPhone.isEnabled = true
+
+                binding.cartRgtEmail.setCardBackgroundColor(Color.WHITE)
+                binding.rgtEmail.setBackground(resources.getDrawable(R.color.white))
+                binding.rgtEmail.isEnabled = true
+
+                binding.cartPfAddress.setCardBackgroundColor(Color.WHITE)
+                binding.pfAddress.setBackground(resources.getDrawable(R.color.white))
+                binding.pfAddress.isEnabled = true
+
+                binding.cartPfTaxCode.setCardBackgroundColor(Color.WHITE)
+                binding.pfTaxCode.setBackground(resources.getDrawable(R.color.white))
+                binding.pfTaxCode.isEnabled = true
             }
-            if(binding.radioFemale.isChecked == true){
-                gender = "Nữ"
+            else{
+                var name = profilePresenter.handleString(binding.pfName.text.toString())
+                var dateBirth = binding.pfBirth.text.toString()
+                var mdate : Date = SplashScreenActivity.formatdate1.parse(dateBirth)
+                var strDate = SplashScreenActivity.formatdate.format(mdate)
+                var email = binding.rgtEmail.text.toString()
+                var phone = binding.pfPhone.text.toString()
+                var address = binding.pfAddress.text.toString()
+                var taxCode = binding.pfTaxCode.text.toString()
+                var gender =""
+                if(binding.radioMale.isChecked == true){
+                    gender = "Nam"
+                }
+                if(binding.radioFemale.isChecked == true){
+                    gender = "Nữ"
+                }
+                println("name: "+name)
+                println("strDate: "+strDate)
+                println("gendar: "+gender)
+                println("email: "+email)
+                println("phone: "+phone)
+                println("address: "+address)
+                println("taxCode: "+taxCode)
+                println("username: "+username)
+                var profileReq = AddProfileReq(name,gender,address,strDate,phone,email,taxCode,username)
+                profilePresenter.validCheck(profileReq)
             }
-            println("name: "+name)
-            println("strDate: "+strDate)
-            println("gendar: "+gender)
-            println("email: "+email)
-            println("phone: "+phone)
-            println("address: "+address)
-            println("taxCode: "+taxCode)
-            println("username: "+username)
-            var profileReq = AddProfileReq(name,gender,address,strDate,phone,email,taxCode,username)
-            profilePresenter.validCheck(profileReq)
+
         }
 
         binding.lnlAddProfile.setOnClickListener{
@@ -187,6 +256,36 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
         dialog.showStartDialog3(getString(R.string.AddProfileSucces),this)
         SplashScreenActivity.editor.commit()
         profilePresenter.getProfileEditor()
+        binding.btnSave.setText(getString(R.string.tv_save))
+        binding.btnSave.setText(getString(R.string.pf_btnSave))
+        binding.imvCalendar.isEnabled = false
+        binding.cartPfName.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.pfName.setBackground(resources.getDrawable(R.color.gray))
+        binding.pfName.isEnabled = false
+
+        binding.cartPfBirth.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.pfBirth.setBackground(resources.getDrawable(R.color.gray))
+        binding.pfBirth.isEnabled = false
+
+        binding.radioFemale.isEnabled = false
+        binding.radioMale.isEnabled = false
+
+        binding.cartPfPhone.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.pfPhone.setBackground(resources.getDrawable(R.color.gray))
+        binding.pfPhone.isEnabled = false
+
+        binding.cartRgtEmail.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.rgtEmail.setBackground(resources.getDrawable(R.color.gray))
+        binding.rgtEmail.isEnabled = false
+
+        binding.cartPfAddress.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.pfAddress.setBackground(resources.getDrawable(R.color.gray))
+        binding.pfAddress.isEnabled = false
+
+        binding.cartPfTaxCode.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.pfTaxCode.setBackground(resources.getDrawable(R.color.gray))
+        binding.pfTaxCode.isEnabled = false
+
     }
 
 

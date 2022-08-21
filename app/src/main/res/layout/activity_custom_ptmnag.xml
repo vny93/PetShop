@@ -83,18 +83,18 @@
 
             <androidx.cardview.widget.CardView
                 style="@style/style_cardview_userlogin2"
+                android:id="@+id/cart_name_PTmng"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:backgroundTint="@color/white">
+                android:layout_marginBottom="@dimen/_5sdp">
 
                 <EditText
                     android:id="@+id/edt_name_PTmng"
                     style="@style/style_edt_login2"
                     android:layout_marginStart="@dimen/_5sdp"
+                    android:enabled="false"
                     android:textColor="@color/black"
-                    android:background="@color/white"
                     android:hint="@string/tv_PT_name"/>
 
             </androidx.cardview.widget.CardView>
@@ -108,7 +108,7 @@
             android:layout_marginTop="@dimen/_80sdp"
             android:layout_marginEnd="@dimen/_100sdp"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:text="@string/pf_btnSave" />
+            android:text="@string/tv_save" />
     </LinearLayout>
 
 

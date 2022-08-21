@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.MainStaffRes
 import vn.vunganyen.petshop.data.model.client.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.databinding.ActivitySplashScreenBinding
 import vn.vunganyen.petshop.screens.admin.main.MainAdminActivity
 import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
+import java.util.*
 import java.util.regex.Pattern
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -32,10 +34,11 @@ class SplashScreenActivity : AppCompatActivity() {
         lateinit var sharedPreferences: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
         lateinit var profileClient: MainUserRes
+        lateinit var profileAdmin: MainStaffRes
         var sumPrice: Float = 0.0f
         val formatdate = SimpleDateFormat("yyyy-MM-dd")
         val formatdate1 = SimpleDateFormat("dd/MM/yyyy")
-        val formatdate2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val formatdate2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.ENGLISH)
         val formatdate3 = SimpleDateFormat("dd-MM-yyyy hh:mm")
         val formatdate4 = SimpleDateFormat("dd-MM-yyyy")
         val formatter = DecimalFormat("###,###,###")
@@ -50,7 +53,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //        SplashScreenActivity.token = ""
 //        SplashScreenActivity.editor.clear().apply()
 //        SplashScreenActivity.sharedPreferences.edit().clear().apply()
-//        println("đã xóa")
+        println("đã xóa")
         checkShaharedPre()
     }
 

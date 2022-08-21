@@ -45,6 +45,7 @@ class LoginPresenter {
                     //lưu
                     SplashScreenActivity.editor.putString("token",response.body()!!.accessToken)
                     SplashScreenActivity.editor.putInt("roleId",response.body()!!.maquyen)
+                //    SplashScreenActivity.editor.putString("username",req.tendangnhap)
                     println("roleId: "+response.body()!!.maquyen)
                     if(response.body()!!.maquyen == 4){
                         println("vô user")
@@ -92,6 +93,7 @@ class LoginPresenter {
     }
 
     fun getProfileAdmin(token : String, req: StaffReq){
+        println(req.tendangnhap)
         ApiStaffService.Api.api.authGetProfileStaff(token, req).enqueue(object : Callback<MainStaffRes>{
             override fun onResponse(call: Call<MainStaffRes>, response: Response<MainStaffRes>) {
                 if(response.isSuccessful){

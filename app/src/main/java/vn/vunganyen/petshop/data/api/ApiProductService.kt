@@ -5,6 +5,10 @@ import retrofit2.http.*
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductReq
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductRes
 import vn.vunganyen.petshop.data.model.admin.product.getList.MainProductOriginalRes
+import vn.vunganyen.petshop.data.model.admin.product.getList.ProductOriginalRes
+import vn.vunganyen.petshop.data.model.admin.product.insert.MainInsertPMngRes
+import vn.vunganyen.petshop.data.model.admin.product.uploadImage.PutProductImageReq
+import vn.vunganyen.petshop.data.model.admin.product.uploadInfor.PutProductInforReq
 import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
 import vn.vunganyen.petshop.data.model.client.product.get.MainProductRes
 import vn.vunganyen.petshop.data.model.client.product.get.ProductReq
@@ -38,9 +42,17 @@ interface ApiProductService {
     @POST("v1/product/check/use")
     fun checkProductUse(@Header("Authorization") BearerToken: String,@Body req: CheckProductReq): Call<CheckProductRes>
 
+    @POST("v1/product/add")
+    fun insertProduct(@Header("Authorization") BearerToken: String,@Body req: ProductOriginalRes): Call<MainInsertPMngRes>
+
+    @PUT("v1/product/update/infor")
+    fun updateInforProduct(@Header("Authorization") BearerToken: String,@Body req: PutProductInforReq): Call<CheckProductRes>
+
+    @PUT("v1/product/update/image")
+    fun updateImageProduct(@Header("Authorization") BearerToken: String,@Body req: PutProductImageReq): Call<CheckProductRes>
+
     @POST("v1/product/delete")
     fun removeProduct(@Header("Authorization") BearerToken: String,@Body req: CheckProductReq): Call<CheckProductRes>
-
 
 
     @PUT("v1/product/update/amount")

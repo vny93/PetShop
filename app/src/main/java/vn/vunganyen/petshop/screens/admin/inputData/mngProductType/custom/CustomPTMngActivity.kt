@@ -67,14 +67,18 @@ class CustomPTMngActivity : AppCompatActivity(), CustomPTMngInterface {
             binding.edtIdPTmng.setText(productType.maloaisp)
             binding.edtNamePTmng.setText(productType.tenloaisp)
 
-            binding.btnUpdatePTmng.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-            binding.btnUpdatePTmng.isEnabled = false
+            binding.imvLogoPTmng.isEnabled = false
         }
         else{
             binding.toolbarPtMng.setTitle(getString(R.string.tv_toolbar_insertProduct))
             binding.edtIdPTmng.isEnabled = true
-            binding.cartPTMng.setBackgroundColor(Color.WHITE)
+            binding.cartPTMng.setCardBackgroundColor(Color.WHITE)
             binding.edtIdPTmng.setBackground(resources.getDrawable(R.color.white))
+
+            binding.edtNamePTmng.isEnabled = true
+            binding.cartNamePTmng.setCardBackgroundColor(Color.WHITE)
+            binding.edtNamePTmng.setBackground(resources.getDrawable(R.color.white))
+
             binding.btnUpdatePTmng.setText(getString(R.string.tv_insert))
         }
     }
@@ -108,29 +112,22 @@ class CustomPTMngActivity : AppCompatActivity(), CustomPTMngInterface {
             onClickRequestPermission()
         }
 
-        if(type.equals("update")){
-            binding.edtNamePTmng.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-                override fun afterTextChanged(p0: Editable?) {
-                    val PTname = binding.edtNamePTmng.text.toString()
-                    if (PTname.equals(productType.tenloaisp)) {
-                        binding.btnUpdatePTmng.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-                        binding.btnUpdatePTmng.isEnabled = false
-                    } else {
-                        binding.btnUpdatePTmng.setBackground(resources.getDrawable(R.drawable.custom_button))
-                        binding.btnUpdatePTmng.isEnabled = true
-                    }
-                }
-            })
-        }
-
         binding.btnUpdatePTmng.setOnClickListener {
-            var id = binding.edtIdPTmng.text.toString()
-            var name = binding.edtNamePTmng.text.toString()
-            println(id)
-            println(name)
-            customPTMngPresenter.validCheck(id,name)
+            if(binding.btnUpdatePTmng.text.toString().equals("Cập nhật")){
+                binding.btnUpdatePTmng.setText(getString(R.string.pf_btnSave))
+
+                binding.imvLogoPTmng.isEnabled = true
+                binding.cartNamePTmng.setCardBackgroundColor(Color.WHITE)
+                binding.edtNamePTmng.setBackground(resources.getDrawable(R.color.white))
+                binding.edtNamePTmng.isEnabled = true
+            }
+            else{
+                var id = binding.edtIdPTmng.text.toString()
+                var name = binding.edtNamePTmng.text.toString()
+                println(id)
+                println(name)
+                customPTMngPresenter.validCheck(id,name)
+            }
         }
 
         binding.viewPTmng.setOnClickListener{
@@ -203,8 +200,11 @@ class CustomPTMngActivity : AppCompatActivity(), CustomPTMngInterface {
 
     override fun UpdateSuccess() {
         dialog.showStartDialog3(getString(R.string.UpdateBrandSuccess),this)
-        binding.btnUpdatePTmng.setBackground(resources.getDrawable(R.drawable.custom_button_false))
-        binding.btnUpdatePTmng.isEnabled = false
+        binding.btnUpdatePTmng.setText(getString(R.string.tv_save))
+        binding.imvLogoPTmng.isEnabled = false
+        binding.cartNamePTmng.setCardBackgroundColor(Color.parseColor("#EFEDED"))
+        binding.edtNamePTmng.setBackground(resources.getDrawable(R.color.gray))
+        binding.edtNamePTmng.isEnabled = false
     }
 
     override fun InsertError() {
@@ -223,6 +223,10 @@ class CustomPTMngActivity : AppCompatActivity(), CustomPTMngInterface {
 
     override fun ImageEmpty() {
         dialog.showStartDialog3(getString(R.string.Image_empty),this)
+    }
+
+    override fun IdExist() {
+        dialog.showStartDialog3(getString(R.string.id_pt_exist),this)
     }
 
 }
