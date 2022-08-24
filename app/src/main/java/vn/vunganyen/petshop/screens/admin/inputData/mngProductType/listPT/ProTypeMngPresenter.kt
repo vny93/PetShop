@@ -6,7 +6,10 @@ import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiProductTypeService
 import vn.vunganyen.petshop.data.model.admin.productType.checkPTUse.CheckPTReq
 import vn.vunganyen.petshop.data.model.admin.productType.checkPTUse.CheckPTRes
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffRes
 import vn.vunganyen.petshop.data.model.client.productType.MainProTypeRes
+import vn.vunganyen.petshop.data.model.client.productType.ProductTypeRes
+import vn.vunganyen.petshop.screens.admin.inputData.staff.getList.StaffManageActivity
 
 class ProTypeMngPresenter {
     var proTypeMngInterface : ProTypeMngInterface
@@ -19,6 +22,7 @@ class ProTypeMngPresenter {
         ApiProductTypeService.Api.api.getList().enqueue(object : Callback<MainProTypeRes>{
             override fun onResponse(call: Call<MainProTypeRes>,response: Response<MainProTypeRes>){
                 if(response.isSuccessful){
+                    ProTypeMngActivity.listPT = response.body()!!.result as ArrayList<ProductTypeRes>
                     proTypeMngInterface.GetList(response.body()!!.result)
                 }
             }
@@ -54,5 +58,15 @@ class ProTypeMngPresenter {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    fun getFilter(s : String){
+        ProTypeMngActivity.listFilter = ArrayList<ProductTypeRes>()
+        for(list in ProTypeMngActivity.listPT){
+            if(list.maloaisp.toUpperCase().contains(s.toUpperCase())){
+                ProTypeMngActivity.listFilter.add(list)
+            }
+        }
+        proTypeMngInterface.GetList(ProTypeMngActivity.listFilter)
     }
 }

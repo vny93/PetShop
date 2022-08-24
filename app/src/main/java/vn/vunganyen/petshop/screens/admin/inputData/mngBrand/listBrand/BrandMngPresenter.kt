@@ -6,8 +6,11 @@ import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiBrandService
 import vn.vunganyen.petshop.data.model.admin.brand.checkUse.CheckUseRes
 import vn.vunganyen.petshop.data.model.admin.brand.uploadInfor.PostBrandRes
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffRes
 import vn.vunganyen.petshop.data.model.client.brand.MainBrandRes
 import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailReq
+import vn.vunganyen.petshop.data.model.client.brandDetail.BrandDetailRes
+import vn.vunganyen.petshop.screens.admin.inputData.staff.getList.StaffManageActivity
 
 class BrandMngPresenter {
     var brandMngInterface : BrandMngInterface
@@ -20,6 +23,7 @@ class BrandMngPresenter {
         ApiBrandService.Api.api.getList().enqueue(object : Callback<MainBrandRes> {
             override fun onResponse(call: Call<MainBrandRes>, response: Response<MainBrandRes>) {
                 if(response.isSuccessful){
+                    BrandMngActivity.listBrand = response.body()!!.result as ArrayList<BrandDetailRes>
                     brandMngInterface.GetListBrand(response.body()!!.result)
                 }
             }
@@ -58,5 +62,15 @@ class BrandMngPresenter {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    fun getFilter(s : String){
+        BrandMngActivity.listFilter = ArrayList<BrandDetailRes>()
+        for(list in BrandMngActivity.listBrand){
+            if(list.mahang.toUpperCase().contains(s.toUpperCase())){
+                BrandMngActivity.listFilter.add(list)
+            }
+        }
+        brandMngInterface.GetListBrand(BrandMngActivity.listFilter)
     }
 }

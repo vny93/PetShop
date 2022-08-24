@@ -226,7 +226,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/spinner_pt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
                     android:textSize="@dimen/_11sdp"
                     android:background="@drawable/boder_rectangle"
                     android:enabled="false"
@@ -265,7 +265,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/spinner_brand"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
                     android:textSize="@dimen/_11sdp"
                     android:background="@drawable/boder_rectangle"
                     android:enabled="false"
@@ -304,7 +304,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/spinner_provider"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
                     android:textSize="@dimen/_11sdp"
                     android:background="@drawable/boder_rectangle"
                     android:enabled="false"

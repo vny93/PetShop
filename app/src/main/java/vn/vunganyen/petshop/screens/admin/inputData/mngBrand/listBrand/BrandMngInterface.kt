@@ -7,4 +7,5 @@ interface BrandMngInterface {
     fun RemoveFail()
     fun AllowRemove(id : String)
     fun RemoveSuccess()
+   // fun GetFilter(list : List<BrandDetailRes>)
 }

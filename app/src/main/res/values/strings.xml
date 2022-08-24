@@ -102,7 +102,8 @@
     <string name="tv_checkout_fail">Đặt hàng thất bại</string>
     <string name="tv_dateReceive">Ngày nhận dự kiến</string>
     <string name="hint_dateReceive">Chọn ngày nhận dự kiến</string>
-    <string name="errorDate">Ngày dự kiến phải tính từ ngày hiện tại trở đi</string>
+    <string name="errorDate">Ngày dự kiến phải tính từ sau ngày hiện tại trở đi</string>
+    <string name="errorDate2">Chọn ngày không hợp lệ</string>
 
     <!-- Cart Detail -->
     <string name="cart">Giỏ hàng của tôi</string>
@@ -143,6 +144,7 @@
     <string name="tv_titleOrder">Đơn hàng</string>
     <string name="title_idCart">Mã đơn hàng:</string>
     <string name="title_Bookdate">Ngày đặt hàng:</string>
+    <string name="title_dateReceive">Ngày dự kiến:</string>
     <string name="title_status">Trạng thái:</string>
     <string name="title_price">Tổng tiền:</string>
 
@@ -240,6 +242,7 @@
     <string name="tv_number_error">Số lượng phải lớn hơn 0</string>
 
     <!--    Staff manage-->
+    <string name="tv_find_staff">Tìm kiếm theo mã nhân viên</string>
     <string name="RemoveStaffFail">Bạn không thể xóa nhân viên này</string>
     <string name="AllowRemoveStaff">Bạn có chắc chắn muốn xóa nhân viên này?</string>
     <string name="tv_toolbar_updateStaff">Cập nhật hồ sơ</string>
@@ -252,6 +255,59 @@
         <item>Khóa</item>
     </string-array>
 
-<!--    change pass admin-->
+    <!--    change pass admin-->
     <string name="title_changePw">Đổi mật khẩu</string>
+    <string name="tv_hello">Xin chào!</string>
+    <string name="tv_newDay">Chúc ngày mới tốt lành</string>
+    <string name="tv_work">Quản lý đơn giao hàng</string>
+    <!-- order manage    -->
+    <string name="title_dateFrom">Từ ngày</string>
+    <string name="title_dateTo">Đến ngày</string>
+    <string name="title_From">Từ</string>
+    <string name="title_To">Đến</string>
+    <string name="title_date">Chọn ngày</string>
+    <string name="title_update_order">Cập nhật đơn hàng</string>
+    <string name="title_name_shipper">Nhân viên giao hàng:</string>
+    <string name="title_name_review">Nhân viên duyệt:</string>
+    <string name="title_date_ship">Ngày giao:</string>
+    <string name="title_order_detail">Xem chi tiết</string>
+    <string name="title_order_cancel">Hủy đơn hàng</string>
+    <string name="tv_delivered">Đã giao hàng</string>
+    <string name="errorDateShip">Ngày giao hàng phải tính từ sau ngày hiện tại trở đi</string>
+    <string name="message_cancelOrder">Bạn có thực sự muốn hủy đơn hàng này?</string>
+    <string name="cancel_order_success">Hủy đơn hàng thành công</string>
+    <string name="choose_time">Chọn thời gian</string>
+    <string name="filter">Lọc</string>
+    <string name="error_empty2">Vui lòng chọn thời gian</string>
+    <string name="title_statistics">Thống kê doanh thu</string>
+    <string name="statistics_month">Tháng/Năm</string>
+    <string name="tv_statistics">Doanh thu</string>
+    <string name="tv_sum_statistics">Tổng doanh thu:</string>
+    <string name="confirm_ship">Xác nhận bạn đã giao đơn hàng này</string>
+    <string-array name="status_admin">
+        <item>Chờ duyệt</item>
+        <item>Đang giao</item>
+        <item>Đã giao</item>
+        <item>Đã hủy</item>
+    </string-array>
+
+    <string-array name="status_shipper">
+        <item>Đang giao</item>
+        <item>Đã giao</item>
+    </string-array>
+
+    <string-array name="month">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
 </resources>

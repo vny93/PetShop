@@ -12,6 +12,7 @@ import vn.vunganyen.petshop.databinding.FragmentAccountBinding
 import vn.vunganyen.petshop.screens.client.changePassword.ChangePassActivity
 import vn.vunganyen.petshop.screens.client.login.LoginActivity
 import vn.vunganyen.petshop.screens.client.myOrder.MyOrderActivity
+import vn.vunganyen.petshop.screens.client.orderClient.OrderClientActivity
 import vn.vunganyen.petshop.screens.client.register.newProfile.ProfileActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
@@ -71,7 +72,7 @@ class FragmentAccount : Fragment() {
         }
 
         binding.imvOrder.setOnClickListener {
-            var intent = Intent(context, MyOrderActivity::class.java)
+            var intent = Intent(context, OrderClientActivity::class.java)
             startActivity(intent)
         }
 

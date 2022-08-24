@@ -11,6 +11,7 @@ import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityLoginBinding
 import vn.vunganyen.petshop.screens.admin.main.MainAdminActivity
+import vn.vunganyen.petshop.screens.admin.orderShip.homeShipper.MainShipperActivity
 import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.register.newProfile.ProfileActivity
 import vn.vunganyen.petshop.screens.client.register.newRegister.RegisterActivity
@@ -107,6 +108,12 @@ class LoginActivity : AppCompatActivity(), LoginInterface {
     override fun loginStaffSuccess() {
         SplashScreenActivity.editor.commit()
         var intent = Intent(this, MainAdminActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun loginShipperSuccess() {
+        SplashScreenActivity.editor.commit()
+        var intent = Intent(this, MainShipperActivity::class.java)
         startActivity(intent)
     }
 

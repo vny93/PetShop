@@ -41,6 +41,7 @@ class FragmentCart : Fragment(), CartInterface {
             binding.btnCheckOut.visibility = View.GONE
             binding.sumCartMoney.visibility = View.GONE
             binding.tvNameMoney.visibility = View.GONE
+            binding.tvCartTop.visibility = View.GONE
         }
         else{
             binding.imvCartError.visibility = View.GONE

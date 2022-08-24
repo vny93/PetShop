@@ -10,6 +10,7 @@ import vn.vunganyen.petshop.data.model.admin.staff.getProfile.MainStaffRes
 import vn.vunganyen.petshop.data.model.client.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.databinding.ActivitySplashScreenBinding
 import vn.vunganyen.petshop.screens.admin.main.MainAdminActivity
+import vn.vunganyen.petshop.screens.admin.orderShip.homeShipper.MainShipperActivity
 import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -21,10 +22,16 @@ class SplashScreenActivity : AppCompatActivity() {
     lateinit var splashPresenter: SplashPresenter
 
     companion object {
+        var ADMIN = 1
+        var SHIPPER = 3
+        var CLIENT = 5
+        var PENDING = "Chờ duyệt"
+        var DELIVERY = "Đang giao"
+        var DELIVERED = "Đã giao"
+        var CANCELLED = "Đã hủy"
         //Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số
         var USERNAME = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
         var EMAIL_ADDRESS = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
-
         //Mât khẩu tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số
         var PASSWORD = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}\$")
         //var SDT = Pattern.compile("(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})")
@@ -35,6 +42,7 @@ class SplashScreenActivity : AppCompatActivity() {
         lateinit var editor: SharedPreferences.Editor
         lateinit var profileClient: MainUserRes
         lateinit var profileAdmin: MainStaffRes
+        lateinit var profileStaff: MainStaffRes
         var sumPrice: Float = 0.0f
         val formatdate = SimpleDateFormat("yyyy-MM-dd")
         val formatdate1 = SimpleDateFormat("dd/MM/yyyy")
@@ -42,6 +50,8 @@ class SplashScreenActivity : AppCompatActivity() {
         val formatdate3 = SimpleDateFormat("dd-MM-yyyy hh:mm")
         val formatdate4 = SimpleDateFormat("dd-MM-yyyy")
         val formatter = DecimalFormat("###,###,###")
+        val formatMonthYear = SimpleDateFormat("M-yyyy")
+        val formatMonth = SimpleDateFormat("MM")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +63,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //        SplashScreenActivity.token = ""
 //        SplashScreenActivity.editor.clear().apply()
 //        SplashScreenActivity.sharedPreferences.edit().clear().apply()
-        println("đã xóa")
+//        println("đã xóa")
         checkShaharedPre()
     }
 
@@ -68,12 +78,16 @@ class SplashScreenActivity : AppCompatActivity() {
         println("mã quyền lúc đầu: " + roleIdEditor)
         if(roleIdEditor != 0){
             roleId = roleIdEditor
-            if (roleId == 4) {
+            if (roleId == CLIENT) {
                 println("Vô cline nha")
                 moveClient()
-            } else if (roleId == 1) {
+            } else if (roleId == ADMIN) {
                 println("Vô Admin nha")
                 moveAdmin()
+            }
+            else if (roleId == SHIPPER) {
+                println("Vô Shipper nha")
+                moveShipper()
             }
         }
         else{
@@ -97,6 +111,13 @@ class SplashScreenActivity : AppCompatActivity() {
     fun moveAdmin() {
         Handler().postDelayed({
             var intent = Intent(this, MainAdminActivity::class.java)
+            startActivity(intent)
+        }, 3000)
+    }
+
+    fun moveShipper() {
+        Handler().postDelayed({
+            var intent = Intent(this, MainShipperActivity::class.java)
             startActivity(intent)
         }, 3000)
     }

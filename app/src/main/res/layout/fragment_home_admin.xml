@@ -4,28 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/logo2"
     tools:context=".screens.admin.main.HomeAdminFragment">
+
+    <ImageView
+        android:id="@+id/logo"
+        style="@style/style_imvlogin"
+        android:layout_marginTop="@dimen/_5sdp" />
 
     <TextView
         style="@style/style_textview_login3"
-        android:text="Xin chào!"
+        android:text="@string/tv_hello"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/_120sdp"
-        android:textSize="@dimen/_30sdp" />
+        android:layout_marginTop="@dimen/_40sdp"
+        android:textSize="@dimen/_25sdp" />
 
     <TextView
         android:id="@+id/home_nameAdmin"
         style="@style/style_textview_login3"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="@dimen/_30sdp" />
+        android:textColor="@color/color1"
+        android:textSize="@dimen/_25sdp" />
 
     <TextView
         style="@style/style_textview_login3"
-        android:text="Chúc ngày mới tốt lành"
+        android:text="@string/tv_newDay"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:textSize="@dimen/_25sdp" />
 </LinearLayout>

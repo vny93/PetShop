@@ -79,7 +79,6 @@ class SearchProActivity : AppCompatActivity(), SearchProInterface {
                 var req = SearchProductReq(nameProduct,option,min,max)
                 searchProPresenter.searchProduct(req)
             }
-
         })
 
         binding.edtMin.addTextChangedListener(object : TextWatcher {

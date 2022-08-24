@@ -17,6 +17,7 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface {
     lateinit var binding : ActivityOrderDetailBinding
     lateinit var orderDetailPresenter: OrderDetailPresenter
     var adapter : AdapterProductCheckout = AdapterProductCheckout()
+    var c = Calendar.getInstance()
     companion object{
        lateinit var inforOrder : GetCartRes
     }
@@ -56,8 +57,10 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface {
         binding.idCart.setText(inforOrder.magh.toString())
         var timeOrder  :Date = SplashScreenActivity.formatdate2.parse(inforOrder.ngaydat)
         var intendTime  :Date = SplashScreenActivity.formatdate2.parse(inforOrder.ngaydukien)
+        c.time = intendTime
+        c.add(Calendar.DATE, 1) // number of days to add
         binding.timeOrder.setText(SplashScreenActivity.formatdate3.format(timeOrder))
-        binding.intendTime.setText(SplashScreenActivity.formatdate4.format(intendTime))
+        binding.intendTime.setText(SplashScreenActivity.formatdate4.format(c.time))
         if(inforOrder.ngaygiao != null){
             var deliveryTime  :Date = SplashScreenActivity.formatdate2.parse(inforOrder.ngaygiao)
             binding.deliveryTime.setText(SplashScreenActivity.formatdate3.format(deliveryTime))

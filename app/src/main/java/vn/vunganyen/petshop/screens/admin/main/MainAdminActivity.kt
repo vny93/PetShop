@@ -12,14 +12,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import vn.vunganyen.petshop.R
-import vn.vunganyen.petshop.data.model.admin.staff.getProfile.MainStaffRes
-import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffReq
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityMainAdminBinding
 import vn.vunganyen.petshop.databinding.HeaderNaviBinding
 import vn.vunganyen.petshop.screens.admin.inputData.InputDataActivity
+import vn.vunganyen.petshop.screens.admin.order.listOrder.OrderMngActivity
 import vn.vunganyen.petshop.screens.admin.profile.account.AccountActivity
 import vn.vunganyen.petshop.screens.admin.profile.information.InforActivity
+import vn.vunganyen.petshop.screens.admin.statistics.StatisticsActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 
 class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,MainAdminInterface {
@@ -96,10 +96,11 @@ class MainAdminActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             var intent = Intent(this, InputDataActivity::class.java)
             startActivity(intent)
         } else if (id == R.id.nax_2) {
-
+            var intent = Intent(this, OrderMngActivity::class.java)
+            startActivity(intent)
         } else if (id == R.id.nax_3) {
-            //  var intent = Intent(this, ComHisActivity::class.java)
-            //  startActivity(intent)
+              var intent = Intent(this, StatisticsActivity::class.java)
+              startActivity(intent)
         } else if (id == R.id.nax_4) {
             dialog.showStartDialog4(getString(R.string.mess_logOut), this)
             dialog.clickOk = { ->

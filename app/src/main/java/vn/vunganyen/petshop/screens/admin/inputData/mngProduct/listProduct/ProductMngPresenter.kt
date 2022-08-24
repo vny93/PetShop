@@ -7,6 +7,9 @@ import vn.vunganyen.petshop.data.api.ApiProductService
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductReq
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductRes
 import vn.vunganyen.petshop.data.model.admin.product.getList.MainProductOriginalRes
+import vn.vunganyen.petshop.data.model.admin.product.getList.ProductOriginalRes
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffRes
+import vn.vunganyen.petshop.screens.admin.inputData.staff.getList.StaffManageActivity
 
 class ProductMngPresenter {
     var productMngInterface : ProductMngInterface
@@ -19,6 +22,7 @@ class ProductMngPresenter {
         ApiProductService.Api.api.getList(token).enqueue(object : Callback<MainProductOriginalRes>{
             override fun onResponse(call: Call<MainProductOriginalRes>,response: Response<MainProductOriginalRes>) {
                 if(response.isSuccessful){
+                    ProductMngActivity.listProduct = response.body()!!.result as ArrayList<ProductOriginalRes>
                     productMngInterface.GetList(response.body()!!.result)
                 }
             }
@@ -55,5 +59,15 @@ class ProductMngPresenter {
             }
 
         })
+    }
+
+    fun getFilter(s : String){
+        ProductMngActivity.listFilter = ArrayList<ProductOriginalRes>()
+        for(list in ProductMngActivity.listProduct){
+            if(list.masp.toUpperCase().contains(s.toUpperCase())){
+                ProductMngActivity.listFilter.add(list)
+            }
+        }
+        productMngInterface.GetList(ProductMngActivity.listFilter)
     }
 }

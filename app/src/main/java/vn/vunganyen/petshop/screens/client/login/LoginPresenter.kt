@@ -47,13 +47,17 @@ class LoginPresenter {
                     SplashScreenActivity.editor.putInt("roleId",response.body()!!.maquyen)
                 //    SplashScreenActivity.editor.putString("username",req.tendangnhap)
                     println("roleId: "+response.body()!!.maquyen)
-                    if(response.body()!!.maquyen == 4){
+                    if(response.body()!!.maquyen == SplashScreenActivity.CLIENT){
                         println("vô user")
                         getProfileClient(response.body()!!.accessToken, UserReq(req.tendangnhap))
                     }
-                    else if(response.body()!!.maquyen == 1){
+                    else if(response.body()!!.maquyen == SplashScreenActivity.ADMIN){
                         println("vô admin")
                         getProfileAdmin(response.body()!!.accessToken, StaffReq(req.tendangnhap))
+                    }
+                    else if(response.body()!!.maquyen == SplashScreenActivity.SHIPPER){
+                        println("vô admin")
+                        getProfileShipper(response.body()!!.accessToken, StaffReq(req.tendangnhap))
                     }
                 }
                 else{
@@ -115,6 +119,29 @@ class LoginPresenter {
         })
     }
 
+    fun getProfileShipper(token : String, req: StaffReq){
+        println(req.tendangnhap)
+        ApiStaffService.Api.api.authGetProfileStaff(token, req).enqueue(object : Callback<MainStaffRes>{
+            override fun onResponse(call: Call<MainStaffRes>, response: Response<MainStaffRes>) {
+                if(response.isSuccessful){
+                    // HomeActivity.profile = response.body()!!
+                    println("mã shipper login: "+response.body()!!.result.manv)
+                    //Lưu
+                    setProfileShipper(response.body()!!)
+
+                    loginInterface.loginShipperSuccess()
+                }
+                else{
+                    loginInterface.tokendie()
+                }
+            }
+            override fun onFailure(call: Call<MainStaffRes>, t: Throwable) {
+                loginInterface.loginError()
+            }
+
+        })
+    }
+
     fun setProfileClient(response : MainUserRes){
         var strResponse = gson.toJson(response).toString()
         SplashScreenActivity.editor.putString("profileClient",strResponse)
@@ -125,4 +152,8 @@ class LoginPresenter {
         SplashScreenActivity.editor.putString("profileAdmin",strResponse)
     }
 
+    fun setProfileShipper(response : MainStaffRes){
+        var strResponse = gson.toJson(response).toString()
+        SplashScreenActivity.editor.putString("profileShipper",strResponse)
+    }
 }

@@ -5,6 +5,7 @@ interface LoginInterface {
     //fun userIllegal()
     fun loginClientSuccess()
     fun loginStaffSuccess()
+    fun loginShipperSuccess()
     fun tokendie()
     fun loginError()
     fun wrongPass()

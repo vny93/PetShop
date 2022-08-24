@@ -50,7 +50,7 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     var value = ""
     companion object{
         lateinit var listCartDetail : List<GetCDSpRes>
-        var WAIT_STATUS = "Chờ xác nhận"
+        var WAIT_STATUS = SplashScreenActivity.PENDING
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/logo2"
     android:fillViewport="true"
     tools:context=".screens.client.login.LoginActivity">
 
@@ -23,37 +23,60 @@
         <ImageView
             android:id="@+id/logo"
             style="@style/style_imvlogin"
-            android:layout_marginTop="@dimen/_15sdp"/>
+            android:layout_marginTop="@dimen/_10sdp"/>
 
-        <TextView
-            android:layout_marginTop="@dimen/_10sdp"
-            style="@style/style_textview_login"
-            android:text="@string/tv_username" />
-
-        <EditText
-            android:id="@+id/edtUsername"
-            style="@style/style_edit_login"
-            android:text="admin2005"
-            android:hint="@string/hint_edtusername" />
-
-        <TextView
+        <androidx.cardview.widget.CardView
+            style="@style/style_cardview_userlogin2"
             android:layout_marginTop="@dimen/_30sdp"
-            style="@style/style_textview_login"
-            android:text="@string/tv_password" />
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:backgroundTint="@color/white">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:hintEnabled="false"
-            app:passwordToggleEnabled="true">
+            <ImageView
+                style="@style/style_imv_icon"
+                android:background="@drawable/ic_baseline_account_circle_24" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtPassword"
-                style="@style/style_edit_login"
-                android:text="Admin123"
-                android:hint="@string/hint_edtpassword"
-                android:inputType="textPassword"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            <EditText
+                android:id="@+id/edtUsername"
+                style="@style/style_edt_login2"
+                android:layout_marginStart="@dimen/_40sdp"
+                android:background="@color/white"
+                android:text="admin2005"
+                android:textSize="@dimen/_13sdp"
+                android:hint="@string/hint_edtusername" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            style="@style/style_cardview_userlogin2"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:backgroundTint="@color/white">
+
+            <ImageView
+                style="@style/style_imv_icon"
+                android:background="@drawable/ic_baseline_lock_24" />
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:id="@+id/hide_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassword"
+                    style="@style/style_edt_login2"
+                    android:background="@color/white"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:text="Admin123"
+                    android:hint="@string/hint_edtpassword"
+                    android:textSize="@dimen/_13sdp"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/forgot_password"
@@ -67,7 +90,7 @@
             style="@style/style_btnlogin"
             android:layout_gravity="center"
             android:textSize="@dimen/_13sdp"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_30sdp"
             android:text="@string/name_btnlogin"/>

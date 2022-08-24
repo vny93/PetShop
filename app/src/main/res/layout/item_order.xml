@@ -9,7 +9,8 @@
         style="@style/style_cardview_itemProductType"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_5sdp">
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_2sdp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,10 +18,11 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_90sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/ic_outline_shopping_bag_24" />
+                android:id="@+id/imv_status"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_85sdp"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:background="@drawable/item_order" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,6 +88,30 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/title_dateReceive"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <TextView
+                        android:id="@+id/tv_dateReceive"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/title_price"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_11sdp" />
@@ -106,6 +132,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
                     android:orientation="horizontal">
 
                     <TextView

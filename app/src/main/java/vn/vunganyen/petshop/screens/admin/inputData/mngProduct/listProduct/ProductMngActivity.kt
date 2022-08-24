@@ -1,9 +1,14 @@
 package vn.vunganyen.petshop.screens.admin.inputData.mngProduct.listProduct
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.admin.AdapterProductMng
@@ -19,6 +24,10 @@ class ProductMngActivity : AppCompatActivity(),ProductMngInterface {
     lateinit var productMngPresenter: ProductMngPresenter
     var adapter : AdapterProductMng= AdapterProductMng()
     var dialog: StartAlertDialog = StartAlertDialog()
+    companion object{
+        var listProduct = ArrayList<ProductOriginalRes>()
+        lateinit var listFilter : ArrayList<ProductOriginalRes>
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductMngBinding.inflate(layoutInflater)
@@ -39,6 +48,26 @@ class ProductMngActivity : AppCompatActivity(),ProductMngInterface {
             val intent = Intent(this, CustomPMngActivity::class.java)
             intent.putExtra("type","insert")
             startActivity(intent)
+        }
+        binding.edtSearchProduct.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun afterTextChanged(p0: Editable?) {
+                var str = binding.edtSearchProduct.text.toString()
+                productMngPresenter.getFilter(str)
+            }
+        })
+
+
+        binding.viewProduct.setOnClickListener{
+            binding.edtSearchProduct.clearFocus()
+            binding.viewProduct.hideKeyboard()
+        }
+        binding.rcvListP.setOnClickListener{
+            binding.edtSearchProduct.clearFocus()
+            binding.rcvListP.hideKeyboard()
         }
     }
 
@@ -72,6 +101,16 @@ class ProductMngActivity : AppCompatActivity(),ProductMngInterface {
         dialog.showStartDialog3(getString(R.string.RemoveBrandSuccess),this)
     }
 
+    fun View.hideKeyboard(): Boolean {
+        try {
+            val inputMethodManager =
+                context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            return inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+        } catch (ignored: RuntimeException) {
+        }
+        return false
+    }
+
     fun setToolbar() {
         var toolbar = binding.toolbarListBrand
         setSupportActionBar(toolbar)
@@ -87,5 +126,7 @@ class ProductMngActivity : AppCompatActivity(),ProductMngInterface {
     override fun onResume() {
         super.onResume()
         productMngPresenter.getList(SplashScreenActivity.token)
+        binding.edtSearchProduct.setText("")
+        binding.edtSearchProduct.clearFocus()
     }
 }

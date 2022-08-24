@@ -1,13 +1,19 @@
 package vn.vunganyen.petshop.screens.admin.inputData.mngProductType.listPT
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.admin.AdapterPTMng
 import vn.vunganyen.petshop.data.model.admin.productType.checkPTUse.CheckPTReq
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffRes
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.data.model.client.productType.ProductTypeRes
 import vn.vunganyen.petshop.databinding.ActivityProTypeMngBinding
@@ -19,6 +25,10 @@ class ProTypeMngActivity : AppCompatActivity(), ProTypeMngInterface {
     lateinit var binding : ActivityProTypeMngBinding
     lateinit var proTypeMngPresenter: ProTypeMngPresenter
     var adapter : AdapterPTMng = AdapterPTMng()
+    companion object{
+        var listPT = ArrayList<ProductTypeRes>()
+        lateinit var listFilter : ArrayList<ProductTypeRes>
+    }
     var dialog: StartAlertDialog = StartAlertDialog()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +50,26 @@ class ProTypeMngActivity : AppCompatActivity(), ProTypeMngInterface {
             val intent = Intent(this, CustomPTMngActivity::class.java)
             intent.putExtra("type","insert")
             startActivity(intent)
+        }
+
+        binding.edtSearchPT.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+            override fun afterTextChanged(p0: Editable?) {
+                var str = binding.edtSearchPT.text.toString()
+                proTypeMngPresenter.getFilter(str)
+            }
+        })
+
+        binding.viewPtMng.setOnClickListener{
+            binding.edtSearchPT.clearFocus()
+            binding.viewPtMng.hideKeyboard()
+        }
+        binding.rcvListPT.setOnClickListener{
+            binding.edtSearchPT.clearFocus()
+            binding.rcvListPT.hideKeyboard()
         }
     }
 
@@ -73,6 +103,16 @@ class ProTypeMngActivity : AppCompatActivity(), ProTypeMngInterface {
         dialog.showStartDialog3(getString(R.string.RemoveBrandSuccess),this)
     }
 
+    fun View.hideKeyboard(): Boolean {
+        try {
+            val inputMethodManager =
+                context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            return inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
+        } catch (ignored: RuntimeException) {
+        }
+        return false
+    }
+
     fun setToolbar() {
         var toolbar = binding.toolbarListBrand
         setSupportActionBar(toolbar)
@@ -88,5 +128,7 @@ class ProTypeMngActivity : AppCompatActivity(), ProTypeMngInterface {
     override fun onResume() {
         super.onResume()
         proTypeMngPresenter.getList()
+        binding.edtSearchPT.setText("")
+        binding.edtSearchPT.clearFocus()
     }
 }

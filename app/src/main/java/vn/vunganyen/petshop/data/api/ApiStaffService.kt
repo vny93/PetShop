@@ -2,6 +2,8 @@ package vn.vunganyen.petshop.data.api
 
 import retrofit2.Call
 import retrofit2.http.*
+import vn.vunganyen.petshop.data.model.admin.cart.getStaffName.GetStaffNameReq
+import vn.vunganyen.petshop.data.model.admin.cart.getStaffName.MainGetStaffName
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductReq
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductRes
 import vn.vunganyen.petshop.data.model.admin.product.getList.MainProductOriginalRes
@@ -45,6 +47,9 @@ interface ApiStaffService {
 
     @POST("v1/staff/findPhone")
     fun findPhone(@Header("Authorization") BearerToken: String,@Body req: FindPhoneReq): Call<CheckProductRes>
+
+    @POST("v1/staff/get/shipper")
+    fun getNameStaff(@Header("Authorization") BearerToken: String, @Body req: GetStaffNameReq): Call<MainGetStaffName>
 
     object Api {
         val api: ApiStaffService by lazy { RetrofitSetting().retrofit.create(ApiStaffService::class.java) }

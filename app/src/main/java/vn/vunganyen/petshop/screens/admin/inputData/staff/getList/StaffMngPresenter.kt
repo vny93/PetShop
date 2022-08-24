@@ -7,6 +7,7 @@ import vn.vunganyen.petshop.data.api.ApiStaffService
 import vn.vunganyen.petshop.data.model.admin.product.checkProductUse.CheckProductRes
 import vn.vunganyen.petshop.data.model.admin.staff.getDetail.PostDetailStaffReq
 import vn.vunganyen.petshop.data.model.admin.staff.getList.MainStaffMngRes
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffRes
 
 class StaffMngPresenter {
     var staffMngInterface : StaffMngInterface
@@ -19,6 +20,7 @@ class StaffMngPresenter {
         ApiStaffService.Api.api.getList(token).enqueue(object : Callback<MainStaffMngRes>{
             override fun onResponse(call: Call<MainStaffMngRes>, response: Response<MainStaffMngRes>) {
                 if(response.isSuccessful){
+                    StaffManageActivity.listStaff = response.body()!!.result as ArrayList<StaffRes>
                     staffMngInterface.GetList(response.body()!!.result)
                 }
             }
@@ -55,5 +57,15 @@ class StaffMngPresenter {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    fun getFilter(s : String){
+        StaffManageActivity.listFilter = ArrayList<StaffRes>()
+        for(list in StaffManageActivity.listStaff){
+            if(list.manv.toUpperCase().contains(s.toUpperCase())){
+                StaffManageActivity.listFilter.add(list)
+            }
+        }
+        staffMngInterface.GetList(StaffManageActivity.listFilter)
     }
 }

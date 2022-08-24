@@ -14,9 +14,9 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="@dimen/_60sdp"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_60sdp"
-            android:src="@drawable/logo"
+            android:src="@drawable/petshop"
             android:layout_gravity="center"/>
 
         <LinearLayout

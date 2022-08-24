@@ -1,5 +1,7 @@
 package vn.vunganyen.petshop.data.model.client.cart.add
 
+import java.io.Serializable
+
 data class AddCartRes(
     val magh : Int,
     val ngaydat : String,
@@ -13,5 +15,5 @@ data class AddCartRes(
     val ngaydukien: String,
     val manvduyet: String,
     val manvgiao: String,
-    val makh: String
-    )
+    val makh: Int
+    ): Serializable

@@ -341,7 +341,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/spinner_role"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/boder_rectangle"
                     android:enabled="false"
                     android:gravity="center"

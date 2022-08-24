@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/imv_cartError"
-        android:layout_width="@dimen/_400sdp"
+        android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_500sdp"
-        android:src="@drawable/cart_error" />
+        android:layout_marginStart="@dimen/_60sdp"
+        android:src="@drawable/cart_error2" />
 
     <TextView
         android:id="@+id/tv_cartError"
@@ -38,6 +39,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_cartTop"
             style="@style/style_textview_login2"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_5sdp"

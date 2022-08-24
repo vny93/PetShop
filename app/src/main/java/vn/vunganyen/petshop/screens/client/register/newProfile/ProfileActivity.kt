@@ -79,7 +79,6 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 
             binding.cartPfBirth.setCardBackgroundColor(Color.WHITE)
             binding.pfBirth.setBackground(resources.getDrawable(R.color.white))
-            binding.pfBirth.isEnabled = true
 
             binding.radioFemale.isEnabled = true
             binding.radioMale.isEnabled = true
@@ -143,7 +142,6 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 
                 binding.cartPfBirth.setCardBackgroundColor(Color.WHITE)
                 binding.pfBirth.setBackground(resources.getDrawable(R.color.white))
-                binding.pfBirth.isEnabled = true
 
                 binding.radioFemale.isEnabled = true
                 binding.radioMale.isEnabled = true
@@ -265,7 +263,6 @@ class ProfileActivity : AppCompatActivity(), ProfileInterface {
 
         binding.cartPfBirth.setCardBackgroundColor(Color.parseColor("#EFEDED"))
         binding.pfBirth.setBackground(resources.getDrawable(R.color.gray))
-        binding.pfBirth.isEnabled = false
 
         binding.radioFemale.isEnabled = false
         binding.radioMale.isEnabled = false

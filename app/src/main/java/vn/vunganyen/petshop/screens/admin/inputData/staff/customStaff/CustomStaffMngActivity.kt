@@ -92,7 +92,6 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
 
             binding.cartBirthStaff.setCardBackgroundColor(Color.WHITE)
             binding.edtBirthStaff.setBackground(resources.getDrawable(R.color.white))
-            binding.edtBirthStaff.isEnabled = true
 
             binding.radioMaleStaff.isEnabled = true
             binding.radioFemaleStaff.isEnabled = true
@@ -158,7 +157,6 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
 
                 binding.cartBirthStaff.setCardBackgroundColor(Color.WHITE)
                 binding.edtBirthStaff.setBackground(resources.getDrawable(R.color.white))
-                binding.edtBirthStaff.isEnabled = true
 
                 binding.radioMaleStaff.isEnabled = true
                 binding.radioFemaleStaff.isEnabled = true
@@ -318,7 +316,6 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
 
         binding.cartBirthStaff.setCardBackgroundColor(Color.parseColor("#EFEDED"))
         binding.edtBirthStaff.setBackground(resources.getDrawable(R.color.gray))
-        binding.edtBirthStaff.isEnabled = false
 
         binding.radioMaleStaff.isEnabled = false
         binding.radioFemaleStaff.isEnabled = false

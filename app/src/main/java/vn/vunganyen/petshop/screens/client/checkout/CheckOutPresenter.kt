@@ -63,7 +63,7 @@ class CheckOutPresenter {
         println("ngaydukien: "+req.ngaydukien)
         println("ngayhientai: "+current)
         println(result)
-        if(result < 0){
+        if(result < 0 || result == 0){
             checkOutInterface.DateError()
             return
         }
