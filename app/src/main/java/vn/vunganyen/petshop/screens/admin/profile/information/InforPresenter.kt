@@ -17,6 +17,7 @@ import vn.vunganyen.petshop.data.model.client.user.findPhone.FindPhoneReq
 import vn.vunganyen.petshop.data.model.client.user.findPhone.FindPhoneRes
 import vn.vunganyen.petshop.data.model.client.user.getProfile.MainUserRes
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
+import java.util.*
 
 class InforPresenter {
     var inforInterface : InforInterface
@@ -38,6 +39,14 @@ class InforPresenter {
         }
         if (!SplashScreenActivity.EMAIL_ADDRESS.matcher(req.email).matches()) {
             inforInterface.EmailIllegal()
+            return
+        }
+        val current : String = SplashScreenActivity.formatYear.format(Date())
+        val str: List<String> = req.ngaysinh.split("-")
+        var year = str.get(0).toInt()
+        var old = current.toInt() - year
+        if(old < 18){
+            inforInterface.OrlError()
             return
         }
         checkPhoneExist(SplashScreenActivity.token,req)

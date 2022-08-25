@@ -52,6 +52,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val formatter = DecimalFormat("###,###,###")
         val formatMonthYear = SimpleDateFormat("M-yyyy")
         val formatMonth = SimpleDateFormat("MM")
+        val formatYear = SimpleDateFormat("yyyy")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

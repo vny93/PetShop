@@ -131,7 +131,8 @@ class ShipperOrderMngActivity : AppCompatActivity(), ShipperOrderMngInterface {
             println("ngaydukien:" + dateReceive)
             println("trangthai:" + data.trangthai)
             var req = ShipperUpdateOrderReq(data.magh,SplashScreenActivity.DELIVERED,strDate)
-            shipperOrderMngPresenter.validCheckUpdate(SplashScreenActivity.token,req)
+        //    shipperOrderMngPresenter.validCheckUpdate(SplashScreenActivity.token,req)
+            shipperOrderMngPresenter.shipperUpdateOrder(SplashScreenActivity.token,req)
           //      }
         }
     }

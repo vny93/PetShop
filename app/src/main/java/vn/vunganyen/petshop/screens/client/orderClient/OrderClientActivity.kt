@@ -47,6 +47,7 @@ class OrderClientActivity : AppCompatActivity(), OrderClientInterface {
         setAdapterSpinner()
         var req = GetOrderReq(makh,dateFrom,dateTo,status)
         orderClientPresenter.filterCart(SplashScreenActivity.token,req)
+        binding.toolbarListOrder.setTitle(getString(R.string.title_orderCline))
     }
 
     fun setEvent(){

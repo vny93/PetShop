@@ -16,7 +16,7 @@
     <string name="user_illegal">Incorrect username format</string>
     <string name="login_success">Logged in successfully!</string>
     <string name="login_error">Xảy ra lổi server</string>
-    <string name="wrong_account">Tài khoản hoặc mật khẩu không đúng</string>
+    <string name="wrong_account">Tên đăng nhập hoặc mật khẩu không đúng</string>
     <string name="tokendie">Phiên bản hết hạn. Vui lòng đăng nhập lại</string>
     <string name="login_required">Vui lòng đăng nhập để tiếp tục</string>
 
@@ -172,6 +172,7 @@
     <string name="tv_timeOrder">Thời gian đặt hàng:</string>
     <string name="tv_intendTime">Thời gian nhận dự kiến:</string>
     <string name="tv_deliveryTime">Thời gian giao hàng:</string>
+    <string name="title_orderCline">Theo dõi đơn hàng</string>
 
     <!-- Admin-->
     <string name="ad_nav1_mainStaff">Quản lý nhân viên</string>
@@ -242,6 +243,7 @@
     <string name="tv_number_error">Số lượng phải lớn hơn 0</string>
 
     <!--    Staff manage-->
+    <string name="tv_toolbar_insertStaff">Thêm nhân viên</string>
     <string name="tv_find_staff">Tìm kiếm theo mã nhân viên</string>
     <string name="RemoveStaffFail">Bạn không thể xóa nhân viên này</string>
     <string name="AllowRemoveStaff">Bạn có chắc chắn muốn xóa nhân viên này?</string>
@@ -249,7 +251,10 @@
     <string name="tv_stauts_Staff">Trạng thái</string>
     <string name="tv_role_Staff">Quyền</string>
     <string name="tv_staffId">Mã nhân viên</string>
+    <string name="tv_rgt_staffSuccess">Thêm nhân viên thành công</string>
+    <string name="tv_rgt_staffError">Thêm nhân viên thất bại</string>
     <string name="staffId_exist">Mã nhân viên đã tồn tại</string>
+    <string name="staffId_old">Ngày sinh không hợp lệ cần đủ 18 tuổi</string>
     <string-array name="option">
         <item>Hoạt động</item>
         <item>Khóa</item>
@@ -284,6 +289,7 @@
     <string name="tv_statistics">Doanh thu</string>
     <string name="tv_sum_statistics">Tổng doanh thu:</string>
     <string name="confirm_ship">Xác nhận bạn đã giao đơn hàng này</string>
+    <string name="errorDate3">Chọn thời gian không hợp lệ</string>
     <string-array name="status_admin">
         <item>Chờ duyệt</item>
         <item>Đang giao</item>

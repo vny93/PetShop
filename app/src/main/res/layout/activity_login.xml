@@ -40,7 +40,6 @@
                 style="@style/style_edt_login2"
                 android:layout_marginStart="@dimen/_40sdp"
                 android:background="@color/white"
-                android:text="admin2005"
                 android:textSize="@dimen/_13sdp"
                 android:hint="@string/hint_edtusername" />
 
@@ -70,7 +69,6 @@
                     style="@style/style_edt_login2"
                     android:background="@color/white"
                     android:layout_marginStart="@dimen/_40sdp"
-                    android:text="Admin123"
                     android:hint="@string/hint_edtpassword"
                     android:textSize="@dimen/_13sdp"
                     android:inputType="textPassword" />

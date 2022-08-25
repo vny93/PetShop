@@ -212,4 +212,8 @@ class InforActivity : AppCompatActivity(), InforInterface {
     override fun UpdateError() {
         dialog.showStartDialog3(getString(R.string.UpdateError),this)
     }
+
+    override fun OrlError() {
+        dialog.showStartDialog3(getString(R.string.staffId_old),this)
+    }
 }

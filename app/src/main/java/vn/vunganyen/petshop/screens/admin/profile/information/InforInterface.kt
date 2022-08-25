@@ -8,4 +8,5 @@ interface InforInterface {
     fun EmailExist()
     fun UpdateSucces()
     fun UpdateError()
+    fun OrlError()
 }

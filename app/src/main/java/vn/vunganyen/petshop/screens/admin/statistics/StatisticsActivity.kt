@@ -142,6 +142,6 @@ class StatisticsActivity : AppCompatActivity(), StatisticsInterface {
     }
 
     override fun DateError() {
-        dialog.showStartDialog3(getString(R.string.errorDate2),this)
+        dialog.showStartDialog3(getString(R.string.errorDate3),this)
     }
 }

@@ -81,7 +81,7 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
             else binding.radioFemaleStaff.isChecked = true
         }
         else{
-            binding.toolbarProductDetail.setTitle(getString(R.string.tv_toolbar_insertProduct))
+            binding.toolbarProductDetail.setTitle(getString(R.string.tv_toolbar_insertStaff))
             binding.edtStaffId.isEnabled = true
             binding.cartStaffId.setBackgroundColor(Color.WHITE)
             binding.edtStaffId.setBackground(resources.getDrawable(R.color.white))
@@ -137,10 +137,12 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
         }
 
         binding.spinnerRole.setOnItemClickListener(({adapterView,view,i,l ->
-            if(binding.btnSave.text.toString().equals("Cập nhật")){
+            if(binding.btnSave.text.toString().equals(getString(R.string.tv_save)) ||
+                    binding.btnSave.text.toString().equals(getString(R.string.tv_insert)) ){
                 for(list in listRole){
                     if(list.tenquyen.equals(adapterView.getItemAtPosition(i).toString())){
                         roleIdChange = list.maquyen
+                        println(list.maquyen)
                     }
                 }
             }
@@ -198,6 +200,7 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
                 println("email: "+email)
                 println("phone: "+phone)
                 println("address: "+address)
+                println("quyền: "+ roleIdChange)
                 reqStaff = PutStaffReq(id.toUpperCase(),name,gender,address,strDate,phone,email)
                 if(typeStaff.equals("update")){
                     customStaffPresenter.validCheckUpdate(reqStaff)
@@ -205,6 +208,8 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
                 else {
                     var username = binding.edtUsernameStaff.text.toString()
                     var pass = binding.edtPasswordStaff.text.toString()
+                    println("user:"+username)
+                    println("pass:"+pass)
                     reqAuth = AddAuthReq(username,pass,roleIdChange)
                     customStaffPresenter.vailidCheckInsert(reqAuth,reqStaff)
                 }
@@ -294,7 +299,7 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
     }
 
     override fun AddSucces() {
-        dialog.showStartDialog3(getString(R.string.AddAuthSuccess),this)
+        dialog.showStartDialog3(getString(R.string.tv_rgt_staffSuccess),this)
         binding.edtUsernameStaff.setText("")
         binding.edtPasswordStaff.setText("")
         binding.edtStaffId.setText("")
@@ -364,11 +369,15 @@ class CustomStaffMngActivity : AppCompatActivity(),CustomStaffInterface {
     }
 
     override fun AddAuthError() {
-        dialog.showStartDialog3(getString(R.string.AddAuthError),this)
+        dialog.showStartDialog3(getString(R.string.tv_rgt_staffError),this)
     }
 
     override fun StaffIdExist() {
         dialog.showStartDialog3(getString(R.string.staffId_exist),this)
+    }
+
+    override fun OrlError() {
+        dialog.showStartDialog3(getString(R.string.staffId_old),this)
     }
 
 }

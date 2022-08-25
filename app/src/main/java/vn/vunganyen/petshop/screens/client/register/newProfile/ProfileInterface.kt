@@ -9,4 +9,5 @@ interface ProfileInterface {
     fun AddSucces()
     fun UpdateSucces()
     fun UpdateError()
+    fun OrlError()
 }

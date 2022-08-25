@@ -30,6 +30,10 @@ class RegisterActivity : AppCompatActivity(), RegisterInterface {
             registerPresenter.validCheck(username,password)
         }
 
+        binding.imvCloseRgt.setOnClickListener{
+            finish()
+        }
+
         binding.lnlRegister.setOnClickListener{
             binding.rgtUsername.clearFocus()
             binding.rgtPassword.clearFocus()

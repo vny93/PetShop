@@ -19,4 +19,5 @@ interface CustomStaffInterface {
     fun CheckSuccess()
     fun AddAuthError()
     fun StaffIdExist()
+    fun OrlError()
 }
