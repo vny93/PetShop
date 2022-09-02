@@ -35,10 +35,8 @@ class AdapterStatistics : RecyclerView.Adapter<AdapterStatistics.MainViewHolder>
             var mdate : Date = SplashScreenActivity.formatMonth.parse(data.thang.toString())
             var month = SplashScreenActivity.formatMonth.format(mdate)
             binding.time.setText(month+"/"+data.nam.toString())
-            StatisticsActivity.sum = StatisticsActivity.sum + data.doanhthu
             val price = formatter.format(data.doanhthu).toString() + " đ"
             binding.priceStatistics.setText(price)
-            click?.invoke(data.doanhthu)
         }
     }
 

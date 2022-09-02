@@ -28,7 +28,7 @@ class StatisticsActivity : AppCompatActivity(), StatisticsInterface {
     var dialog: StartAlertDialog = StartAlertDialog()
     companion object{
         var sum = 0.0F
-        var listNew = ArrayList<TurnoverRes>()
+        lateinit var listNew : ArrayList<TurnoverRes>
         var dateStr = ""
         var dateEnd = ""
     }
@@ -39,18 +39,6 @@ class StatisticsActivity : AppCompatActivity(), StatisticsInterface {
         statisticsPresenter = StatisticsPresenter(this)
         setEvent()
         setToolbar()
-        callInvoke()
-    }
-
-    fun callInvoke(){
-        adapter.click={
-                price ->
-            if(price != null){
-                val sum_money = SplashScreenActivity.formatter.format(sum).toString() + " đ"
-                println(sum)
-                binding.sumMoney.setText(sum_money)
-            }
-        }
     }
 
     fun setEvent() {
@@ -114,7 +102,8 @@ class StatisticsActivity : AppCompatActivity(), StatisticsInterface {
                 dateEnd = SplashScreenActivity.formatMonthYear.format(mdateTo)
 
             }
-
+            sum = 0.0F
+            listNew = ArrayList<TurnoverRes>()
             statisticsPresenter.validCheck(SplashScreenActivity.token, TurnoverReq(dateFrom,dateTo))
         }
     }
@@ -135,6 +124,9 @@ class StatisticsActivity : AppCompatActivity(), StatisticsInterface {
         adapter.setData(list)
         binding.rcvStatistics.adapter = adapter
         binding.rcvStatistics.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        val sum_money = SplashScreenActivity.formatter.format(sum).toString() + " đ"
+        println(sum)
+        binding.sumMoney.setText(sum_money)
     }
 
     override fun Empty() {

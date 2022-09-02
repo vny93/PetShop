@@ -18,6 +18,7 @@ import java.util.*
 class AdapterOrderShipper : RecyclerView.Adapter<AdapterOrderShipper.MainViewHolder>() {
     private var listData: List<AddCartRes> = ArrayList()
     val formatter = DecimalFormat("###,###,###")
+    var c = Calendar.getInstance()
 
     fun setData(list: List<AddCartRes>) {
         this.listData = list
@@ -37,7 +38,9 @@ class AdapterOrderShipper : RecyclerView.Adapter<AdapterOrderShipper.MainViewHol
             var strDate = SplashScreenActivity.formatdate3.format(mdate)
             binding.tvBookDate.setText(strDate)
             var mdate2 : Date = SplashScreenActivity.formatdate2.parse(data.ngaydukien)
-            var strDate2 = SplashScreenActivity.formatdate4.format(mdate2)
+            c.time = mdate2
+            c.add(Calendar.DATE, 1) // number of days to add
+            var strDate2 = SplashScreenActivity.formatdate4.format(c.time)
             binding.tvDateReceive.setText(strDate2)
             val price = formatter.format(data.tongtien).toString() + " đ"
             binding.tvPriceOrder.setText(price)

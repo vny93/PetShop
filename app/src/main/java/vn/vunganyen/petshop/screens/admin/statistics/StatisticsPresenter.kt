@@ -70,6 +70,7 @@ class StatisticsPresenter {
             for(j in 0..list.size-1){
                 if(month == list.get(j).thang && year == list.get(j).nam){
                     StatisticsActivity.listNew.add(TurnoverRes(month,year,list.get(j).doanhthu))
+                    StatisticsActivity.sum = StatisticsActivity.sum + list.get(j).doanhthu
                     check = 1
                 }
             }
