@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterProductCheckout
+import vn.vunganyen.petshop.data.model.admin.staff.getDetail.PostDetailStaffReq
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.StaffRes
 import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
 import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartRes
 import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
@@ -64,7 +66,9 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface {
         if(inforOrder.ngaygiao != null){
             var deliveryTime  :Date = SplashScreenActivity.formatdate2.parse(inforOrder.ngaygiao)
             binding.deliveryTime.setText(SplashScreenActivity.formatdate3.format(deliveryTime))
+            orderDetailPresenter.getStaff(SplashScreenActivity.token, PostDetailStaffReq(inforOrder.manvgiao))
         }
+
     }
 
     override fun ErrorGetCart() {
@@ -73,5 +77,10 @@ class OrderDetailActivity : AppCompatActivity(), OrderDetailInterface {
 
     override fun ErrorGetList() {
         Toast.makeText(this,getString(R.string.error_getList),Toast.LENGTH_SHORT).show()
+    }
+
+    override fun getStaff(res: StaffRes) {
+        binding.nameShipper.setText(res.hoten)
+        binding.phoneShipper.setText(res.sdt)
     }
 }

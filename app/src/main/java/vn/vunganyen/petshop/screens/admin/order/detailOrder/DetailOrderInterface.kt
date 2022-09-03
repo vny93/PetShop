@@ -11,4 +11,5 @@ interface DetailOrderInterface {
     fun Empty()
     fun DateError()
     fun CancelOrderSuccess()
+    fun ReturnSuccess()
 }

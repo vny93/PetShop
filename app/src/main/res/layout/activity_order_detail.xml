@@ -75,7 +75,6 @@
                         android:inputType="text|textMultiLine" />
                 </androidx.cardview.widget.CardView>
 
-
                 <TextView
                     style="@style/style_textview_login"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -166,7 +165,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_10sdp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -188,6 +186,54 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="@string/tv_nameShipper" />
+
+                    <TextView
+                        android:id="@+id/nameShipper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="right"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="@string/tv_phoneShipper" />
+
+                    <TextView
+                        android:id="@+id/phoneShipper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="right"/>
+
+                </LinearLayout>
             </LinearLayout>
 
         </ScrollView>

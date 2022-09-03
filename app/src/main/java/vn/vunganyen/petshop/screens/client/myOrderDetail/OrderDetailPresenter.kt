@@ -5,6 +5,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import vn.vunganyen.petshop.data.api.ApiCartDetailService
 import vn.vunganyen.petshop.data.api.ApiCartService
+import vn.vunganyen.petshop.data.api.ApiStaffService
+import vn.vunganyen.petshop.data.model.admin.staff.getDetail.PostDetailStaffReq
+import vn.vunganyen.petshop.data.model.admin.staff.getProfile.MainStaffRes
 import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
 import vn.vunganyen.petshop.data.model.client.cart.getCart.MainGetCartRes
 import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
@@ -48,6 +51,19 @@ class OrderDetailPresenter {
                 orderDetailInterface.ErrorGetList()
             }
 
+        })
+    }
+
+    fun getStaff(token: String, req: PostDetailStaffReq) {
+        ApiStaffService.Api.api.getStaffDetail(token,req).enqueue(object : Callback<MainStaffRes>{
+            override fun onResponse(call: Call<MainStaffRes>, response: Response<MainStaffRes>) {
+                if(response.isSuccessful){
+                    orderDetailInterface.getStaff(response.body()!!.result)
+                }
+            }
+            override fun onFailure(call: Call<MainStaffRes>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
         })
     }
 }

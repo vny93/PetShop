@@ -5,9 +5,11 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
+import kotlinx.coroutines.delay
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.model.admin.cart.adminUpdate.AdminUpdateOrderReq
 import vn.vunganyen.petshop.data.model.admin.cart.adminUpdate.UpdateStatusReq
@@ -17,8 +19,11 @@ import vn.vunganyen.petshop.data.model.admin.cart.getStaffName.GetStaffNameRes
 import vn.vunganyen.petshop.data.model.admin.staff.getDetail.PostDetailStaffReq
 import vn.vunganyen.petshop.data.model.admin.staff.getProfile.MainStaffRes
 import vn.vunganyen.petshop.data.model.client.cart.add.AddCartRes
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
+import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityDetailOrderMngBinding
+import vn.vunganyen.petshop.screens.client.home.main.HomeActivity
 import vn.vunganyen.petshop.screens.client.myOrderDetail.OrderDetailActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.util.*
@@ -138,9 +143,10 @@ class DetailOrderMngActivity : AppCompatActivity(),DetailOrderInterface {
                 binding.cartSpinnerStaff.setCardBackgroundColor(Color.WHITE)
                 binding.spinnerStaff.setBackground(resources.getDrawable(R.color.white))
 
-                binding.imvDate.isEnabled = true
-                binding.cartDateShip.setCardBackgroundColor(Color.WHITE)
-                binding.edtDate.setBackground(resources.getDrawable(R.color.white))
+//                binding.imvDate.isEnabled = true
+//                binding.cartDateShip.setCardBackgroundColor(Color.WHITE)
+//                binding.edtDate.setBackground(resources.getDrawable(R.color.white))
+                binding.edtDate.setText("" + day + "/" + (month + 1) + "/" + year)
 
                 binding.btnOrderDetail.visibility = View.GONE
                 binding.btnCencal.visibility = View.GONE
@@ -251,5 +257,13 @@ class DetailOrderMngActivity : AppCompatActivity(),DetailOrderInterface {
         binding.btnCencal.visibility = View.GONE
         binding.tvStatus.setText(SplashScreenActivity.CANCELLED)
         binding.tvNameReview.setText(SplashScreenActivity.profileAdmin.result.hoten)
+        Handler().postDelayed({
+            detailOrderPresenter.getListCartDetail(SplashScreenActivity.token, GetCartReq(data.magh))
+        }, 3000)
+
+    }
+
+    override fun ReturnSuccess() {
+        dialog.showStartDialog3(getString(R.string.return_order),this)
     }
 }

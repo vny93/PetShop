@@ -168,6 +168,8 @@
     <string name="error_getCart">Không lấy được dữ liệu thông tin đơn hàng </string>
     <string name="error_getList">Không lấy được dữ liệu sản phẩm của đơn hàng</string>
     <string name="tv_infor2">Thông tin nhận hàng</string>
+    <string name="tv_nameShipper">Họ tên người giao:</string>
+    <string name="tv_phoneShipper">Số điện thoại người giao:</string>
     <string name="tv_idOrder">Mã đơn hàng:</string>
     <string name="tv_timeOrder">Thời gian đặt hàng:</string>
     <string name="tv_intendTime">Thời gian nhận dự kiến:</string>
@@ -279,6 +281,7 @@
     <string name="title_order_cancel">Hủy đơn hàng</string>
     <string name="tv_delivered">Đã giao hàng</string>
     <string name="errorDateShip">Ngày giao hàng phải lớn hơn ngày hiện tại</string>
+    <string name="return_order">Các sản phẩm đã được hoàn lại kho</string>
     <string name="message_cancelOrder">Bạn có thực sự muốn hủy đơn hàng này?</string>
     <string name="cancel_order_success">Hủy đơn hàng thành công</string>
     <string name="choose_time">Chọn thời gian</string>
