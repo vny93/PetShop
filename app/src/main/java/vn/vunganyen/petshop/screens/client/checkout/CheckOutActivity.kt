@@ -3,12 +3,16 @@ package vn.vunganyen.petshop.screens.client.checkout
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.paypal.checkout.PayPalCheckout
 import com.paypal.checkout.approve.OnApprove
@@ -33,7 +37,9 @@ import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityCheckOutBinding
 import vn.vunganyen.petshop.databinding.DialogPaypalBinding
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
+import java.io.IOException
 import java.util.*
+import kotlin.collections.ArrayList
 
 class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     lateinit var binding : ActivityCheckOutBinding
@@ -48,9 +54,16 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     var adapter : AdapterProductCheckout = AdapterProductCheckout()
     var magh = 0
     var value = ""
+    var paymentMethods = ""
+    var payment_status = ""
+    var delivery_charges = 0.0f
+    var delivery_method = ""
     companion object{
         lateinit var listCartDetail : List<GetCDSpRes>
         var WAIT_STATUS = SplashScreenActivity.PENDING
+        var lat: Double = 0.0
+        var long: Double = 0.0
+        var distance: Float = 0.00F
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +74,13 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
         setViewDate()
         getData()
         setEvent()
+        getLocation()
         value = String.format("%.2f", exchangeRate(SplashScreenActivity.sumPrice))
+    }
+
+    fun getLocation(){
+        var geocoder = Geocoder(this)
+        checkOutPresenter.getLocation(geocoder)
     }
 
     fun exchangeRate(price : Float): Float{
@@ -71,15 +90,31 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
 
     fun setViewDate(){
         binding.edtDateReceive.setText("" + day + "/" + (month + 1) + "/" + year)
-        val strSumPrice = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPrice).toString() + " đ"
-        println(strSumPrice)
-        binding.sumCartMoney2.setText(strSumPrice)
+//        val strSumPrice = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPrice).toString() + " đ"
+//        println(strSumPrice)
+//        binding.sumCartMoney2.setText(strSumPrice)
         binding.edtNameReceive.setText(SplashScreenActivity.profileClient.result.hoten)
         binding.edtPhoneReceive.setText(SplashScreenActivity.profileClient.result.sdt)
         binding.edtEmailReceive.setText(SplashScreenActivity.profileClient.result.email)
         binding.edtAddressReceive.setText(SplashScreenActivity.profileClient.result.diachi)
+
     }
 
+    fun setAdapterSpinner(distance : Float){
+        var list = ArrayList<String>()
+        if(distance <= 30){
+            list.add(getString(R.string.tv_delivery_method2))
+            list.add(getString(R.string.tv_delivery_method3))
+        }
+        else{
+            list.add(getString(R.string.tv_delivery_method2))
+        }
+       // var list = resources.getStringArray(R.array.status_admin)
+        var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,list)
+        binding.spinnerPt.setAdapter(adapter)
+        binding.spinnerPt.setText(binding.spinnerPt.adapter.getItem(0).toString(), false)
+        delivery_method = binding.spinnerPt.adapter.getItem(0).toString()
+    }
 
     fun getData(){
         magh = getIntent().getIntExtra("magh",0)
@@ -109,6 +144,12 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
             }
         }
 
+        binding.spinnerPt.setOnItemClickListener(({adapterView, view, i , l ->
+            delivery_method = adapterView.getItemAtPosition(i).toString()
+            println("hình thức vận chuyễn: "+delivery_method)
+
+        }))
+
         binding.lnlCheckout.setOnClickListener{
             clearFocus()
         }
@@ -130,7 +171,8 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
             var mdate : Date = SplashScreenActivity.formatdate1.parse(expectedDate)
             var strDate = SplashScreenActivity.formatdate.format(mdate)
             var req = UserUpdateReq(name,address,phone,email,
-                SplashScreenActivity.sumPrice,WAIT_STATUS,strDate,magh)
+                SplashScreenActivity.sumPrice,WAIT_STATUS,strDate,paymentMethods,
+                SplashScreenActivity.sumPriceShip,SplashScreenActivity.sumMass,payment_status,delivery_method,magh)
             checkOutPresenter.validCheck(req)
         }
     }
@@ -173,16 +215,28 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
                 //    Log.i("CaptureOrder", "CaptureOrderResult: $captureOrderResult")
                 //    Toast.makeText(this,"Thanh toán thành công", Toast.LENGTH_SHORT).show()
                     //xử lí lưu thông tin và thông báo thanh toán thành công!
+                    req.ptthanhtoan = "paypal"
+                    req.ttthanhtoan = "Đã thanh toán"
                     checkOutPresenter.userUpdateCart(req)
                 }
             }
         )
     }
 
+    fun setCOD(dialog : Dialog, binding: DialogPaypalBinding, req: UserUpdateReq){
+        binding.btnCod.setOnClickListener{
+            dialog.dismiss()
+            req.ptthanhtoan = "COD"
+            req.ttthanhtoan = "Chưa thanh toán"
+            checkOutPresenter.userUpdateCart(req)
+        }
+    }
+
     fun ShowDialog(gravity: Int, req: UserUpdateReq, value : String){
         bindingDialog = DialogPaypalBinding.inflate(layoutInflater)
         dialog.setContentView(bindingDialog.root)
         setPaypal(dialog,bindingDialog, req,value)
+        setCOD(dialog,bindingDialog,req)
         val window = dialog.window ?: return
         window.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
@@ -261,5 +315,32 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
 
     override fun ValidCheckSuccess(req : UserUpdateReq) {
         ShowDialog(Gravity.CENTER,req,value)
+    }
+
+    override fun getMassPrice(priceMass: Float) {
+        SplashScreenActivity.sumPriceShip = SplashScreenActivity.sumPriceShip + priceMass
+        println("Tiền khối lượng: "+priceMass)
+    }
+
+    override fun getDistancePrice(priceDistance: Float) {
+        setAdapterSpinner(distance) //xét adapter hình thức vận chuyễn
+
+        SplashScreenActivity.sumPriceShip = SplashScreenActivity.sumPriceShip + priceDistance
+        println("Tiền khoảng cách: "+priceDistance)
+        println("Tổng ship: "+SplashScreenActivity.sumPriceShip)
+
+        //giá tiền tổng sản phẩm
+        var sumPriceProduct = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPrice).toString() + " đ"
+        binding.sumPriceProduct.setText(sumPriceProduct)
+
+        //giá tiền ship
+        var sumPriceShip = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPriceShip).toString() + " đ"
+        binding.tvPriceShip.setText(sumPriceShip)
+
+        //tổng tiên sản phẩm + ship
+        var sum = SplashScreenActivity.sumPrice + SplashScreenActivity.sumPriceShip
+        val strSumPrice = SplashScreenActivity.formatter.format(sum).toString() + " đ"
+        println(strSumPrice)
+        binding.sumCartMoney2.setText(strSumPrice)
     }
 }

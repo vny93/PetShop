@@ -29,6 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
         var DELIVERY = "Đang giao"
         var DELIVERED = "Đã giao"
         var CANCELLED = "Đã hủy"
+        var API_KEY = "03b225ae-3ff7-40d9-86ee-901bc4347172"
         //Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số
         var USERNAME = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
         var EMAIL_ADDRESS = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
@@ -44,6 +45,12 @@ class SplashScreenActivity : AppCompatActivity() {
         lateinit var profileAdmin: MainStaffRes
         lateinit var profileStaff: MainStaffRes
         var sumPrice: Float = 0.0f
+        var sumMass : Float = 0.00f
+        var sumPriceShip : Float = 0.0f
+        //170 Lê Văn Khương, Thới An, Quận 12, Thành phố Hồ Chí Minh, Việt Nam
+        var STORE_LAT : Double = 10.8684163
+        var STORE_LONG : Double = 106.65234149999999
+        var IDSHOP = "CH1"
         val formatdate = SimpleDateFormat("yyyy-MM-dd")
         val formatdate1 = SimpleDateFormat("dd/MM/yyyy")
         val formatdate2 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.ENGLISH)

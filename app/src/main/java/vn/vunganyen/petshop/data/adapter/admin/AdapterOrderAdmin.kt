@@ -10,6 +10,7 @@ import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.model.client.cart.add.AddCartRes
 import vn.vunganyen.petshop.databinding.ItemOrderBinding
 import vn.vunganyen.petshop.screens.admin.order.detailOrder.DetailOrderMngActivity
+import vn.vunganyen.petshop.screens.admin.order2.detailOrder2.DetailOrderMng2Activity
 import vn.vunganyen.petshop.screens.client.myOrderDetail.OrderDetailActivity
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.text.DecimalFormat
@@ -72,7 +73,7 @@ class AdapterOrderAdmin : RecyclerView.Adapter<AdapterOrderAdmin.MainViewHolder>
         val data = listData[position]
         holder.bindItem(data)
         holder.itemView.setOnClickListener{
-            var intent = Intent(holder.itemView.context, DetailOrderMngActivity::class.java)
+            var intent = Intent(holder.itemView.context, DetailOrderMng2Activity::class.java)
             intent.putExtra("data",data)
             holder.itemView.context.startActivity(intent)
         }

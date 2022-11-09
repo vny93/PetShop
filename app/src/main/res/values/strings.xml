@@ -32,7 +32,7 @@
     <!-- Profile -->
     <string name="pf_name">Họ và tên</string>
     <string name="pf_title">Cập nhật hồ sơ</string>
-    <string name="pf_hintName">Nhậo họ và tên</string>
+    <string name="pf_hintName">Nhập họ và tên</string>
     <string name="pf_birth">Ngày sinh</string>
     <string name="pf_hintBirth">Chọn ngày sinh</string>
     <string name="pf_address">Địa chỉ</string>
@@ -93,6 +93,11 @@
     <string name="tv_phone">Số điện thoại người nhận</string>
     <string name="tv_address">Địa chỉ người nhận</string>
     <string name="tv_email_receive">Email người nhận</string>
+    <string name="tv_delivery_method">Hình thức vận chuyễn:</string>
+    <string name="tv_delivery_method2">Giao hàng nhanh</string>
+    <string name="tv_delivery_method3">Giao hàng trong 2h</string>
+    <string name="tv_pro_price">Tiền sản phẩm:</string>
+    <string name="tv_transport_fee">Phí giao hàng:</string>
     <string name="tv_price">Price</string>
     <string name="tv_amount">Amount</string>
     <string name="tv_productName">Product Name</string>
@@ -175,7 +180,7 @@
     <string name="tv_intendTime">Thời gian nhận dự kiến:</string>
     <string name="tv_deliveryTime">Thời gian giao hàng:</string>
     <string name="title_orderCline">Theo dõi đơn hàng</string>
-
+    <string name="payment_methods">Thanh toán khi nhận hàng (COD)</string>
     <!-- Admin-->
     <string name="ad_nav1_mainStaff">Quản lý nhân viên</string>
     <string name="ad_nav2_mainProduct">Quản lý nhập liệu</string>
@@ -198,6 +203,7 @@
     <string name="tv_brand_phone">Số điện thoại</string>
     <string name="tv_brand_describe">Mô tả</string>
     <string name="tv_save">Cập nhật</string>
+    <string name="tv_ship">Gửi hàng</string>
     <string name="tv_toolbar_listBrand">Danh sách hãng sản xuất</string>
     <string name="tv_toolbar_nameBrand">Cập nhật hãng sản xuất</string>
     <string name="tv_toolbar_insertBrand">Thêm hãng sản xuất</string>
@@ -284,6 +290,13 @@
     <string name="return_order">Các sản phẩm đã được hoàn lại kho</string>
     <string name="message_cancelOrder">Bạn có thực sự muốn hủy đơn hàng này?</string>
     <string name="cancel_order_success">Hủy đơn hàng thành công</string>
+    <string name="send_order_success">Gửi đơn hàng thành công</string>
+    <string name="empty_size">Vui lòng điền kích thước sau khi đóng gói</string>
+    <string name="tv_size">Kích thước:</string>
+    <string name="tv_size2">0x0x0</string>
+    <string name="tv_note">Ghi chú:</string>
+    <string name="tv_cancel2">HỦY</string>
+    <string name="tv_send">GỬI</string>
     <string name="choose_time">Chọn thời gian</string>
     <string name="filter">Lọc</string>
     <string name="error_empty2">Vui lòng chọn thời gian</string>

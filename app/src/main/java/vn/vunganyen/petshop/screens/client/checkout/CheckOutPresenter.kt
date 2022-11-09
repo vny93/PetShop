@@ -1,11 +1,13 @@
 package vn.vunganyen.petshop.screens.client.checkout
 
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import vn.vunganyen.petshop.data.api.ApiCartDetailService
-import vn.vunganyen.petshop.data.api.ApiCartService
-import vn.vunganyen.petshop.data.api.ApiProductService
+import vn.vunganyen.fastdelivery.data.model.graphhopper.GraphhopperRes
+import vn.vunganyen.petshop.data.api.*
 import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
 import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateReq
 import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateRes
@@ -13,7 +15,11 @@ import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCD
 import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
 import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderReq
 import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderRes
+import vn.vunganyen.petshop.data.model.fastDelivery.MainResponsePrice
+import vn.vunganyen.petshop.data.model.fastDelivery.distance.RequestDistance
+import vn.vunganyen.petshop.data.model.fastDelivery.RequestMass
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
+import java.io.IOException
 import java.util.*
 
 class CheckOutPresenter {
@@ -110,4 +116,95 @@ class CheckOutPresenter {
             }
         })
     }
+
+    fun getLocation(geocoder: Geocoder){
+        var addressList: List<Address>
+        try {
+            addressList = geocoder.getFromLocationName(SplashScreenActivity.profileClient.result.diachi, 1)
+            if (addressList != null) {
+                CheckOutActivity.lat = addressList.get(0).latitude
+                CheckOutActivity.long = addressList.get(0).longitude
+           //     getDistance(CheckOutActivity.lat, CheckOutActivity.long)
+                callAPIGraphhopperRes(CheckOutActivity.lat, CheckOutActivity.long)
+            }
+
+        } catch (e: IOException) {
+            println("Địa chỉ không hợp lệ")
+            e.printStackTrace()
+        }
+    }
+
+    fun getDistance(lat: Double, long: Double) {
+        val currentLocation = Location("PetShop")
+        currentLocation.setLatitude(SplashScreenActivity.STORE_LAT)
+        currentLocation.setLongitude(SplashScreenActivity.STORE_LONG)
+        val destination = Location("KH")
+        destination.setLatitude(lat)
+        destination.setLongitude(long)
+        CheckOutActivity.distance = currentLocation.distanceTo(destination)/1000
+        //Toast.makeText(this, "Distance between Sydney and Brisbane is \n " + String.format("%.2f", distance / 1000) + "km", Toast.LENGTH_SHORT).show();
+        println("Distance: " + String.format("%.2f", CheckOutActivity.distance) + "km")
+        println("Khối lượng nè: "+SplashScreenActivity.sumMass)
+        getMassPrice(SplashScreenActivity.sumMass, CheckOutActivity.distance)
+    }
+
+    fun callAPIGraphhopperRes(lat: Double, long: Double){
+        var pointSource = SplashScreenActivity.STORE_LAT.toString()+","+SplashScreenActivity.STORE_LONG.toString()
+        var pointDes = lat.toString()+","+long.toString()
+        var profile = "car"
+        var locale = "vn"
+        var calc_points = false
+        var key = SplashScreenActivity.API_KEY
+        GraphhopperService.Api.api.getDistanceApi(
+            pointSource,pointDes,profile,locale, calc_points, key).enqueue(object : Callback<GraphhopperRes>{
+            override fun onResponse(call: Call<GraphhopperRes>, response: Response<GraphhopperRes>) {
+                println("--------API:"+response.raw().request.url)
+                if(response.isSuccessful){
+                    println("distance: "+response.body()!!.paths!!.get(0).distance)
+                    var distance = (response.body()!!.paths!!.get(0).distance)?.div(1000)
+                    CheckOutActivity.distance = distance!!.toFloat()
+                    getMassPrice(SplashScreenActivity.sumMass, CheckOutActivity.distance)
+                }
+            }
+
+            override fun onFailure(call: Call<GraphhopperRes>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun getMassPrice(mass : Float, distance: Float){
+        var req = RequestMass(mass)
+        ApiFastDeliveryService.Api.api.getMassPrice(req).enqueue(object : Callback<MainResponsePrice>{
+            override fun onResponse(call: Call<MainResponsePrice>, response: Response<MainResponsePrice>) {
+                if(response.isSuccessful){
+                    response.body()?.result?.get(0)?.let { checkOutInterface.getMassPrice(it.giatien) }
+                    getDistancePrice(distance)
+                }
+            }
+
+            override fun onFailure(call: Call<MainResponsePrice>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun getDistancePrice(distance : Float){
+        var req = RequestDistance(distance)
+        ApiFastDeliveryService.Api.api.getDistancePrice(req).enqueue(object : Callback<MainResponsePrice>{
+            override fun onResponse(call: Call<MainResponsePrice>, response: Response<MainResponsePrice>) {
+                if(response.isSuccessful){
+                    checkOutInterface.getDistancePrice(response.body()!!.result.get(0).giatien)
+                }
+            }
+
+            override fun onFailure(call: Call<MainResponsePrice>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
 }

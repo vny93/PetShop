@@ -8,5 +8,10 @@ data class UserUpdateReq(
     var tongtien: Float,
     var trangthai: String,
     var ngaydukien: String,
+    var ptthanhtoan : String,
+    var phigiao : Float,
+    var khoiluong : Float,
+    var ttthanhtoan : String,
+    var htvanchuyen : String,
     var magh: Int
 )

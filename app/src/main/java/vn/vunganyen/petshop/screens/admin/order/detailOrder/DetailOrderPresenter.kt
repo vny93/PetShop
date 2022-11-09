@@ -142,7 +142,7 @@ class DetailOrderPresenter {
             override fun onResponse(call: Call<UserOrderRes>, response: Response<UserOrderRes>) {
                 if(response.isSuccessful){
                     if(count == size){
-                        detailOrderInterface.ReturnSuccess()
+                        return
                     }
                     count++
                 }

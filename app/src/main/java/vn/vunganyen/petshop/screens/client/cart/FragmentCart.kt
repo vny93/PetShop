@@ -71,14 +71,20 @@ class FragmentCart : Fragment(), CartInterface {
 
     fun callInvoke(){
         adapter.click={
-            price ->
+            price,mass ->
             println("sum: "+ SplashScreenActivity.sumPrice)
             println("thêm :"+price)
+            println("------------------")
+            println("sum2: "+ SplashScreenActivity.sumMass)
+            println("thêm2 :"+mass)
             if(price != null){
                 SplashScreenActivity.sumPrice = SplashScreenActivity.sumPrice + price!!
                 val strSumPrice = SplashScreenActivity.formatter.format(SplashScreenActivity.sumPrice).toString() + " đ"
                 println(strSumPrice)
                 binding.sumCartMoney.setText(strSumPrice)
+
+                SplashScreenActivity.sumMass = SplashScreenActivity.sumMass + mass
+                println("sumMass: "+SplashScreenActivity.sumMass)
             }
         }
     }

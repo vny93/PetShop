@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_send"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_250sdp"
+    android:layout_marginStart="@dimen/_20sdp"
+    android:layout_marginEnd="@dimen/_20sdp"
+    android:background="@drawable/boder_rectangle4"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:gravity="center"
+        android:text="Nhập thông tin sau khi đóng gói"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/style_textview_login2"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/tv_size"
+            android:textSize="@dimen/_13sdp" />
+
+        <EditText
+            android:id="@+id/edt_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:enabled="true"
+            android:gravity="center"
+            android:hint="@string/tv_size2"
+            android:textSize="@dimen/_13sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/style_textview_login2"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/tv_note"
+            android:textSize="@dimen/_13sdp" />
+
+
+        <EditText
+            android:id="@+id/edt_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_13sdp"
+            android:enabled="true"
+            android:hint="@string/tv_note"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancelDialog"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="@string/tv_cancel2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp" />
+
+        <TextView
+            android:id="@+id/sendOrder"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="@string/tv_send"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

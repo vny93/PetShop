@@ -12,5 +12,6 @@ data class GetCDSpRes(
     val tensp : String,
     val hinhanh : String,
     val soluong : Int,
-    val gia: Float
+    val gia: Float,
+    val khoiluong : Float
 ) : Serializable

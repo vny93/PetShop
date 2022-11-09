@@ -15,5 +15,10 @@ data class AddCartRes(
     val ngaydukien: String,
     val manvduyet: String,
     val manvgiao: String,
-    val makh: Int
+    val makh: Int,
+    val ptthanhtoan : String,
+    val phigiao : Float,
+    val khoiluong : Float,
+    val ttthanhtoan : String,
+    val htvanchuyen : String
     ): Serializable

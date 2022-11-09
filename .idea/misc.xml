@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable-v24/custom_button_false.xml" value="0.136" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/boder_rectangle.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/boder_rectangle4.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/custom_button.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.15" />
@@ -17,6 +18,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.1445" />
         <entry key="app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.15" />
+        <entry key="app/src/main/res/drawable/ic_baseline_manage_search_24.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/ic_baseline_manage_search_35.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_baseline_remove_circle_outline_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.15" />
@@ -29,14 +31,15 @@
         <entry key="app/src/main/res/layout/activity_brand.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/activity_brand_detail.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/activity_brand_detail_mng.xml" value="0.17617753623188406" />
-        <entry key="app/src/main/res/layout/activity_brand_mng.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_brand_mng.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_change_pass.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_check_out.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_check_out.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_checkout_success.xml" value="0.10625" />
         <entry key="app/src/main/res/layout/activity_custom_pmng.xml" value="0.23741007194244604" />
         <entry key="app/src/main/res/layout/activity_custom_ptmnag.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/activity_custom_staff_mng.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_detail_order_mng.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_detail_order_mng2.xml" value="0.18659420289855072" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_infor.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_input_data.xml" value="0.17617753623188406" />
@@ -49,7 +52,7 @@
         <entry key="app/src/main/res/layout/activity_oder_detail.xml" value="0.1453125" />
         <entry key="app/src/main/res/layout/activity_order_client.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/activity_order_detail.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_order_mng.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_order_mng.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_paypal.xml" value="0.151268115942029" />
         <entry key="app/src/main/res/layout/activity_paypay.xml" value="0.161231884057971" />
         <entry key="app/src/main/res/layout/activity_pro_type_mng.xml" value="0.17617753623188406" />
@@ -70,7 +73,8 @@
         <entry key="app/src/main/res/layout/activity_statistics.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_update_order.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/dialog_date.xml" value="0.17617753623188406" />
-        <entry key="app/src/main/res/layout/dialog_paypal.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/dialog_paypal.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/dialog_send_order.xml" value="0.18659420289855072" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_delivered.xml" value="0.13020833333333334" />

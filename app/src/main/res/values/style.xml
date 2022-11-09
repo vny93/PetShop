@@ -105,6 +105,16 @@
         <item name ="android:layout_marginEnd">@dimen/_30sdp</item>
     </style>
 
+    <style name="style_cardview_userlogin3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">@dimen/_3sdp</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="android:layout_marginStart">@dimen/_30sdp</item>
+        <item name ="android:layout_marginEnd">@dimen/_30sdp</item>
+    </style>
+
     <style name="style_edt_login2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

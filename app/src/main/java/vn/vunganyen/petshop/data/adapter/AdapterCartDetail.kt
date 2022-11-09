@@ -20,7 +20,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
     private var listData: List<GetCDSpRes> = ArrayList()
     val formatter = DecimalFormat("###,###,###")
     var proDetail = ProDetailActivity()
-    var click: ((price : Float)->Unit)?=null
+    var click: ((price : Float, mass: Float)->Unit)?=null
     var clickOk: ((data : GetCDSpRes)->Unit)?=null
     var dialog : StartAlertDialog = StartAlertDialog()
     var slbandau = 0
@@ -28,6 +28,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
     fun setData(list: List<GetCDSpRes>) {
         this.listData = list
         SplashScreenActivity.sumPrice = 0.0f
+        SplashScreenActivity.sumMass = 0.00f
         notifyDataSetChanged()
     }
 
@@ -49,7 +50,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
             binding.tvCartPrice.setText(price)
             binding.edtCartNumber.setText(data.ctsoluong.toString())
             slbandau = data.ctsoluong
-            click?.invoke(data.ctgia*data.ctsoluong)
+            click?.invoke(data.ctgia*data.ctsoluong,data.khoiluong)
         }
     }
 
@@ -74,7 +75,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
                 dialog.showStartDialog3(holder.itemView.context.getString(R.string.tv_numProDetail, data.soluong), holder.itemView.context)
             }
             else{
-                click?.invoke(data.ctgia)
+                click?.invoke(data.ctgia,data.khoiluong)
                 var req = PutCDReq(data.magh, data.masp, data.ctgia, soluong)
                 update(holder.binding,req)
             }
@@ -92,7 +93,7 @@ class AdapterCartDetail : RecyclerView.Adapter<AdapterCartDetail.MainViewHolder>
                 //nếu xóa thì xóa không thì thôi
             }
             else{
-                click?.invoke(-(data.ctgia))
+                click?.invoke(-(data.ctgia),-(data.khoiluong))
                 var req =PutCDReq(data.magh, data.masp, data.ctgia, soluong)
                 update(holder.binding,req)
             }

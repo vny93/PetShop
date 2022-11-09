@@ -12,4 +12,6 @@ interface CheckOutInterface {
     fun UpdateError()
     fun DateError()
     fun ValidCheckSuccess(req :UserUpdateReq)
+    fun getMassPrice(price : Float)
+    fun getDistancePrice(price : Float)
 }

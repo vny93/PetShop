@@ -263,7 +263,7 @@ class DetailOrderMngActivity : AppCompatActivity(),DetailOrderInterface {
 
     }
 
-    override fun ReturnSuccess() {
-        dialog.showStartDialog3(getString(R.string.return_order),this)
-    }
+//    override fun ReturnSuccess() {
+//        dialog.showStartDialog3(getString(R.string.return_order),this)
+//    }
 }
