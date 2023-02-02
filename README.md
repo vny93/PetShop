@@ -24,6 +24,7 @@
   - Cập nhật trạng thái giao hàng
 
 #### II. Ảnh Demo
+<img width="331" alt="Screen Shot 2023-02-02 at 17 12 00" src="https://user-images.githubusercontent.com/80116131/216296286-4611cec7-ac60-49a6-b43d-3345e893e427.png">
 
 
 
