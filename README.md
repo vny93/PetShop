@@ -1,20 +1,18 @@
 # PetShop
-TTTN
-# Driving License Test
 ### Thực Hiện:
 - **Vũ Ngân Yên**
 ### Nội Dung
 #### I. Yêu cầu
 - **Công việc của người quản lý**
 
-+ Đăng nhập
-+ Quản lý tài khoản, thông tin cá nhân
-+ Quản lý nhân viên
-+ Quản lý sản phẩm
-+ Quản lý loại sản phẩm
-+ Quản lý hãng sản xuất
-+ Quản lý đơn đặt hàng
-+ Quản lý thống kê
+  Đăng nhập
+  Quản lý tài khoản, thông tin cá nhân
+  Quản lý nhân viên
+  Quản lý sản phẩm
+  Quản lý loại sản phẩm
+  Quản lý hãng sản xuất
+  Quản lý đơn đặt hàng
+  Quản lý thống kê
 - **Công việc của khách hàng**
  
 + Đăng ký, đăng nhập
