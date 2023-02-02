@@ -26,22 +26,22 @@
 #### II. Ảnh Demo
 <img width="331" alt="Screen Shot 2023-02-02 at 17 12 00" src="https://user-images.githubusercontent.com/80116131/216296286-4611cec7-ac60-49a6-b43d-3345e893e427.png">
 
-<img width="394" alt="Screen Shot 2023-02-02 at 17 12 48" src="https://user-images.githubusercontent.com/80116131/216296480-58656bcb-4f75-4645-8d9d-a553c39cf2d0.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 12 48" src="https://user-images.githubusercontent.com/80116131/216296480-58656bcb-4f75-4645-8d9d-a553c39cf2d0.png">
 
-<img width="344" alt="Screen Shot 2023-02-02 at 17 13 40" src="https://user-images.githubusercontent.com/80116131/216296667-be6b6606-0113-4350-9db3-a67218329c6c.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 13 40" src="https://user-images.githubusercontent.com/80116131/216296667-be6b6606-0113-4350-9db3-a67218329c6c.png">
 
 
-<img width="328" alt="Screen Shot 2023-02-02 at 17 13 56" src="https://user-images.githubusercontent.com/80116131/216296734-7c819a69-684b-4f04-a0ea-ae462db1732f.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 13 56" src="https://user-images.githubusercontent.com/80116131/216296734-7c819a69-684b-4f04-a0ea-ae462db1732f.png">
 
-<img width="341" alt="Screen Shot 2023-02-02 at 17 14 09" src="https://user-images.githubusercontent.com/80116131/216296784-6a7c97ba-6b4b-4e60-aae7-ec086e03f7d9.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 14 09" src="https://user-images.githubusercontent.com/80116131/216296784-6a7c97ba-6b4b-4e60-aae7-ec086e03f7d9.png">
 
-<img width="337" alt="Screen Shot 2023-02-02 at 17 14 25" src="https://user-images.githubusercontent.com/80116131/216296866-42e0e81f-844b-4101-8d94-fde35149d693.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 14 25" src="https://user-images.githubusercontent.com/80116131/216296866-42e0e81f-844b-4101-8d94-fde35149d693.png">
 
-<img width="364" alt="Screen Shot 2023-02-02 at 17 14 44" src="https://user-images.githubusercontent.com/80116131/216296932-5a4e73e1-9dee-457f-8b3d-9c59eb6d3935.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 14 44" src="https://user-images.githubusercontent.com/80116131/216296932-5a4e73e1-9dee-457f-8b3d-9c59eb6d3935.png">
 
-<img width="308" alt="Screen Shot 2023-02-02 at 17 15 14" src="https://user-images.githubusercontent.com/80116131/216297029-616d450e-e129-4ad0-a228-ed370956a776.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 15 14" src="https://user-images.githubusercontent.com/80116131/216297029-616d450e-e129-4ad0-a228-ed370956a776.png">
 
-<img width="339" alt="Screen Shot 2023-02-02 at 17 15 54" src="https://user-images.githubusercontent.com/80116131/216297173-fe660106-7416-436e-9cf7-a9bcf2494fbe.png">
+<img width="331" alt="Screen Shot 2023-02-02 at 17 15 54" src="https://user-images.githubusercontent.com/80116131/216297173-fe660106-7416-436e-9cf7-a9bcf2494fbe.png">
 
 
 
