@@ -5,7 +5,7 @@
 #### I. Yêu cầu
 - **Công việc của người quản lý**
 
-  Đăng nhập
+  - Đăng nhập
   Quản lý tài khoản, thông tin cá nhân
   Quản lý nhân viên
   Quản lý sản phẩm
