@@ -3,6 +3,7 @@ package vn.vunganyen.petshop.data.adapter
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import vn.vunganyen.petshop.R
@@ -17,6 +18,7 @@ class AdapterOrder : RecyclerView.Adapter<AdapterOrder.MainViewHolder>() {
     private var listData: List<AddCartRes> = ArrayList()
     val formatter = DecimalFormat("###,###,###")
     var c = Calendar.getInstance()
+    var clickCancel: ((data : AddCartRes)->Unit)?=null
 
     fun setData(list: List<AddCartRes>) {
         this.listData = list
@@ -46,13 +48,17 @@ class AdapterOrder : RecyclerView.Adapter<AdapterOrder.MainViewHolder>() {
             binding.tvStatus.setText(data.trangthai)
             if(data.trangthai.equals(SplashScreenActivity.DELIVERY)){
                 binding.imvStatus.setBackground(itemView.context.getDrawable(R.drawable.logo_stt1))
+                binding.btnCancel.visibility = View.GONE
             }
             else if(data.trangthai.equals(SplashScreenActivity.DELIVERED)){
                 binding.imvStatus.setBackground(itemView.context.getDrawable(R.drawable.logo_stt2))
+                binding.btnCancel.visibility = View.GONE
             }
             else if(data.trangthai.equals(SplashScreenActivity.CANCELLED)){
                 binding.imvStatus.setBackground(itemView.context.getDrawable(R.drawable.logo_stt3))
-            }        }
+                binding.btnCancel.visibility = View.GONE
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -73,6 +79,9 @@ class AdapterOrder : RecyclerView.Adapter<AdapterOrder.MainViewHolder>() {
             var intent = Intent(holder.itemView.context, OrderDetailActivity::class.java)
             intent.putExtra("magh",data.magh)
             holder.itemView.context.startActivity(intent)
+        }
+        holder.binding.btnCancel.setOnClickListener{
+            clickCancel?.invoke(data)
         }
     }
 }

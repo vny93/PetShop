@@ -9,6 +9,7 @@ import vn.vunganyen.petshop.data.model.admin.cart.getOrderShipper.ShipperGetOrde
 import vn.vunganyen.petshop.data.model.admin.cart.getTurnover.MainTurnoverRes
 import vn.vunganyen.petshop.data.model.admin.cart.getTurnover.TurnoverReq
 import vn.vunganyen.petshop.data.model.admin.cart.shipperUpdate.ShipperUpdateOrderReq
+import vn.vunganyen.petshop.data.model.admin.cart.userUpdate.UserUpdateStatusReq
 import vn.vunganyen.petshop.data.model.client.cart.add.AddCartReq
 import vn.vunganyen.petshop.data.model.client.cart.add.MainAddCardRes
 import vn.vunganyen.petshop.data.model.client.cart.getByStatus.CartStatusReq
@@ -49,6 +50,9 @@ interface ApiCartService {
 
     @PUT("v1/cart/update/shipper")
     fun shipperUpdateCard(@Header("Authorization") BearerToken: String, @Body req: ShipperUpdateOrderReq): Call<UserUpdateRes>
+
+    @PUT("v1/cart/user/update/status")
+    fun userUpdateStatus(@Header("Authorization") BearerToken: String, @Body req: UserUpdateStatusReq): Call<UserUpdateRes>
 
     @POST("v1/cart/detail")
     fun get(@Header("Authorization") BearerToken: String, @Body req: GetCartReq): Call<MainGetCartRes>

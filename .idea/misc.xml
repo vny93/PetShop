@@ -70,8 +70,9 @@
         <entry key="app/src/main/res/layout/activity_shipper_order_mng.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/activity_staff_manage.xml" value="0.17617753623188406" />
-        <entry key="app/src/main/res/layout/activity_statistics.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_statistics.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_update_order.xml" value="0.17617753623188406" />
+        <entry key="app/src/main/res/layout/dialog_adress.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_date.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/dialog_paypal.xml" value="0.165" />
         <entry key="app/src/main/res/layout/dialog_send_order.xml" value="0.18659420289855072" />
@@ -103,7 +104,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

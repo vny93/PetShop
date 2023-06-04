@@ -96,6 +96,7 @@
     <string name="tv_delivery_method">Hình thức vận chuyễn:</string>
     <string name="tv_delivery_method2">Giao hàng nhanh</string>
     <string name="tv_delivery_method3">Giao hàng trong 2h</string>
+    <string name="tv_mass_pro">Tổng khối lượng sản phẩm:</string>
     <string name="tv_pro_price">Tiền sản phẩm:</string>
     <string name="tv_transport_fee">Phí giao hàng:</string>
     <string name="tv_price">Price</string>
@@ -143,6 +144,11 @@
     <string name="account_errorCurrentPw">Mật khẩu cũ không đúng</string>
     <string name="account_changePwFail">Thay đổi mật khẩu thất bại</string>
     <string name="account_changePwSuccess">Thay đổi mật khẩu thành công</string>
+    <string name="title_adress">Quận/huyện</string>
+    <string name="title_address2">Phường/xã</string>
+    <string name="title_address3">Địa chỉ</string>
+    <string name="btn_action_pc">Xác nhận</string>
+    <string name="btn_cancel">Hủy</string>
 
     <!--my order-->
     <string name="tv_nametitle">Đơn mua</string>
@@ -291,6 +297,7 @@
     <string name="message_cancelOrder">Bạn có thực sự muốn hủy đơn hàng này?</string>
     <string name="cancel_order_success">Hủy đơn hàng thành công</string>
     <string name="send_order_success">Gửi đơn hàng thành công</string>
+    <string name="size_Illegal">Kích thước phải có định dạng: DàixRộngxCao</string>
     <string name="empty_size">Vui lòng điền kích thước sau khi đóng gói</string>
     <string name="tv_size">Kích thước:</string>
     <string name="tv_size2">0x0x0</string>

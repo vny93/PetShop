@@ -153,7 +153,6 @@
                     android:text="@string/tv_statistics"
                     />
 
-
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

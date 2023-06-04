@@ -13,8 +13,11 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import vn.vunganyen.petshop.R
 import vn.vunganyen.petshop.data.adapter.AdapterOrder
+import vn.vunganyen.petshop.data.model.admin.cart.adminUpdate.UpdateStatusReq
 import vn.vunganyen.petshop.data.model.admin.cart.getOrder.GetOrderReq
+import vn.vunganyen.petshop.data.model.admin.cart.userUpdate.UserUpdateStatusReq
 import vn.vunganyen.petshop.data.model.client.cart.add.AddCartRes
+import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
 import vn.vunganyen.petshop.databinding.ActivityOrderClientBinding
 import vn.vunganyen.petshop.screens.admin.order.listOrder.OrderMngPresenter
@@ -34,6 +37,7 @@ class OrderClientActivity : AppCompatActivity(), OrderClientInterface {
     var makh = SplashScreenActivity.profileClient.result.makh
     var dateFrom = ""
     var dateTo = ""
+    lateinit var dataRemove : AddCartRes
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderClientBinding.inflate(layoutInflater)
@@ -42,12 +46,24 @@ class OrderClientActivity : AppCompatActivity(), OrderClientInterface {
         setData()
         setEvent()
         setToolbar()
+        callInvokeCancelOrder()
     }
     fun setData(){
         setAdapterSpinner()
         var req = GetOrderReq(makh,dateFrom,dateTo,status)
         orderClientPresenter.filterCart(SplashScreenActivity.token,req)
         binding.toolbarListOrder.setTitle(getString(R.string.title_orderCline))
+    }
+
+    fun callInvokeCancelOrder(){
+        adapter.clickCancel = { data ->
+            dataRemove = data
+            dialog.showStartDialog4(getString(R.string.message_cancelOrder), this)
+            dialog.clickOk = { ->
+                var req = UserUpdateStatusReq(data.magh,SplashScreenActivity.CANCELLED)
+                orderClientPresenter.updateStatus(SplashScreenActivity.token,req)
+            }
+        }
     }
 
     fun setEvent(){
@@ -165,5 +181,12 @@ class OrderClientActivity : AppCompatActivity(), OrderClientInterface {
         binding.rcvListOrder.adapter = adapter
         binding.rcvListOrder.layoutManager =  LinearLayoutManager(this,
             LinearLayoutManager.VERTICAL,false)
+    }
+
+    override fun CancelOrderSuccess() {
+        dialog.showStartDialog3(getString(R.string.cancel_order_success),this)
+        var req = GetOrderReq(makh,dateFrom,dateTo,status)
+        orderClientPresenter.filterCart(SplashScreenActivity.token,req)
+        orderClientPresenter.getListCartDetail(SplashScreenActivity.token, GetCartReq(dataRemove.magh))
     }
 }

@@ -34,7 +34,10 @@ import vn.vunganyen.petshop.data.model.client.cart.getCart.GetCartReq
 import vn.vunganyen.petshop.data.model.client.cart.userUpdate.UserUpdateReq
 import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCDSpRes
 import vn.vunganyen.petshop.data.model.client.classSupport.StartAlertDialog
+import vn.vunganyen.petshop.data.model.district.DistrictRes
+import vn.vunganyen.petshop.data.model.district.WardsRes
 import vn.vunganyen.petshop.databinding.ActivityCheckOutBinding
+import vn.vunganyen.petshop.databinding.DialogAdressBinding
 import vn.vunganyen.petshop.databinding.DialogPaypalBinding
 import vn.vunganyen.petshop.screens.splashScreen.SplashScreenActivity
 import java.io.IOException
@@ -58,6 +61,15 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     var payment_status = ""
     var delivery_charges = 0.0f
     var delivery_method = ""
+
+    lateinit var dialog2: Dialog
+    lateinit var bindingDialogAdress : DialogAdressBinding
+    var listDistrict = ArrayList<DistrictRes>()
+    var listDistrictName = ArrayList<String>()
+    var listWardstName = ArrayList<String>()
+    var district = ""
+    var wards = ""
+
     companion object{
         lateinit var listCartDetail : List<GetCDSpRes>
         var WAIT_STATUS = SplashScreenActivity.PENDING
@@ -71,6 +83,9 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
         setContentView(binding.root)
         dialog = Dialog(this@CheckOutActivity)
         checkOutPresenter = CheckOutPresenter(this)
+        dialog2 = Dialog(this@CheckOutActivity)
+        bindingDialogAdress = DialogAdressBinding.inflate(layoutInflater)
+        dialog2.setContentView(bindingDialogAdress.root)
         setViewDate()
         getData()
         setEvent()
@@ -80,7 +95,7 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
 
     fun getLocation(){
         var geocoder = Geocoder(this)
-        checkOutPresenter.getLocation(geocoder)
+        checkOutPresenter.getLocation(geocoder, binding.edtAddressReceive.text.toString())
     }
 
     fun exchangeRate(price : Float): Float{
@@ -97,12 +112,13 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
         binding.edtPhoneReceive.setText(SplashScreenActivity.profileClient.result.sdt)
         binding.edtEmailReceive.setText(SplashScreenActivity.profileClient.result.email)
         binding.edtAddressReceive.setText(SplashScreenActivity.profileClient.result.diachi)
-
+        binding.edtAddressReceive.setFocusable(false)
+        checkOutPresenter.getDistrict()
     }
 
     fun setAdapterSpinner(distance : Float){
         var list = ArrayList<String>()
-        if(distance <= 30){
+        if(distance <= 20){
             list.add(getString(R.string.tv_delivery_method2))
             list.add(getString(R.string.tv_delivery_method3))
         }
@@ -175,6 +191,27 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
                 SplashScreenActivity.sumPriceShip,SplashScreenActivity.sumMass,payment_status,delivery_method,magh)
             checkOutPresenter.validCheck(req)
         }
+
+        binding.edtAddressReceive.setOnClickListener{
+            println("Chọn địa chỉ")
+            showDialogSetting(Gravity.CENTER)
+        }
+
+        bindingDialogAdress.spinnerDistrict.setOnItemClickListener(({ adapterView, view, i, l ->
+            district = adapterView.getItemAtPosition(i).toString()
+            for (list in listDistrict) {
+                if (list.name.equals(adapterView.getItemAtPosition(i).toString())) {
+                    println("code:" + list.code)
+                    checkOutPresenter.getWards(list.code)
+                }
+            }
+            println("district: " + district)
+        }))
+
+        bindingDialogAdress.spinnerWards.setOnItemClickListener(({ adapterView, view, i, l ->
+            wards = adapterView.getItemAtPosition(i).toString()
+            println("wards: " + wards)
+        }))
     }
 
     fun setPaypal(dialog : Dialog, binding: DialogPaypalBinding, req: UserUpdateReq, value : String){
@@ -258,6 +295,48 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
         dialog.show()
     }
 
+    fun showDialogSetting(gravity : Int){
+        val window = dialog2.window ?: return
+        window.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        val windowAttributes = window.attributes
+        windowAttributes.gravity = gravity
+        window.attributes = windowAttributes
+
+        if (Gravity.CENTER == gravity) {
+            dialog2.setCancelable(false)
+        } else {
+            dialog2.setCancelable(false)
+        }
+
+        bindingDialogAdress.btnAccept.setOnClickListener{
+            var way = bindingDialogAdress.edtWay.text.toString()
+            if(wards.equals("") || district.equals("") || way.equals("")){
+                alertDialog.showStartDialog3(getString(R.string.error_empty),this)
+            }
+            else{
+                var adress = way + ", "+ wards + ", " + district +", Thành phố Hồ Chí Minh"
+                println("adress: "+adress)
+                binding.edtAddressReceive.setText(adress)
+                SplashScreenActivity.sumPriceShip = 0.0f
+                getLocation()
+                dialog2.dismiss()
+            }
+        }
+
+        bindingDialogAdress.btnCancel.setOnClickListener{
+            dialog2.dismiss()
+        }
+        bindingDialogAdress.dialogSend.setOnClickListener{
+            bindingDialogAdress.edtWay.clearFocus()
+            bindingDialogAdress.dialogSend.hideKeyboard()
+        }
+
+        dialog2.show()
+    }
+
     fun clearFocus(){
         binding.edtEmailReceive.clearFocus()
         binding.edtPhoneReceive.clearFocus()
@@ -318,6 +397,7 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
     }
 
     override fun getMassPrice(priceMass: Float) {
+        binding.sumMassPro.setText(SplashScreenActivity.sumMass.toString()+" kg")
         SplashScreenActivity.sumPriceShip = SplashScreenActivity.sumPriceShip + priceMass
         println("Tiền khối lượng: "+priceMass)
     }
@@ -342,5 +422,30 @@ class CheckOutActivity : AppCompatActivity(), CheckOutInterface {
         val strSumPrice = SplashScreenActivity.formatter.format(sum).toString() + " đ"
         println(strSumPrice)
         binding.sumCartMoney2.setText(strSumPrice)
+    }
+
+    override fun getListDistrict(list: List<DistrictRes>) {
+        listDistrict = list as ArrayList<DistrictRes>
+        for (i in 0..list.size - 1) {
+            listDistrictName.add(list.get(i).name)
+        }
+        setAdapterDistrict(listDistrictName)
+    }
+
+    fun setAdapterDistrict(list: List<String>) {
+        var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,list)
+        bindingDialogAdress.spinnerDistrict.setAdapter(adapter)
+    }
+
+    override fun getListWards(list: List<WardsRes>) {
+        for (i in 0..list.size - 1) {
+            listWardstName.add(list.get(i).name)
+        }
+        setAdapterWards(listWardstName)
+    }
+
+    fun setAdapterWards(list: List<String>) {
+        var adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,list)
+        bindingDialogAdress.spinnerWards.setAdapter(adapter)
     }
 }

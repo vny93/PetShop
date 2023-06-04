@@ -152,8 +152,21 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_90sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
+                    android:text="@string/title_order_cancel"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/custom_button"
+                    android:textSize="@dimen/_11sdp" />
 
+            </LinearLayout>
 
         </LinearLayout>
 

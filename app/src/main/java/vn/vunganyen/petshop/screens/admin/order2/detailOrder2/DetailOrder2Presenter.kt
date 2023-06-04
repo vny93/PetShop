@@ -115,6 +115,10 @@ class DetailOrder2Presenter {
             detailOrder2Interface.Empty()
             return
         }
+        if (!SplashScreenActivity.SIZE.matcher(size).matches()) {
+            detailOrder2Interface.SizeIllegal()
+            return
+        }
         sendOrder(req1,req2)
     }
 

@@ -154,7 +154,7 @@ class DetailOrderMng2Activity : AppCompatActivity(), DetailOrder2Interface {
                 data.ptthanhtoan,data.tongtien,data.ttthanhtoan,data.khoiluong,sizeOrder,data.phigiao,
                 data.htvanchuyen,noteOrder,currentDate,SplashScreenActivity.IDSHOP)
             //call API gửi hàng
-            dialog2.dismiss()
+           // dialog2.dismiss()
             detailOrder2Presenter.checkEmpty(sizeOrder,req,GetCartReq(data.magh))
         }
 
@@ -216,6 +216,7 @@ class DetailOrderMng2Activity : AppCompatActivity(), DetailOrder2Interface {
     }
 
     override fun sendOrderSuccess() {
+        dialog2.dismiss()
         dialog.showStartDialog3(getString(R.string.send_order_success),this)
         binding.btnCencal.visibility = View.GONE
         binding.btnSave.visibility = View.GONE
@@ -227,5 +228,9 @@ class DetailOrderMng2Activity : AppCompatActivity(), DetailOrder2Interface {
     override fun addDetailStatus() {
         var req = UpdateStatusReq(data.magh,SplashScreenActivity.DELIVERY,SplashScreenActivity.profileAdmin.result.manv)
         detailOrder2Presenter.updateStatus(SplashScreenActivity.token,req,2)
+    }
+
+    override fun SizeIllegal() {
+        dialog.showStartDialog3(getString(R.string.size_Illegal),this)
     }
 }

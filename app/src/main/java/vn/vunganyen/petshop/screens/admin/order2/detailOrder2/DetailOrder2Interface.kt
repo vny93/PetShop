@@ -13,5 +13,6 @@ interface DetailOrder2Interface {
     fun CancelOrderSuccess()
     fun sendOrderSuccess()
     fun addDetailStatus()
+    fun SizeIllegal()
 
 }

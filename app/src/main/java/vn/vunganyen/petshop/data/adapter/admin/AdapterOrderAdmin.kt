@@ -3,6 +3,7 @@ package vn.vunganyen.petshop.data.adapter.admin
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.engine.Resource
@@ -46,6 +47,7 @@ class AdapterOrderAdmin : RecyclerView.Adapter<AdapterOrderAdmin.MainViewHolder>
             val price = formatter.format(data.tongtien).toString() + " đ"
             binding.tvPriceOrder.setText(price)
             binding.tvStatus.setText(data.trangthai)
+            binding.btnCancel.visibility = View.GONE
             if(data.trangthai.equals(SplashScreenActivity.DELIVERY)){
                 binding.imvStatus.setBackground(itemView.context.getDrawable(R.drawable.logo_stt1))
             }

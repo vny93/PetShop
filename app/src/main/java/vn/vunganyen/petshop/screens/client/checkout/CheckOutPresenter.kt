@@ -15,6 +15,8 @@ import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetCD
 import vn.vunganyen.petshop.data.model.client.cartDetail.getListCartDetail.GetMainCDRes
 import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderReq
 import vn.vunganyen.petshop.data.model.client.product.userUpdateOrder.UserOrderRes
+import vn.vunganyen.petshop.data.model.district.DistrictRes
+import vn.vunganyen.petshop.data.model.district.MainGetDistrictRes
 import vn.vunganyen.petshop.data.model.fastDelivery.MainResponsePrice
 import vn.vunganyen.petshop.data.model.fastDelivery.distance.RequestDistance
 import vn.vunganyen.petshop.data.model.fastDelivery.RequestMass
@@ -117,10 +119,10 @@ class CheckOutPresenter {
         })
     }
 
-    fun getLocation(geocoder: Geocoder){
+    fun getLocation(geocoder: Geocoder, adress : String){
         var addressList: List<Address>
         try {
-            addressList = geocoder.getFromLocationName(SplashScreenActivity.profileClient.result.diachi, 1)
+            addressList = geocoder.getFromLocationName(adress, 1)
             if (addressList != null) {
                 CheckOutActivity.lat = addressList.get(0).latitude
                 CheckOutActivity.long = addressList.get(0).longitude
@@ -151,7 +153,7 @@ class CheckOutPresenter {
     fun callAPIGraphhopperRes(lat: Double, long: Double){
         var pointSource = SplashScreenActivity.STORE_LAT.toString()+","+SplashScreenActivity.STORE_LONG.toString()
         var pointDes = lat.toString()+","+long.toString()
-        var profile = "car"
+        var profile = "scooter"
         var locale = "vn"
         var calc_points = false
         var key = SplashScreenActivity.API_KEY
@@ -201,6 +203,36 @@ class CheckOutPresenter {
             }
 
             override fun onFailure(call: Call<MainResponsePrice>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun getDistrict(){
+        ApiDistrictServer.Api.api.getDistrict1().enqueue(object : Callback<MainGetDistrictRes>{
+            override fun onResponse(call: Call<MainGetDistrictRes>, response: Response<MainGetDistrictRes>) {
+                if(response.isSuccessful){
+                    checkOutInterface.getListDistrict(response.body()!!.districts)
+                }
+            }
+
+            override fun onFailure(call: Call<MainGetDistrictRes>, t: Throwable) {
+                println("UpdateStaffPst Error getDistrict()")
+            }
+
+        })
+    }
+
+    fun getWards(code : Long){
+        ApiDistrictServer.Api.api.getDistrict2(code).enqueue(object : Callback<DistrictRes>{
+            override fun onResponse(call: Call<DistrictRes>, response: Response<DistrictRes>) {
+                if(response.isSuccessful){
+                    checkOutInterface.getListWards(response.body()!!.wards)
+                }
+            }
+
+            override fun onFailure(call: Call<DistrictRes>, t: Throwable) {
                 TODO("Not yet implemented")
             }
 

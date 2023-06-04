@@ -29,7 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
         var DELIVERY = "Đang giao"
         var DELIVERED = "Đã giao"
         var CANCELLED = "Đã hủy"
-        var API_KEY = "03b225ae-3ff7-40d9-86ee-901bc4347172"
+        var API_KEY = "553145e6-0d26-4311-a252-c0f6e5f213ef"
         //Tên đăng nhập tối thiểu tám ký tự, ít nhất một chữ cái và một số
         var USERNAME = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
         var EMAIL_ADDRESS = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
@@ -37,6 +37,7 @@ class SplashScreenActivity : AppCompatActivity() {
         var PASSWORD = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}\$")
         //var SDT = Pattern.compile("(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})")
         var SDT = Pattern.compile("(84|0){1}(3|5|7|8|9){1}+([0-9]{8})")
+        var SIZE = Pattern.compile("^([0-9]{1,})+x([0-9]{1,})+x([0-9]{1,})")
         var token: String = ""
         var roleId: Int = 0
         lateinit var sharedPreferences: SharedPreferences
